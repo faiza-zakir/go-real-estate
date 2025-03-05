@@ -83,7 +83,7 @@
       .DesktopBTNTHEME {
         background: rgba(255, 255, 255, 0.4);
         &:hover {
-          background: transparent;
+          background: #b22b39;
         }
         @media (max-width: 576px) {
           display: none;
@@ -94,7 +94,7 @@
         margin-top: 10px;
         display: none;
         &:hover {
-          background: transparent;
+          background: #b22b39;
         }
         @media (max-width: 576px) {
           display: block;

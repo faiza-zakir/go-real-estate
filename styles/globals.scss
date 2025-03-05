@@ -140,9 +140,9 @@ body {
   }
   &:hover,
   &:focus {
-    background: transparent;
-    border: 1px solid #fff;
     color: #fff;
+    background: #b22b39;
+    border: 1px solid #b22b39;
   }
 }
 
@@ -151,10 +151,10 @@ body {
   line-height: 150%;
   font-weight: 500;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 100px;
   color: #fff;
-  background: #000;
-  border: 1px solid #000;
+  background: #b22b39;
+  border: 1px solid #b22b39;
   text-transform: capitalize;
   transition: all 0.5s ease-in-out;
   @media (max-width: 775px) {
@@ -163,7 +163,7 @@ body {
   &:hover,
   &:focus {
     background: #000;
-    border: 1px solid #fff;
+    border: 1px solid #000;
   }
 }
 
@@ -172,7 +172,7 @@ body {
   line-height: 150%;
   font-weight: 500;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 100px;
   color: #000;
   background: #fff;
   border: 1px solid #000;
