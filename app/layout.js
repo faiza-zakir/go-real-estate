@@ -2,8 +2,8 @@ import { Poppins } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./styles/custom.scss";
-import "./globals.scss";
+import "@/styles/custom.scss";
+import "@/styles/globals.scss";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
 

@@ -1,13 +1,12 @@
 "use client";
-import Banner from "../components/common/common-banner/CommonBanner";
-import ContactInfoSection from "../components/contact/contact-info-section/ContactInfoSection";
-import ContactFormSection from "../components/contact/contact-form-section/ContactFormSection";
-import FAQSection from "../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import ContactInfoSection from "@/components/contact/contact-info-section/ContactInfoSection";
+import ContactFormSection from "@/components/contact/contact-form-section/ContactFormSection";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // img
-import bannerImg from "../assets/banner/contactbanner.webp";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import { fatchPagesContent } from "../apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 
 const PageContent = () => {
   const [pageData, setPageData] = useState({});
@@ -40,7 +39,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/contactbanner.webp"
         }
       />
       <ContactInfoSection infoData={pageData?.content?.info} />

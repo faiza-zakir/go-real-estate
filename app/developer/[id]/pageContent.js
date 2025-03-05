@@ -1,15 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Banner from "../../components/common/common-banner/CommonBanner";
-import Overview from "../../components/developerInner/overview/Overview";
-import PortfolioSlider from "../../components/developerInner/portfolio-slider/PortfolioSlider";
-import ContactSection from "../../components/home/contact-section/ContactSection";
-import FAQSection from "../../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import Overview from "@/components/developerInner/overview/Overview";
+import PortfolioSlider from "@/components/developerInner/portfolio-slider/PortfolioSlider";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
 import { fatchDeveloperSingle } from "@/app/apis/commonApi";
-// img
-import bannerImg from "../../assets/banner/developerinnerbanner.webp";
 
 const PageContent = () => {
   const { id } = useParams();
@@ -46,7 +44,7 @@ const PageContent = () => {
                   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
                   singleDeveloper?.banner_image,
               }
-            : bannerImg
+            : "/assets/banner/developerinnerbanner.webp"
         }
       />
       <Overview singleDeveloper={singleDeveloper} />

@@ -1,19 +1,17 @@
 "use client";
-import Banner from "../../components/common/common-banner/CommonBanner";
-import Intro from "../../components/investment/Intro/Intro";
-import Maps from "../../components/dholera/maps/Maps";
-import KeyBenefitsSlider from "@/app/components/ahmadabad/key-benefits-slider/KeyBenefitsSlider";
-import ContactSection from "../../components/home/contact-section/ContactSection";
-import FAQSection from "../../components/investment/faq-section/FAQSection";
-// img
-import bannerImg from "../../assets/banner/ahmadabadbanner.webp";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import Intro from "@/components/investment/Intro/Intro";
+import Maps from "@/components/dholera/maps/Maps";
+import KeyBenefitsSlider from "@/components/ahmadabad/key-benefits-slider/KeyBenefitsSlider";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/investment/faq-section/FAQSection";
 // data
-import { investmentData } from "../../db/investmentData";
+import { investmentData } from "@/lib/investmentData";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { fatchPagesContent } from "@/app/apis/commonApi";
 
-import Loader from "@/app/components/common/loader/Loader";
+import Loader from "@/components/common/loader/Loader";
 
 const PageContent = () => {
   const { ahmadabad } = investmentData;
@@ -50,7 +48,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/ahmadabadbanner.webp"
         }
       />
       {isLoading ? (

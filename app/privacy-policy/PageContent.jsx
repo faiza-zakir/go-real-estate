@@ -1,12 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import PrivacyIntro from "../components/common/privacy-intro/PrivacyIntro";
-// img
-import bannerImg from "../assets/banner/privacybanner.webp";
-import { fatchPagesContent } from "../apis/commonApi";
-
-import Loader from "@/app/components/common/loader/Loader";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import PrivacyIntro from "@/components/common/privacy-intro/PrivacyIntro";
+import { fatchPagesContent } from "@/app/apis/commonApi";
+import Loader from "@/components/common/loader/Loader";
 import { toast } from "react-toastify";
 
 function PageContent() {
@@ -45,7 +42,7 @@ function PageContent() {
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : bannerImg
+                : "/assets/banner/privacybanner.webp"
             }
           />
           <PrivacyIntro content={pageData?.content?.intro} />

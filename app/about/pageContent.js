@@ -1,22 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import Intro from "../components/about/Intro/Intro";
-import CountsSection from "../components/about/counts-section/CountsSection";
-import ContactSection from "../components/home/contact-section/ContactSection";
-import WhyChooseSection from "../components/home/why-choose-section/WhyChooseSection";
-import Mission from "../components/about/mission/Mission";
-import Vision from "../components/about/vision/Vision";
-import Founder from "../components/about/founder/Founder";
-import TeamList from "../components/about/team/TeamList";
-import OurCredentials from "../components/home/our-credentials/OurCredentials";
-import FAQSection from "../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import Intro from "@/components/about/Intro/Intro";
+import CountsSection from "@/components/about/counts-section/CountsSection";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import WhyChooseSection from "@/components/home/why-choose-section/WhyChooseSection";
+import Mission from "@/components/about/mission/Mission";
+import Vision from "@/components/about/vision/Vision";
+import Founder from "@/components/about/founder/Founder";
+import TeamList from "@/components/about/team/TeamList";
+import OurCredentials from "@/components/home/our-credentials/OurCredentials";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fatchPagesContent } from "../apis/commonApi";
-// img
-import bannerImg from "../assets/banner/aboutbanner.webp";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
-import { homeData } from "../db/homeData";
+import { homeData } from "@/lib/homeData";
 
 const PageContent = () => {
   const { whyChoose } = homeData;
@@ -29,7 +27,6 @@ const PageContent = () => {
       const resp = await fatchPagesContent("about");
       setPageData(resp?.data);
     } catch (err) {
-      toast.error("Opps!, something went wrong, please try again later");
       console.log("Err: ", err);
     } finally {
       setIsLoading(false);
@@ -52,7 +49,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/aboutbanner.webp"
         }
       />
       <Intro introData={pageData?.content?.intro} />

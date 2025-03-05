@@ -1,4 +1,4 @@
-import Projects from "../components/projects/Projects";
+import Projects from "@/components/projects/Projects";
 
 // Generate metadata for the page
 export async function generateMetadata() {

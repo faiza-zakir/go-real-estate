@@ -1,14 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import FilterSection from "../components/developers/filter-section/FilterSection";
-import DevelopersList from "../components/developers/developers-list/DevelopersList";
-import ContactSection from "../components/home/contact-section/ContactSection";
-import FAQSection from "../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import FilterSection from "@/components/developers/filter-section/FilterSection";
+import DevelopersList from "@/components/developers/developers-list/DevelopersList";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fatchDeveloperList, fatchPagesContent } from "../apis/commonApi";
-// img
-import bannerImg from "../assets/banner/developerbanner.webp";
+import { fatchDeveloperList, fatchPagesContent } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 
 const PageContent = () => {
@@ -75,7 +73,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/developerbanner.webp"
         }
       />
       <FilterSection

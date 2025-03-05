@@ -1,5 +1,5 @@
 import { fatchProjectSingle } from "@/app/apis/commonApi";
-import ProjectsInner from "../../components/projectInner/ProjectsInner";
+import ProjectsInner from "@/components/projectInner/ProjectsInner";
 
 export async function generateMetadata({ params }) {
   const { id } = params;

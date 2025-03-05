@@ -1,13 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import BlogList from "../components/blog/BlogList";
-import ContactSection from "../components/home/contact-section/ContactSection";
-import FAQSection from "../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import BlogList from "@/components/blog/BlogList";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fatchPagesContent, fetchBlogData } from "../apis/commonApi";
+import { fatchPagesContent, fetchBlogData } from "@/app/apis/commonApi";
 // img
-import bannerImg from "../assets/banner/blogbanner.webp";
 import { toast } from "react-toastify";
 
 const PageContent = () => {
@@ -58,7 +57,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/blogbanner.webp"
         }
       />
       <BlogList blogsList={blogData} isLoading={isLoading} />

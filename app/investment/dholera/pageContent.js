@@ -1,24 +1,22 @@
 "use client";
-import Banner from "../../components/common/common-banner/CommonBanner";
-import Intro from "../../components/dholera/intro/Intro";
-import Maps from "../../components/dholera/maps/Maps";
-import MoreFeatures from "../../components/dholera/more-features/MoreFeatures";
-import Detail from "../../components/dholera/detail/Detail";
-import DevelopmentPlan from "../../components/dholera/development-plan/DevelopmentPlan";
-import Dmic from "../../components/dholera/dmic/Dmic";
-import Airport from "../../components/dholera/airport/Airport";
-import PhasesSlider from "../../components/investment/phases-slider/PhasesSlider";
-import Investors from "../../components/dholera/investors/Investors";
-import ContactSection from "../../components/home/contact-section/ContactSection";
-import FAQSection from "../../components/investment/faq-section/FAQSection";
-// img
-import bannerImg from "../../assets/banner/dholerabanner.webp";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import Intro from "@/components/dholera/intro/Intro";
+import Maps from "@/components/dholera/maps/Maps";
+import MoreFeatures from "@/components/dholera/more-features/MoreFeatures";
+import Detail from "@/components/dholera/detail/Detail";
+import DevelopmentPlan from "@/components/dholera/development-plan/DevelopmentPlan";
+import Dmic from "@/components/dholera/dmic/Dmic";
+import Airport from "@/components/dholera/airport/Airport";
+import PhasesSlider from "@/components/investment/phases-slider/PhasesSlider";
+import Investors from "@/components/dholera/investors/Investors";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/investment/faq-section/FAQSection";
 // data
-import { investmentData } from "../../db/investmentData";
+import { investmentData } from "@/lib/investmentData";
 import { useEffect, useState } from "react";
 import { fatchPagesContent } from "@/app/apis/commonApi";
 
-import Loader from "@/app/components/common/loader/Loader";
+import Loader from "@/components/common/loader/Loader";
 
 const PageContent = () => {
   const { dholera } = investmentData;
@@ -63,13 +61,12 @@ const PageContent = () => {
         indexpage="Home"
         indexvisit="/"
         activepage="Investment"
-        // bgImg={bannerImg}
         bgImg={
           pageData?.content?.banner?.background_image
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/dholerabanner.webp"
         }
       />
       {isLoading ? (

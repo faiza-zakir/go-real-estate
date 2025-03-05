@@ -1,13 +1,12 @@
 "use client";
-import Banner from "../components/common/common-banner/CommonBanner";
-import RefundIntro from "../components/common/refund-intro/RefundIntro";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import RefundIntro from "@/components/common/refund-intro/RefundIntro";
 // img
-import bannerImg from "../assets/banner/refundbanner.webp";
-import { fatchPagesContent } from "../apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import Loader from "@/app/components/common/loader/Loader";
+import Loader from "@/components/common/loader/Loader";
 
 import React from "react";
 
@@ -46,7 +45,7 @@ function PageContent() {
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : bannerImg
+                : "/assets/banner/refundbanner.webp"
             }
           />
           <RefundIntro content={pageData?.content?.intro} />

@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import TermsIntro from "../components/common/terms-intro/TermsIntro";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import TermsIntro from "@/components/common/terms-intro/TermsIntro";
 // img
-import bannerImg from "../assets/banner/termsbanner.webp";
-import Loader from "@/app/components/common/loader/Loader";
-import { fatchPagesContent } from "../apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 
 function PageContent() {
@@ -41,7 +39,7 @@ function PageContent() {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/termsbanner.webp"
         }
       />
       <TermsIntro content={pageData?.content?.intro} />

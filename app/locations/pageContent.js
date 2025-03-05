@@ -1,15 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import Banner from "../components/common/common-banner/CommonBanner";
-import FilterSection from "../components/locations/filter-section/FilterSection";
-import LocationsList from "../components/locations/locations-list/LocationsList";
-import ContactSection from "../components/home/contact-section/ContactSection";
-import FAQSection from "../components/home/faq-section/FAQSection";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import FilterSection from "@/components/locations/filter-section/FilterSection";
+import LocationsList from "@/components/locations/locations-list/LocationsList";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fatchPagesContent, fatchProjectList } from "../apis/commonApi";
-// img
-import bannerImg from "../assets/banner/locationsbanner.webp";
+import { fatchPagesContent, fatchProjectList } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 
 const PageContent = () => {
@@ -103,7 +101,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/locationsbanner.webp"
         }
       />
       <FilterSection

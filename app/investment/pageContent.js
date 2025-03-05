@@ -1,24 +1,22 @@
 "use client";
-import Banner from "../components/common/common-banner/CommonBanner";
-import Intro from "../components/investment/Intro/Intro";
-import Features from "../components/investment/features/Features";
-import WhyInvest from "../components/investment/why-invest/WhyInvest";
-import PhasesSlider from "../components/investment/phases-slider/PhasesSlider";
-import Opportunities from "../components/investment/opportunities/Opportunities";
-import KeyFeaturesSlider from "../components/investment/key-features-slider/KeyFeaturesSlider";
-import ExpertTips from "../components/investment/expert-tips/ExpertTips";
-import TestimonialsSection from "../components/home/testimonials-section/TestimonialsSection";
-import ContactSection from "../components/home/contact-section/ContactSection";
-import FAQSection from "../components/investment/faq-section/FAQSection";
-// img
-import bannerImg from "../assets/banner/investmentbanner.webp";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import Intro from "@/components/investment/Intro/Intro";
+import Features from "@/components/investment/features/Features";
+import WhyInvest from "@/components/investment/why-invest/WhyInvest";
+import PhasesSlider from "@/components/investment/phases-slider/PhasesSlider";
+import Opportunities from "@/components/investment/opportunities/Opportunities";
+import KeyFeaturesSlider from "@/components/investment/key-features-slider/KeyFeaturesSlider";
+import ExpertTips from "@/components/investment/expert-tips/ExpertTips";
+import TestimonialsSection from "@/components/home/testimonials-section/TestimonialsSection";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import FAQSection from "@/components/investment/faq-section/FAQSection";
 // data
-import { investmentData } from "../db/investmentData";
+import { investmentData } from "@/lib/investmentData";
 import { useEffect, useState } from "react";
-import { fatchPagesContent } from "../apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 
-import Loader from "@/app/components/common/loader/Loader";
+import Loader from "@/components/common/loader/Loader";
 
 const PageContent = () => {
   const {
@@ -63,13 +61,12 @@ const PageContent = () => {
             indexpage="Home"
             indexvisit="/"
             activepage="Investment"
-            // bgImg={bannerImg}
             bgImg={
               pageData?.content?.banner?.background_image
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : bannerImg
+                : "/assets/banner/investmentbanner.webp"
             }
           />
           <Intro introData={pageData?.content?.intro} />

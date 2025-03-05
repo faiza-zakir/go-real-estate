@@ -3,59 +3,58 @@ import { useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
-import AboutSection from "./components/home/about-section/AboutSection";
-import BannerVideo from "./components/home/banner-section/banner-video/BannerVideo";
+import AboutSection from "@/components/home/about-section/AboutSection";
+import BannerVideo from "@/components/home/banner-section/banner-video/BannerVideo";
 // data
-import { homeData } from "./db/homeData";
+import { homeData } from "@/lib/homeData";
 // api
-import { fatchPagesContent, fatchProjectList } from "./apis/commonApi";
+import { fatchPagesContent, fatchProjectList } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
-import Loader from "@/app/components/common/loader/DataLoader";
 //
 const BannerForm = dynamic(() =>
-  import("./components/home/banner-section/banner-form/BannerForm")
+  import("@/components/home/banner-section/banner-form/BannerForm")
 );
 const TaglinePopup = dynamic(() =>
-  import("./components/common/tagline-popup/TaglinePopup")
+  import("@/components/common/tagline-popup/TaglinePopup")
 );
 const AppointmentSection = dynamic(() =>
-  import("./components/home/appointment-section/AppointmentSection")
+  import("@/components/home/appointment-section/AppointmentSection")
 );
 const BlogSection = dynamic(() =>
-  import("./components/home/blog-section/BlogSection")
+  import("@/components/home/blog-section/BlogSection")
 );
 const ContactSection = dynamic(() =>
-  import("./components/home/contact-section/ContactSection")
+  import("@/components/home/contact-section/ContactSection")
 );
 const FAQSection = dynamic(() =>
-  import("./components/home/faq-section/FAQSection")
+  import("@/components/home/faq-section/FAQSection")
 );
 const TestimonialsSection = dynamic(() =>
-  import("./components/home/testimonials-section/TestimonialsSection")
+  import("@/components/home/testimonials-section/TestimonialsSection")
 );
 const VideoTestimonialsSection = dynamic(() =>
   import(
-    "./components/home/video-testimonials-section/VideoTestimonialsSection"
+    "@/components/home/video-testimonials-section/VideoTestimonialsSection"
   )
 );
 const ProjectSlider = dynamic(() =>
-  import("./components/home/project-slider/ProjectSlider")
+  import("@/components/home/project-slider/ProjectSlider")
 );
 const WhyChooseSection = dynamic(() =>
-  import("./components/home/why-choose-section/WhyChooseSection")
+  import("@/components/home/why-choose-section/WhyChooseSection")
 );
 const OurClients = dynamic(() =>
-  import("./components/home/our-clients/OurClients")
+  import("@/components/home/our-clients/OurClients")
 );
 
-// import AppointmentSection from "./components/home/appointment-section/AppointmentSection";
-// import BlogSection from "./components/home/blog-section/BlogSection";
-// import ContactSection from "./components/home/contact-section/ContactSection";
-// import FAQSection from "./components/home/faq-section/FAQSection";
-// import TestimonialsSection from "./components/home/testimonials-section/TestimonialsSection";
-// import VideoTestimonialsSection from "./components/home/video-testimonials-section/VideoTestimonialsSection";
-// import ProjectSlider from "./components/home/project-slider/ProjectSlider";
-// import WhyChooseSection from "./components/home/why-choose-section/WhyChooseSection";
+// import AppointmentSection from "@/components/home/appointment-section/AppointmentSection";
+// import BlogSection from "@/components/home/blog-section/BlogSection";
+// import ContactSection from "@/components/home/contact-section/ContactSection";
+// import FAQSection from "@/components/home/faq-section/FAQSection";
+// import TestimonialsSection from "@/components/home/testimonials-section/TestimonialsSection";
+// import VideoTestimonialsSection from "@/components/home/video-testimonials-section/VideoTestimonialsSection";
+// import ProjectSlider from "@/components/home/project-slider/ProjectSlider";
+// import WhyChooseSection from "@/components/home/why-choose-section/WhyChooseSection";
 
 const Home = () => {
   const { appointment, whyChoose, testimonials, testimonialsVideo } = homeData;

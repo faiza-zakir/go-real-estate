@@ -1,11 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import Banner from "../components/common/common-banner/CommonBanner";
-import FaqsList from "../components/faqs/FaqsList";
+import Banner from "@/components/common/common-banner/CommonBanner";
+import FaqsList from "@/components/faqs/FaqsList";
 // api
-import { fatchPagesContent, fetchFaqData } from "../apis/commonApi";
+import { fatchPagesContent, fetchFaqData } from "@/app/apis/commonApi";
 // img
-import bannerImg from "../assets/banner/faqbanner.webp";
 import { toast } from "react-toastify";
 
 const PageContent = () => {
@@ -55,7 +54,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : bannerImg
+            : "/assets/banner/faqbanner.webp"
         }
       />
       <FaqsList faqsData={faqData} isLoading={isLoading} />
