@@ -43,9 +43,13 @@ const MainNavbar = () => {
         className={`navbar-area ${scrolled ? "sticky-top" : "fixed-top"}`}
       >
         <Container>
-          <Navbar.Brand as={Link} href="/" className="d-lg-none">
+          <Navbar.Brand as={Link} href="/">
             <Image
-              src="/assets/logo/logo.svg"
+              src={
+                scrolled
+                  ? "/assets/logo/logo.svg"
+                  : "/assets/logo/blacklogo.svg"
+              }
               alt="logo"
               width={60}
               height={60}
@@ -73,88 +77,15 @@ const MainNavbar = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav>
-                <NavDropdown
-                  title="Projects"
-                  id="about-dropdown"
-                  className="about_dropdown"
-                >
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/residential"
-                    className={`nav-drop-link ${
-                      pathname === "/residential" ? "active" : ""
-                    }`}
-                  >
-                    Residential <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/commercial"
-                    className={`nav-drop-link ${
-                      pathname === "/commercial" ? "active" : ""
-                    }`}
-                  >
-                    Commercial <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/pre-leased"
-                    className={`nav-drop-link ${
-                      pathname === "/pre-leased" ? "active" : ""
-                    }`}
-                  >
-                    Pre-Leased <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/farmhouse"
-                    className={`nav-drop-link ${
-                      pathname === "/farmhouse" ? "active" : ""
-                    }`}
-                  >
-                    Farmhouse <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                </NavDropdown>
+              <Nav className="ms-auto">
                 <Nav.Link
                   onClick={closeToggler}
                   as={Link}
-                  href="/developers"
-                  className={`nav-item ${
-                    pathname === "/developers" ? "active" : ""
-                  }`}
+                  href="/"
+                  className={`nav-item ${pathname === "/" ? "active" : ""}`}
                 >
-                  Developers
+                  Home
                 </Nav.Link>
-                <Nav.Link
-                  onClick={closeToggler}
-                  as={Link}
-                  href="/locations"
-                  className={`nav-item ${
-                    pathname === "/locations" ? "active" : ""
-                  }`}
-                >
-                  Locations
-                </Nav.Link>
-              </Nav>
-              <Navbar.Brand
-                as={Link}
-                href="/"
-                className="mx-auto d-none d-lg-block"
-              >
-                <Image
-                  src="/assets/logo/logo.svg"
-                  alt="logo"
-                  width={60}
-                  height={60}
-                />
-              </Navbar.Brand>
-              <Nav>
                 <Nav.Link
                   onClick={closeToggler}
                   as={Link}
@@ -165,15 +96,65 @@ const MainNavbar = () => {
                 >
                   About Us
                 </Nav.Link>
+                <NavDropdown
+                  title="Real Estate Investments in UAE"
+                  id="about-dropdown"
+                  className="about_dropdown"
+                >
+                  <NavDropdown.Item
+                    as={Link}
+                    onClick={closeToggler}
+                    href="/dubai-opportunities"
+                    className={`nav-drop-link ${
+                      pathname === "/dubai-opportunities" ? "active" : ""
+                    }`}
+                  >
+                    Dubai Opportunities <FaAngleRight className="angle-arrow" />
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    onClick={closeToggler}
+                    href="/abu-dhabi-opportunities"
+                    className={`nav-drop-link ${
+                      pathname === "/abu-dhabi-opportunities" ? "active" : ""
+                    }`}
+                  >
+                    Abu Dhabi Opportunities
+                    <FaAngleRight className="angle-arrow" />
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    onClick={closeToggler}
+                    href="/ras-al-khaimah-opportunities"
+                    className={`nav-drop-link ${
+                      pathname === "/ras-al-khaimah-opportunities"
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    Ras Al Khaimah Opportunities
+                    <FaAngleRight className="angle-arrow" />
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link
                   onClick={closeToggler}
                   as={Link}
-                  href="/investment"
+                  href="/go-community"
                   className={`nav-item ${
-                    pathname === "/investment" ? "active" : ""
+                    pathname === "/go-community" ? "active" : ""
                   }`}
                 >
-                  Investment
+                  GO Community
+                </Nav.Link>
+                <Nav.Link
+                  onClick={closeToggler}
+                  as={Link}
+                  href="/careers"
+                  className={`nav-item ${
+                    pathname === "/careers" ? "active" : ""
+                  }`}
+                >
+                  Careers
                 </Nav.Link>
                 <Nav.Link
                   onClick={closeToggler}
@@ -185,16 +166,26 @@ const MainNavbar = () => {
                 >
                   Contact Us
                 </Nav.Link>
-                {/* <Nav.Link
+                <Nav.Link
                   onClick={closeToggler}
                   as={Link}
-                  href="/blogs"
+                  href="/go-partners"
                   className={`nav-item ${
-                    pathname === "/blogs" ? "active" : ""
+                    pathname === "/go-partners" ? "active" : ""
                   }`}
                 >
-                  Blogs
-                </Nav.Link> */}
+                  GO Partners
+                </Nav.Link>
+                <Nav.Link
+                  onClick={closeToggler}
+                  as={Link}
+                  href="/login"
+                  className={`nav-item theme_btn ${
+                    pathname === "/login" ? "active" : ""
+                  }`}
+                >
+                  Log In
+                </Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

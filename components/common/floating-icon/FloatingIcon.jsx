@@ -7,7 +7,7 @@ const FloatingIcon = () => {
   return (
     <div className="floating_icon_wrape">
       <a
-        href={"https://wa.me/919825003080"}
+        href={"https://wa.me/971505019387"}
         className="contact-pannel-btn text-decoration-none"
         target={"_blank"}
         rel="noopener noreferrer"

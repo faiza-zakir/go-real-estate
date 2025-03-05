@@ -17,8 +17,8 @@ const Founder = ({ founderData }) => {
                 }
                 layout="fill"
                 objectFit="cover"
-                alt="Property Management, Newedge Realty"
-                title="Newedge Realty Mission | Best Real Estate Company | Newedge Realty"
+                alt="Property Management, Global Opportunities Real Estate"
+                title="Global Opportunities Real Estate Mission | Best Real Estate Company | Global Opportunities Real Estate"
               />
             </figure>
           </Col>

@@ -4,9 +4,9 @@ import Projects from "@/components/projects/Projects";
 export async function generateMetadata() {
   return {
     title:
-      "Pre-Leased Property for Sale | Secure Investment Opportunities | Newedge Realty",
+      "Pre-Leased Property for Sale | Secure Investment Opportunities | Global Opportunities Real Estate",
     description:
-      "Invest in high-return pre-leased properties with Newedge Realty. Call us today! Newedge Realty.",
+      "Invest in high-return pre-leased properties with Global Opportunities Real Estate. Call us today! Global Opportunities Real Estate.",
     alternates: {
       canonical: "https://newedge-realty-next.vercel.app/pre-leased",
     },

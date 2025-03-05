@@ -4,7 +4,7 @@ import Projects from "@/components/projects/Projects";
 export async function generateMetadata() {
   return {
     title:
-      "Luxury Farmhouse Retreats in India | Tranquil Getaways| Newedge Realty",
+      "Luxury Farmhouse Retreats in India | Tranquil Getaways| Global Opportunities Real Estate",
     description:
       "Discover exquisite luxury farmhouses in India, where serene landscapes meet modern comforts. Perfect for investment.",
     alternates: {

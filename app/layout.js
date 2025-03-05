@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,25 +7,26 @@ import "@/styles/globals.scss";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
 
-// Load the Poppins font with specific weights
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800", "900"],
+// Load the Roboto font with specific weights
+const roboto = Roboto({
+  weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-roboto",
 });
 
 export async function generateMetadata() {
   // Logic to set title and description based on route or props
   return {
-    title: "Newedge Realty Affordable Housing | Property at Exciting Rates",
+    title:
+      "Global Opportunities Real Estate Affordable Housing | Property at Exciting Rates",
     description:
-      "Prime commercial properties for sale, affordable housing options, and office spaces for rent with Newedge Realty! Get yours now!",
+      "Prime commercial properties for sale, affordable housing options, and office spaces for rent with Global Opportunities Real Estate! Get yours now!",
   };
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={roboto.variable}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,9 +43,7 @@ export default function RootLayout({ children }) {
           type="image/webp"
         />
       </head>
-      <body
-      // className={`${geistPoppinsRegular.variable} ${geistPoppinsSemiBold.variable} ${geistPoppinsMedium.variable} ${geistPoppinsBold.variable}`}
-      >
+      <body>
         <NextTopLoader color="#fff" showSpinner={false} />
         {/* Google Analytics Tag (gtag.js) */}
         <Script

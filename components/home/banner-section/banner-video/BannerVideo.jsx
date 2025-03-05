@@ -37,7 +37,8 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
     <div
       className="banner-video-area"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${content?.thumbnail})`,
+        // backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${content?.thumbnail})`,
+        backgroundImage: "url('/assets/banner/homebanner.png')",
         backgroundSize: "cover",
       }}
     >
@@ -51,13 +52,13 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
           playsInline
           webkit-playsinline="true"
           fetchPriority="high"
-          // poster={bannerData?.bg}
-          poster={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.thumbnail}
+          poster="/assets/banner/homebanner.png"
+          // poster={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.thumbnail}
           ref={videoRef}
         >
           <source
-            // src="https://newedge-realty.prismcloudhosting.com/bannerVideo.mp4"
-            src={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.video_url}
+            src="https://newedge-realty.prismcloudhosting.com/bannerVideo.mp4"
+            // src={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.video_url}
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -69,11 +70,13 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
         <div className="banner-content mtb-60">
           <div className="bannerDetails">
             <div className="content_wrap">
-              <span className="tag_line">{bannerData?.tagLine}</span>
+              <span className="tag_line">
+                {bannerData?.tagLine ? bannerData?.tagLine : "Welcome"}
+              </span>
               <h1>
                 {content?.title
                   ? content?.title
-                  : "Trusted Solutions for Businesses, Projects, and Homeowners Since 1997"}
+                  : "Discover Exquisite Villas & Apartments In The Heart Of UAE With Go Real Estate"}
               </h1>
               <button
                 className="theme_btn"

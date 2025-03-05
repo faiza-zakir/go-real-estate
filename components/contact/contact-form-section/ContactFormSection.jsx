@@ -443,8 +443,8 @@ const ContactFormSection = () => {
                 src="/assets/contact/contactImg.webp"
                 layout="fill"
                 objectFit="cover"
-                alt="Real Estate Office Contact India | Newedge Realty"
-                title="Contact | Contact Real Estate Agents India | Newedge Realty"
+                alt="Real Estate Office Contact India | Global Opportunities Real Estate"
+                title="Contact | Contact Real Estate Agents India | Global Opportunities Real Estate"
               />
             </figure>
           </Col>

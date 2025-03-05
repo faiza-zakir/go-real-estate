@@ -37,8 +37,8 @@ const CountsSection = ({ countsData, countsInfo }) => {
                 src="/assets/about/countsImg.webp"
                 layout="fill"
                 objectFit="cover"
-                alt="Property Management, Newedge Realty"
-                title="Retail Spaces Leased | Real Estate Agency | Newedge Realty"
+                alt="Property Management, Global Opportunities Real Estate"
+                title="Retail Spaces Leased | Real Estate Agency | Global Opportunities Real Estate"
               />
             </figure>
           </Col>

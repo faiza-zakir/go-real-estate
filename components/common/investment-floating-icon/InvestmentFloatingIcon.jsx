@@ -11,7 +11,7 @@ const InvestmentFloatingIcon = () => {
           <Image
             src="/assets/icons/investment.webp"
             loading="lazy"
-            alt="NewEdge Realty Investment"
+            alt="Global Opportunities Real Estate Investment"
           />
         </figure>
       </Link>

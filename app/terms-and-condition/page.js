@@ -3,9 +3,9 @@ import PageContent from "./PageContent";
 export async function generateMetadata() {
   return {
     title:
-      "Terms and Conditions | NewEdge Realty - Trusted Real Estate Partner",
+      "Terms and Conditions | Global Opportunities Real Estate - Trusted Real Estate Partner",
     description:
-      "Read NewEdge Realty's terms and conditions. We offer a trustworthy and transparent real estate service that puts your interests first in every transaction.",
+      "Read Global Opportunities Real Estate's terms and conditions. We offer a trustworthy and transparent real estate service that puts your interests first in every transaction.",
     alternates: {
       canonical: "https://newedge-realty-next.vercel.app/terms-and-condition",
     },

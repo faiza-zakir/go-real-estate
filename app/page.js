@@ -14,9 +14,6 @@ import { toast } from "react-toastify";
 const BannerForm = dynamic(() =>
   import("@/components/home/banner-section/banner-form/BannerForm")
 );
-const TaglinePopup = dynamic(() =>
-  import("@/components/common/tagline-popup/TaglinePopup")
-);
 const AppointmentSection = dynamic(() =>
   import("@/components/home/appointment-section/AppointmentSection")
 );
@@ -58,7 +55,6 @@ const OurClients = dynamic(() =>
 
 const Home = () => {
   const { appointment, whyChoose, testimonials, testimonialsVideo } = homeData;
-  const [showModal, setShowModal] = useState(false);
   const [residentialProjects, setResidentialProjects] = useState([]);
   const [commercialProjects, setCommercialProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,24 +65,6 @@ const Home = () => {
     threshold: 0,
     triggerOnce: true,
   });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 3000); // 3 seconds delay
-
-    // Clean up the timer on component unmount
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      // setShowForm(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleModalClose = () => setShowModal(false);
 
   const [pageData, setPageData] = useState({});
 
@@ -128,21 +106,6 @@ const Home = () => {
     getPageData();
     fetchProjectListData();
   }, []);
-
-  const popUpref = useRef();
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      console.log("out CLick");
-      if (popUpref.current && !popUpref.current.contains(event.target)) {
-        setShowModal(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [popUpref]);
 
   return (
     <>
@@ -187,14 +150,6 @@ const Home = () => {
           <FAQSection />
         </>
       ) : null}
-
-      {showModal && (
-        <TaglinePopup
-          popUpref={popUpref}
-          show={showModal}
-          handleClose={handleModalClose}
-        />
-      )}
     </>
   );
 };
