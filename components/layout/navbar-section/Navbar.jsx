@@ -13,6 +13,7 @@ import {
 import { FaAngleRight } from "react-icons/fa";
 // css
 import "./style.scss";
+import TopBar from "./TopBar";
 
 const MainNavbar = () => {
   const pathname = usePathname();
@@ -37,6 +38,7 @@ const MainNavbar = () => {
 
   return (
     <>
+      <TopBar />
       <Navbar
         collapseOnSelect
         expand="lg"

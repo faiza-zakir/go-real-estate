@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 // api
 import { fatchPagesContent } from "@/app/apis/commonApi";
@@ -95,7 +95,7 @@ const Footer = () => {
               <ul className="d-flex gap-3 align-items-center social-icons">
                 <li>
                   <a
-                    href="https://www.facebook.com/newedgerealty"
+                    href="https://www.facebook.com/globalopportunitiesrealestate"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -104,7 +104,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="https://www.instagram.com/newedgerealty"
+                    href="https://www.instagram.com/gogrouprealestate/?igshid=OGQ5ZDc2ODk2ZA#"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -113,20 +113,20 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="https://twitter.com/newedge_realty"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaXTwitter fontSize="22px" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/company/newedgerealty"
+                    href="https://www.linkedin.com/company/gogrouprealestate/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaLinkedin fontSize="22px" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/@GOGroupRealEstate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaYoutube fontSize="22px" />
                   </a>
                 </li>
               </ul>
