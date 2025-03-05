@@ -7,8 +7,6 @@ import Select from "react-select";
 import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
-// data
-import { citiesData } from "@/lib/citiesData";
 // css
 import "./styles.scss";
 
@@ -69,7 +67,6 @@ const initailObject = {
   email: "",
   company: "",
   phone: "",
-  city_name: "",
   property_for: "",
   min_budget: "",
   max_budget: "",
@@ -82,20 +79,10 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [mobileValue, setMobileValue] = useState("");
-  const [cityOptions, setCityOptions] = useState([]);
   const [errors, setErrors] = useState({});
   const [captchaToken, setCaptchaToken] = useState(null); // Store reCAPTCHA token
   const [filteredMaxBudgetData, setFilteredMaxBudgetData] =
     useState(maxBudgetData);
-
-  // Populate the cityOptions in the required format for react-select
-  useEffect(() => {
-    const options = citiesData.map((city, i) => ({
-      value: city,
-      label: city,
-    }));
-    setCityOptions(options);
-  }, []);
 
   useEffect(() => {
     const minBudgetNumeric = Number(
@@ -106,15 +93,6 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
     );
     setFilteredMaxBudgetData(filteredData);
   }, [formValues.min_budget]);
-
-  // Handle city selection
-  const handleCityChange = (selectedOption) => {
-    setFormValues({
-      ...formValues,
-      city_name: selectedOption ? selectedOption.value : "",
-    });
-    setErrors({ ...errors, city_name: "" });
-  };
 
   const handleInputChange = (e) => {
     setFormValues({
@@ -138,7 +116,6 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
         email: updatedData?.email,
         company: updatedData?.company,
         phone: updatedData?.phone,
-        city_name: updatedData?.city_name,
         property_for: updatedData?.property_for,
         min_budget: parseFloat(updatedData?.min_budget).toFixed(2),
         max_budget: parseFloat(updatedData?.max_budget).toFixed(2),
@@ -169,7 +146,6 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
       last_name,
       email,
       company,
-      city_name,
       property_for,
       min_budget,
       max_budget,
@@ -188,8 +164,6 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
       errors.company = "Please Enter Company Name.";
     } else if (!mobileValue) {
       errors.phone = "Please Enter Phone Number.";
-    } else if (!city_name) {
-      errors.city_name = "Please Enter City.";
     } else if (!property_for) {
       errors.property_for = "Please Select Property For.";
     } else if (!min_budget) {
@@ -261,12 +235,7 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
           />
           {/* Hidden field to pass  values */}
           <input type="hidden" id="phone" name="phone" value={mobileValue} />
-          <input
-            type="hidden"
-            id="city"
-            name="city"
-            value={formValues?.city_name}
-          />
+
           <input
             type="hidden"
             id="00N9I000000s4JZ"
@@ -368,24 +337,7 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
                 <p className="mt-2 form_error_msg">{errors?.phone}</p>
               </div>
             </Col>
-            <Col md={6} lg={6}>
-              <Form.Group controlId="city_name" className="mb-3">
-                <Select
-                  id="city_name"
-                  name="city_name"
-                  options={cityOptions} // Pass city options
-                  value={cityOptions.find(
-                    (option) => option.value === formValues.city_name
-                  )}
-                  onChange={handleCityChange}
-                  placeholder="City"
-                  isSearchable
-                  maxMenuHeight={maxVisibleOptions * 40} // Limit visible options and add scroll
-                  className="react-select"
-                />
-                <p className="mt-2 form_error_msg">{errors?.city_name}</p>
-              </Form.Group>
-            </Col>
+
             <Col lg={12}>
               <Form.Group controlId="property_for" className="mb-3">
                 <Form.Select

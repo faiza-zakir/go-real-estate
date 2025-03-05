@@ -8,8 +8,6 @@ import Select from "react-select";
 import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
-// data
-import { citiesData } from "@/lib/citiesData";
 // css
 import "./style.scss";
 
@@ -70,7 +68,6 @@ const initailObject = {
   email: "",
   company: "",
   phone: "",
-  city_name: "",
   min_budget: "",
   max_budget: "",
   recordType: "",
@@ -81,20 +78,10 @@ const ContactFormSection = () => {
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [mobileValue, setMobileValue] = useState("");
-  const [cityOptions, setCityOptions] = useState([]);
   const [errors, setErrors] = useState({});
   const [captchaToken, setCaptchaToken] = useState(null); // Store reCAPTCHA token
   const [filteredMaxBudgetData, setFilteredMaxBudgetData] =
     useState(maxBudgetData);
-
-  // Populate the cityOptions in the required format for react-select
-  useEffect(() => {
-    const options = citiesData.map((city, i) => ({
-      value: city,
-      label: city,
-    }));
-    setCityOptions(options);
-  }, []);
 
   useEffect(() => {
     const minBudgetNumeric = Number(
@@ -105,15 +92,6 @@ const ContactFormSection = () => {
     );
     setFilteredMaxBudgetData(filteredData);
   }, [formValues.min_budget]);
-
-  // Handle city selection
-  const handleCityChange = (selectedOption) => {
-    setFormValues({
-      ...formValues,
-      city_name: selectedOption ? selectedOption.value : "",
-    });
-    setErrors({ ...errors, city_name: "" });
-  };
 
   const handleInputChange = (e) => {
     setFormValues({
@@ -137,7 +115,6 @@ const ContactFormSection = () => {
         email: updatedData?.email,
         company: updatedData?.company,
         phone: updatedData?.phone,
-        city_name: updatedData?.city_name,
         min_budget: parseFloat(updatedData?.min_budget).toFixed(2),
         max_budget: parseFloat(updatedData?.max_budget).toFixed(2),
         recordType: updatedData?.recordType,
@@ -164,7 +141,6 @@ const ContactFormSection = () => {
       last_name,
       email,
       company,
-      city_name,
       min_budget,
       max_budget,
       recordType,
@@ -182,8 +158,6 @@ const ContactFormSection = () => {
       errors.company = "Please Enter Company Name.";
     } else if (!mobileValue) {
       errors.phone = "Please Enter Phone Number.";
-    } else if (!city_name) {
-      errors.city_name = "Please Enter City.";
     } else if (!min_budget) {
       errors.min_budget = "Please Select Min. Budget.";
     } else if (!max_budget) {
@@ -239,12 +213,6 @@ const ContactFormSection = () => {
                 id="phone"
                 name="phone"
                 value={mobileValue}
-              />
-              <input
-                type="hidden"
-                id="city"
-                name="city"
-                value={formValues?.city_name}
               />
               <input
                 type="hidden"
@@ -328,25 +296,6 @@ const ContactFormSection = () => {
                       disableSearchIcon={true}
                     />
                     <p className="mt-2 form_error_msg">{errors?.phone}</p>
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="city_name" className="mb-3">
-                    <Form.Label>City</Form.Label>
-                    <Select
-                      id="city_name"
-                      name="city_name"
-                      options={cityOptions} // Pass city options
-                      value={cityOptions.find(
-                        (option) => option.value === formValues.city_name
-                      )}
-                      onChange={handleCityChange}
-                      placeholder="Select..."
-                      isSearchable
-                      maxMenuHeight={maxVisibleOptions * 40} // Limit visible options and add scroll
-                      className="react-select"
-                    />
-                    <p className="mt-2 form_error_msg">{errors?.city_name}</p>
                   </Form.Group>
                 </Col>
                 <Col md={6} lg={6}>

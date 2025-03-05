@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
@@ -43,15 +43,6 @@ const WhyChooseSection = dynamic(() =>
 const OurClients = dynamic(() =>
   import("@/components/home/our-clients/OurClients")
 );
-
-// import AppointmentSection from "@/components/home/appointment-section/AppointmentSection";
-// import BlogSection from "@/components/home/blog-section/BlogSection";
-// import ContactSection from "@/components/home/contact-section/ContactSection";
-// import FAQSection from "@/components/home/faq-section/FAQSection";
-// import TestimonialsSection from "@/components/home/testimonials-section/TestimonialsSection";
-// import VideoTestimonialsSection from "@/components/home/video-testimonials-section/VideoTestimonialsSection";
-// import ProjectSlider from "@/components/home/project-slider/ProjectSlider";
-// import WhyChooseSection from "@/components/home/why-choose-section/WhyChooseSection";
 
 const Home = () => {
   const { appointment, whyChoose, testimonials, testimonialsVideo } = homeData;

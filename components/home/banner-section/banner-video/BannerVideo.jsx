@@ -86,10 +86,10 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
               </button>
               {loadForm ? null : (
                 <button
-                  className="theme_btn serchBTN DesktopBTNTHEME"
+                  className="theme_btn ms-3 DesktopBTNTHEME"
                   onClick={() => setLoadForm(true)}
                 >
-                  Search Property
+                  Contact Us
                 </button>
               )}
               {showForm ? null : (
@@ -97,7 +97,7 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
                   className="theme_btn MobileBTNTHEME"
                   onClick={() => setShowForm(true)}
                 >
-                  Search Property
+                  Contact Us
                 </button>
               )}
             </div>
