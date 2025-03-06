@@ -52,7 +52,7 @@ const MainNavbar = () => {
                   ? "/assets/logo/logo.svg"
                   : "/assets/logo/blacklogo.svg"
               }
-              alt="logo"
+              alt="GO logo"
               width={60}
               height={60}
             />
@@ -72,7 +72,7 @@ const MainNavbar = () => {
               <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">
                 <Image
                   src="/assets/logo/blacklogo.svg"
-                  alt="logo"
+                  alt="GO logo"
                   width={60}
                   height={60}
                 />

@@ -1,35 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-// api
-import { fatchPagesContent } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
+import { useState } from "react";
 
 const Footer = () => {
-  const [contactData, setContactData] = useState({});
-
-  const getPageData = async () => {
-    try {
-      const resp = await fatchPagesContent("contact");
-      setContactData(resp?.data?.content?.info);
-    } catch (err) {
-      console.log("Err: ", err);
-    }
-  };
-  useEffect(() => {
-    getPageData();
-  }, []);
   return (
     <div className="mt-60 footer-area">
       <div className="ptb-60">
         <Container>
           <Row className="gy-5 gy-lg-0">
-            <Col sm={12} md={6} lg={4}>
+            <Col sm={12} md={6} lg>
               <Image
                 src="/assets/logo/logo.svg"
                 alt="logo"
@@ -38,19 +22,25 @@ const Footer = () => {
               />
             </Col>
             <Col xs={12} sm={6} md={6} lg>
-              <h3>Projects</h3>
+              <h3>Quick Links</h3>
               <ul>
                 <li>
-                  <Link href="/residential">Residential</Link>
+                  <Link href="/dubai-opportunities">Dubai Opportunities</Link>
                 </li>
                 <li>
-                  <Link href="/commercial">Commercial</Link>
+                  <Link href="/abu-dhabi-opportunities">
+                    Abu Dhabi Opportunities
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/pre-leased">Pre-Leased</Link>
+                  <Link href="/ras-al-khaimah-opportunities">
+                    Ras Al Khaimah Opportunities
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/farmhouse">Farmhouse</Link>
+                  <Link href="/partners-educational-portal">
+                    Partners Educational Portal
+                  </Link>
                 </li>
               </ul>
             </Col>
@@ -58,10 +48,13 @@ const Footer = () => {
               <h3>Company</h3>
               <ul>
                 <li>
+                  <Link href="/contact">Contact Us</Link>
+                </li>
+                <li>
                   <Link href="/about">About Us</Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact Us</Link>
+                  <Link href="/careers">Careers</Link>
                 </li>
                 <li>
                   <Link href="/blogs">Blogs</Link>
@@ -69,95 +62,134 @@ const Footer = () => {
                 <li>
                   <Link href="/faqs">Faqs</Link>
                 </li>
-                <li>
-                  <Link href="/investment">Investment</Link>
-                </li>
               </ul>
             </Col>
             <Col xs={12} sm={6} md={6} lg>
               <h3>Contact</h3>
               <ul>
                 <li>
-                  <a href={`tel:${contactData?.phone?.replace(/\s+/g, "")}`}>
-                    {contactData?.phone}
+                  <a
+                    href="https://wa.me/15613775509"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    +1 (561) 377-5509
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${contactData?.email}`}>
-                    {contactData?.email}
+                  <a href="mailto:info@GoGroupRealEstate.com">
+                    info@GoGroupRealEstate.com
                   </a>
                 </li>
-                <li>{contactData?.address}</li>
+                <li>Dubai, Lorem Lipsum Eslopsum</li>
               </ul>
             </Col>
-            <Col xs={12} sm={6} md={6} lg>
-              <h3>Join Our Social Media</h3>
-              <ul className="d-flex gap-3 align-items-center social-icons">
-                <li>
-                  <a
-                    href="https://www.facebook.com/globalopportunitiesrealestate"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaFacebook fontSize="22px" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/gogrouprealestate/?igshid=OGQ5ZDc2ODk2ZA#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaInstagram fontSize="22px" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/company/gogrouprealestate/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedin fontSize="22px" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.youtube.com/@GOGroupRealEstate"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaYoutube fontSize="22px" />
-                  </a>
-                </li>
-              </ul>
+            <Col xs={12} sm={6} md={6} lg={4}>
+              <h3>Stay In Loop</h3>
+              <Form>
+                <Form.Group controlId="name" className="mb-3">
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    // value={formValues.email}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Your Name"
+                  />
+                  {/* <p className="mt-2 form_error_msg">{errors?.email}</p> */}
+                </Form.Group>
+                <Form.Group controlId="email" className="mb-3">
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    // value={formValues.email}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Your Email"
+                  />
+                  {/* <p className="mt-2 form_error_msg">{errors?.email}</p> */}
+                </Form.Group>
+                <Button
+                  className="theme_btn"
+                  // disabled={loading}
+                  type="submit"
+                >
+                  {/* {loading ? "Sending..." : "Submit"} */} Subscribe
+                </Button>
+              </Form>
             </Col>
           </Row>
         </Container>
       </div>
       <Container>
+        {/* More Information Section using Accordion */}
+        <div className="border-top border-bottom py-3 more_info">
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>More Information</Accordion.Header>
+              <Accordion.Body>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </div>
         <div className="footer-bottom py-4">
-          <p>
-            RERA Reg. No.: AG/GJ/AHMEDABAD/AHMADABAD CITY/AUDA/AA00128/060228R2
-          </p>
-          <p className="prism_div">
-            © 2024 Designed And Managed By{" "}
-            <a
-              href="https://www.prism-me.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Prism Digital
-            </a>
-          </p>
-          <div>
+          <div className="d-flex gap-3 align-items-center">
+            <p>
+              © 2024 Designed And Managed By{" "}
+              <a
+                href="https://www.prism-me.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Prism Digital
+              </a>
+            </p>
             <Link href="/refund-policy">Refund Policy</Link>
-            <Link href="/privacy-policy" className="ms-3">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-and-condition" className="ms-3">
-              Terms & Condition
-            </Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-and-condition">Terms & Condition</Link>
           </div>
+          <ul className="d-flex gap-3 align-items-center social-icons">
+            <li>
+              <a
+                href="https://www.facebook.com/globalopportunitiesrealestate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook fontSize="22px" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/gogrouprealestate/?igshid=OGQ5ZDc2ODk2ZA#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram fontSize="22px" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/gogrouprealestate/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin fontSize="22px" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/@GOGroupRealEstate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube fontSize="22px" />
+              </a>
+            </li>
+          </ul>
         </div>
       </Container>
     </div>
