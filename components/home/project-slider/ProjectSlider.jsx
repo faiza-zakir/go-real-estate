@@ -110,9 +110,14 @@ const ProjectSlider = ({ tagLine, title, link, projectsData, isLoading }) => {
                 >
                   <figure>
                     <Image
+                      // src={
+                      //   project?.featured_img
+                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${project?.featured_img}`
+                      //     : "/assets/home/commercial1.webp"
+                      // }
                       src={
                         project?.featured_img
-                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${project?.featured_img}`
+                          ? project?.featured_img
                           : "/assets/home/commercial1.webp"
                       }
                       layout="fill"
@@ -122,12 +127,10 @@ const ProjectSlider = ({ tagLine, title, link, projectsData, isLoading }) => {
                   </figure>
                   <div className="content_sec">
                     <p className="location">
-                      <span>Starting from</span> ₹{project?.price}
+                      <span>Starting from</span> AED {project?.price}
                     </p>
                     <h3 className="sub_heading">{project?.title}</h3>
-                    <p className="para_comm">
-                      {project?.zone?.title}, {project?.location?.title}
-                    </p>
+                    <p className="para_comm">{project?.location}</p>
                   </div>
                 </div>
               </div>

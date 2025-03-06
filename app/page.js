@@ -40,12 +40,26 @@ const ProjectSlider = dynamic(() =>
 const WhyChooseSection = dynamic(() =>
   import("@/components/home/why-choose-section/WhyChooseSection")
 );
-const OurClients = dynamic(() =>
-  import("@/components/home/our-clients/OurClients")
+
+const AboutDubaiSection = dynamic(() =>
+  import("@/components/home/about-dubai-section/AboutDubaiSection")
 );
 
 const Home = () => {
-  const { appointment, whyChoose, testimonials, testimonialsVideo } = homeData;
+  const {
+    bannerData,
+    about,
+    counts,
+    featured_projects,
+    about_dubai,
+    residential,
+    whyChoose,
+    commercial,
+    invest_places,
+    appointment,
+    testimonials,
+    testimonialsVideo,
+  } = homeData;
   const [residentialProjects, setResidentialProjects] = useState([]);
   const [commercialProjects, setCommercialProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,20 +71,20 @@ const Home = () => {
     triggerOnce: true,
   });
 
-  const [pageData, setPageData] = useState({});
+  // const [pageData, setPageData] = useState({});
 
-  const getPageData = async () => {
-    try {
-      setIsLoading(true);
-      const resp = await fatchPagesContent("home");
-      setPageData(resp?.data);
-    } catch (err) {
-      toast.error("Opps!, something went wrong, please try again later");
-      console.log("Err: ", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const getPageData = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const resp = await fatchPagesContent("home");
+  //     setPageData(resp?.data);
+  //   } catch (err) {
+  //     toast.error("Opps!, something went wrong, please try again later");
+  //     console.log("Err: ", err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchProjectListData = async () => {
@@ -94,7 +108,7 @@ const Home = () => {
         setIsLoading(false); // Hide the loader
       }
     };
-    getPageData();
+    // getPageData();
     fetchProjectListData();
   }, []);
 
@@ -103,37 +117,52 @@ const Home = () => {
       <BannerVideo
         showForm={showForm}
         setShowForm={setShowForm}
-        content={pageData?.content?.banner}
+        // content={pageData?.content?.banner}
+        content={bannerData}
       />
       <section className="form_mobile_view mt-60">
         <Container>{showForm && <BannerForm />}</Container>
       </section>
-      <OurClients />
-
       <div ref={ref} style={{ minHeight: "20px" }}></div>
-
       {inView ? (
         <>
           <AboutSection
-            aboutData={pageData?.content?.intro}
-            countsData={pageData?.content?.counts}
+            // aboutData={pageData?.content?.intro}
+            // countsData={pageData?.content?.counts}
+            aboutData={about}
+            countsData={counts}
           />
           <ProjectSlider
-            tagLine="Discover"
-            title="Residential Properties"
+            tagLine="Our Projects"
+            title="Featured Real Estate Projects"
             link="/residential"
-            projectsData={residentialProjects?.slice(0, 4)}
+            projectsData={featured_projects?.slice(0, 4)}
             isLoading={isLoading}
           />
-          <AppointmentSection appointmentData={appointment} />
+          <AboutDubaiSection aboutData={about_dubai} />
           <ProjectSlider
-            tagLine="Discover"
-            title="Commercial Properties"
+            tagLine="Our Properties"
+            title="Residential Properties"
             link="/residential"
-            projectsData={commercialProjects?.slice(0, 4)}
+            projectsData={residential?.slice(0, 4)}
             isLoading={isLoading}
           />
           <WhyChooseSection whyChooseData={whyChoose} />
+          <AppointmentSection appointmentData={appointment} />
+          <ProjectSlider
+            tagLine="Our Properties"
+            title="Commercial Properties"
+            link="/residential"
+            projectsData={commercial?.slice(0, 4)}
+            isLoading={isLoading}
+          />
+          <ProjectSlider
+            tagLine="Investment Places"
+            title="Places To Invest In UAE"
+            link="/residential"
+            projectsData={invest_places?.slice(0, 4)}
+            isLoading={isLoading}
+          />
           <TestimonialsSection testimonialsData={testimonials} />
           <VideoTestimonialsSection testimonialsData={testimonialsVideo} />
           <BlogSection />

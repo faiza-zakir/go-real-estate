@@ -64,7 +64,7 @@ const Overview = ({ singleProject }) => {
           <div className="price_wrap">
             {singleProject?.price && (
               <h4>
-                <span>Starting from</span> ₹{singleProject?.price}
+                <span>Starting from</span> AED {singleProject?.price}
               </h4>
             )}
             {singleProject?.project_status && (

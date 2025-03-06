@@ -370,7 +370,7 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
                   </option>
                   {minBudgetData?.map((val, i) => (
                     <option key={"min" + i} value={val?.value}>
-                      {val?.name} ₹
+                      {val?.name} AED
                     </option>
                   ))}
                 </Form.Select>
@@ -390,7 +390,7 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
                   </option>
                   {filteredMaxBudgetData?.map((val, i) => (
                     <option key={"max" + i} value={val?.value}>
-                      {val?.name} ₹
+                      {val?.name} AED
                     </option>
                   ))}
                 </Form.Select>

@@ -1,16 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-
 const BannerForm = dynamic(() => import("../banner-form/BannerForm"));
-// import BannerForm from "../banner-form/BannerForm";
-// data
-import { homeData } from "@/lib/homeData";
 // css
 import "./styles.scss";
 
 const BannerVideo = ({ content, setShowForm, showForm }) => {
-  const { bannerData } = homeData;
   const router = useRouter();
   const videoRef = useRef(null);
   const [loadForm, setLoadForm] = useState(false);
@@ -38,7 +33,7 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
       className="banner-video-area"
       style={{
         // backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${content?.thumbnail})`,
-        backgroundImage: "url('/assets/banner/homebanner.png')",
+        backgroundImage: `url(${content?.thumbnail})`,
         backgroundSize: "cover",
       }}
     >
@@ -52,12 +47,12 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
           playsInline
           webkit-playsinline="true"
           fetchPriority="high"
-          poster="/assets/banner/homebanner.png"
+          poster={content?.thumbnail}
           // poster={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.thumbnail}
           ref={videoRef}
         >
           <source
-            src="https://newedge-realty.prismcloudhosting.com/bannerVideo.mp4"
+            src={content?.video_url}
             // src={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.video_url}
             type="video/mp4"
           />
@@ -70,9 +65,7 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
         <div className="banner-content mtb-60">
           <div className="bannerDetails">
             <div className="content_wrap">
-              <span className="tag_line">
-                {bannerData?.tagLine ? bannerData?.tagLine : "Welcome"}
-              </span>
+              <span className="tag_line">{content?.tagLine}</span>
               <h1>
                 {content?.title
                   ? content?.title
@@ -80,7 +73,7 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
               </h1>
               <button
                 className="theme_btn"
-                onClick={() => router.push(bannerData?.link)}
+                onClick={() => router.push(content?.link)}
               >
                 Learn More
               </button>

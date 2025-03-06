@@ -147,7 +147,7 @@ const PortfolioSlider = ({ singleDeveloper }) => {
               </figure>
               <div className="content_sec">
                 <p className="location">
-                  <span>Starting from</span> ₹{item?.price}
+                  <span>Starting from</span> AED {item?.price}
                 </p>
                 <h3 className="sub_heading">{item?.title}</h3>
                 {item?.property_location ? (

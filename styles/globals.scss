@@ -91,7 +91,7 @@ body {
   margin-bottom: 2rem;
   color: #000;
   line-height: 140%;
-  text-transform: uppercase;
+  text-transform: capitalize;
   @media (max-width: 576px) {
     font-size: 32px;
     text-align: start;

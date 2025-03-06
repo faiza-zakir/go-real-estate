@@ -1,4 +1,3 @@
-// Hook for controlling animation for each item
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -7,29 +6,27 @@ const useItemAnimation = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (!ref.current) return; // Ensure ref is available
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            controls.start("visible");
+            requestAnimationFrame(() => controls.start("visible")); // Ensure it's executed properly
           } else {
-            controls.start("hidden");
+            requestAnimationFrame(() => controls.start("hidden"));
           }
         });
       },
-      { threshold: 0.5 } // Trigger animation when 50% of the item is visible
+      { threshold: 0.5 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(ref.current);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      if (ref.current) observer.unobserve(ref.current);
     };
-  }, [controls]);
+  }, [controls]); // Depend on `controls` to avoid stale closures
 
   return { ref, controls };
 };

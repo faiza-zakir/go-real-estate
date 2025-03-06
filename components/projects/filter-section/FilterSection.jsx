@@ -184,7 +184,8 @@ function FilterSection({ onFilterChange, projectsData }) {
               allowCross={false}
             />
             <span className="sub-label">
-              {/* ₹{formatPrice(price)} */}₹{formatPrice(priceRange[0])} - ₹
+              {/* AED {formatPrice(price)} */}AED {formatPrice(priceRange[0])} -
+              AED
               {formatPrice(priceRange[1])}
             </span>
           </div>

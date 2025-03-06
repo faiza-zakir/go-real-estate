@@ -51,7 +51,7 @@ const LocationsList = ({ locationList, isLoading }) => {
                     </figure>
                     <div className="content_sec">
                       <p className="location">
-                        <span>Starting from</span> ₹{location?.price}
+                        <span>Starting from</span> AED {location?.price}
                       </p>
                       <h3 className="sub_heading">{location?.title}</h3>
                       {location?.property_location ? (

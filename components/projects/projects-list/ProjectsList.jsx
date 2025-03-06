@@ -47,7 +47,7 @@ const ProjectsList = ({ projectsData, route, isLoading }) => {
                     </figure>
                     <div className="content_sec">
                       <p className="location">
-                        <span>Starting from</span> ₹{project?.price}
+                        <span>Starting from</span> AED {project?.price}
                       </p>
                       <h3 className="sub_heading">{project?.title}</h3>
                       {project?.property_location ? (

@@ -24,15 +24,7 @@ const preprocessCountsData = (data) => {
     };
   });
 };
-const AboutSection = ({
-  aboutData = {
-    title:
-      "Trusted Solutions for Businesses, Projects, & Homeowners Since 1997",
-    description:
-      "<p>At Global Opportunities Real Estate, we are leaders in premium property consultancy services. We guide our clients through the entire process by using our global network from identifying the right property, negotiating favorable terms, managing documentation to completing transactions. With over 25 years of experience, we make buying and selling of real estate transparent and secure. Our team of experts is proactive, analytical, and committed to providing tailor-made solutions for your unique real estate needs. Thank you for choosing us as your trusted and respected brand,</p>",
-  },
-  countsData,
-}) => {
+const AboutSection = ({ aboutData, countsData }) => {
   const router = useRouter();
   const processedData = preprocessCountsData(countsData);
 
@@ -81,10 +73,11 @@ const AboutSection = ({
             <div className="img_wrap">
               <figure className="about_img1">
                 <Image
-                  src={
-                    process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                    aboutData?.featured_img2
-                  }
+                  // src={
+                  //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  //   aboutData?.featured_img2
+                  // }
+                  src={aboutData?.featured_img2}
                   layout="fill"
                   objectFit="cover"
                   alt={aboutData?.title}
@@ -93,10 +86,11 @@ const AboutSection = ({
               </figure>
               <figure className="about_img2">
                 <Image
-                  src={
-                    process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                    aboutData?.featured_img1
-                  }
+                  // src={
+                  //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  //   aboutData?.featured_img1
+                  // }
+                  src={aboutData?.featured_img1}
                   layout="fill"
                   objectFit="cover"
                   alt={aboutData?.title}

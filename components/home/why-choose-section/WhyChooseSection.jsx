@@ -72,8 +72,9 @@ const WhyChooseSection = ({ whyChooseData }) => {
             <div className="why-choose">
               <span className="tag_line">{whyChooseData?.tagLine}</span>
               <h2 className="main_sec_heading">{whyChooseData?.title}</h2>
-              <p className="para_comm">{whyChooseData?.detail}</p>
-              <button className="theme_btn2">Learn More</button>
+              <p className="para_comm">{whyChooseData?.description}</p>
+              <button className="theme_btn2 me-3">Arabic Flyer</button>
+              <button className="theme_btn3">English Flyer</button>
             </div>
             {whyChooseData?.processData?.map((item, i) => {
               return (

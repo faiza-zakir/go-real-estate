@@ -280,7 +280,7 @@ const BannerForm = () => {
               </option>
               {minBudgetData?.map((val, i) => (
                 <option key={"min" + i} value={val?.value}>
-                  {val?.name} ₹
+                  {val?.name} AED
                 </option>
               ))}
             </Form.Select>
@@ -299,7 +299,7 @@ const BannerForm = () => {
               </option>
               {filteredMaxBudgetData?.map((val, i) => (
                 <option key={"max" + i} value={val?.value}>
-                  {val?.name} ₹
+                  {val?.name} AED
                 </option>
               ))}
             </Form.Select>
