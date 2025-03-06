@@ -17,22 +17,11 @@ const BannerForm = dynamic(() =>
 const AppointmentSection = dynamic(() =>
   import("@/components/home/appointment-section/AppointmentSection")
 );
-const BlogSection = dynamic(() =>
-  import("@/components/home/blog-section/BlogSection")
-);
 const ContactSection = dynamic(() =>
   import("@/components/home/contact-section/ContactSection")
 );
 const FAQSection = dynamic(() =>
   import("@/components/home/faq-section/FAQSection")
-);
-const TestimonialsSection = dynamic(() =>
-  import("@/components/home/testimonials-section/TestimonialsSection")
-);
-const VideoTestimonialsSection = dynamic(() =>
-  import(
-    "@/components/home/video-testimonials-section/VideoTestimonialsSection"
-  )
 );
 const ProjectSlider = dynamic(() =>
   import("@/components/home/project-slider/ProjectSlider")
@@ -40,7 +29,9 @@ const ProjectSlider = dynamic(() =>
 const WhyChooseSection = dynamic(() =>
   import("@/components/home/why-choose-section/WhyChooseSection")
 );
-
+const WhyPartnerSection = dynamic(() =>
+  import("@/components/home/why-partner-section/WhyPartnerSection")
+);
 const AboutDubaiSection = dynamic(() =>
   import("@/components/home/about-dubai-section/AboutDubaiSection")
 );
@@ -53,10 +44,11 @@ const Home = () => {
     featured_projects,
     about_dubai,
     residential,
-    whyChoose,
+    why_choose,
     commercial,
-    invest_places,
     appointment,
+    invest_places,
+    why_partners,
     testimonials,
     testimonialsVideo,
   } = homeData;
@@ -147,7 +139,7 @@ const Home = () => {
             projectsData={residential?.slice(0, 4)}
             isLoading={isLoading}
           />
-          <WhyChooseSection whyChooseData={whyChoose} />
+          <WhyChooseSection whyChooseData={why_choose} />
           <ProjectSlider
             tagLine="Our Properties"
             title="Commercial Properties"
@@ -163,11 +155,9 @@ const Home = () => {
             projectsData={invest_places?.slice(0, 4)}
             isLoading={isLoading}
           />
-          <TestimonialsSection testimonialsData={testimonials} />
-          <VideoTestimonialsSection testimonialsData={testimonialsVideo} />
-          <BlogSection />
-          <ContactSection />
+          <WhyPartnerSection whyPartnersData={why_partners} />
           <FAQSection />
+          <ContactSection />
         </>
       ) : null}
     </>

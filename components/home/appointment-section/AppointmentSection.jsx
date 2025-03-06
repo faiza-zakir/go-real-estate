@@ -10,7 +10,7 @@ const ContactSection = ({ appointmentData }) => {
       <div className="mt-60 appointment-sec-area">
         <div className="content_sec ptb-60">
           <h2 className="main_sec_heading">{appointmentData?.title}</h2>
-          <p className="para_comm">{appointmentData?.detail}</p>
+          <p className="para_comm">{appointmentData?.description}</p>
           <button className="theme_btn" onClick={() => router.push(`/contact`)}>
             Book Appointment
           </button>

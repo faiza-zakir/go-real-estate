@@ -6,29 +6,23 @@ import "./style.scss";
 const faqsData = [
   {
     id: 1,
-    question: "What should I consider before buying a property?",
-    answer: `Potential buyers need to take into account things like geographical area, available funds, the state of the building, and how the economy is behaving, and also arrange for an affordable return price. It would help to know if their intended residence has no legal issues as well as account for expenses like taxes or maintenance costs.`,
+    question: "What is Broker?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
   },
   {
     id: 2,
-    question: "How do I determine the right price for a property?",
-    answer: `Research similar houses in your locality and compare these prices; then look at the patterns of recent sale transactions within this town; after all these, consider the condition among other features before making a decision. You will get a complete market analysis from a real estate specialist which would allow him/her to recommend an asking price that isn’t too low or too high.`,
+    question: "Can i pay my own taxes and insurance?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
   },
   {
     id: 3,
-    question: "What services does Global Opportunities Real Estate provide?",
-    answer: `Global Opportunities Real Estate offers a comprehensive range of real estate services, including premium property consultancy, market analysis, general documentation management, and transaction closure. We work with entrepreneurs, construction sites, and homeowners among others in guiding them through each stage involved in buying or selling their properties.`,
+    question: "Can a home depreciate in value?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
   },
   {
     id: 4,
-    question:
-      "How can Global Opportunities Real Estate assist with property transactions?",
-    answer: `Our services in property transactions include identifying suitable properties, negotiating terms that are good for our clients, managing all required documents as well as overseeing the closure. With our extensive expertise and global network at our disposal, every transaction will be quick, smooth, and clear.`,
-  },
-  {
-    id: 5,
-    question: "What areas does Global Opportunities Real Estate cover?",
-    answer: `Many towns and cities are parts of the Global Opportunities Real Estate sites as we take advantage of a vast local network and great global partnerships to give you service where ever you may call for it. We customize our services according to every client’s individual needs no matter their location.`,
+    question: "Is an old home as good a value as a new home?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
   },
 ];
 
