@@ -24,7 +24,13 @@ function ChooseusCard(props) {
     >
       {item?.icon ? (
         <div className="process_item">
-          <Image src={item?.icon} alt="process" className="icon" />
+          <Image
+            src={item?.icon}
+            alt="process"
+            className="icon"
+            width={100}
+            height={100}
+          />
           <div className="content_sec">
             <h3 className="sub_heading">{item?.title}</h3>
             <h4 className="slide_number">{i + 1 < 10 ? `0${i + 1}` : i + 1}</h4>
@@ -35,9 +41,10 @@ function ChooseusCard(props) {
           <figure>
             <Image
               src={item?.img}
-              className="image"
               alt={item?.img_alt}
               title={item?.img_title}
+              width={100}
+              height={100}
             />
           </figure>
           <div className="content_sec">

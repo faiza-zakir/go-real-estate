@@ -60,8 +60,8 @@ const Home = () => {
     testimonials,
     testimonialsVideo,
   } = homeData;
-  const [residentialProjects, setResidentialProjects] = useState([]);
-  const [commercialProjects, setCommercialProjects] = useState([]);
+  // const [residentialProjects, setResidentialProjects] = useState([]);
+  // const [commercialProjects, setCommercialProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
@@ -86,31 +86,31 @@ const Home = () => {
   //   }
   // };
 
-  useEffect(() => {
-    const fetchProjectListData = async () => {
-      try {
-        setIsLoading(true); // Show the loader
-        const { data } = await fatchProjectList();
-        const projectlist = data?.filter(
-          (project) => project?.featured_property === true
-        );
-        const residentialData = projectlist?.filter(
-          (project) => project?.property_type?.route === "residential"
-        );
-        const commercialData = projectlist?.filter(
-          (project) => project?.property_type?.route === "commercial"
-        );
-        setResidentialProjects(residentialData);
-        setCommercialProjects(commercialData);
-      } catch (error) {
-        console.error("Error fetching Data:", error);
-      } finally {
-        setIsLoading(false); // Hide the loader
-      }
-    };
-    // getPageData();
-    fetchProjectListData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProjectListData = async () => {
+  //     try {
+  //       setIsLoading(true); // Show the loader
+  //       const { data } = await fatchProjectList();
+  //       const projectlist = data?.filter(
+  //         (project) => project?.featured_property === true
+  //       );
+  //       const residentialData = projectlist?.filter(
+  //         (project) => project?.property_type?.route === "residential"
+  //       );
+  //       const commercialData = projectlist?.filter(
+  //         (project) => project?.property_type?.route === "commercial"
+  //       );
+  //       setResidentialProjects(residentialData);
+  //       setCommercialProjects(commercialData);
+  //     } catch (error) {
+  //       console.error("Error fetching Data:", error);
+  //     } finally {
+  //       setIsLoading(false); // Hide the loader
+  //     }
+  //   };
+  //   // getPageData();
+  //   fetchProjectListData();
+  // }, []);
 
   return (
     <>
@@ -148,7 +148,6 @@ const Home = () => {
             isLoading={isLoading}
           />
           <WhyChooseSection whyChooseData={whyChoose} />
-          <AppointmentSection appointmentData={appointment} />
           <ProjectSlider
             tagLine="Our Properties"
             title="Commercial Properties"
@@ -156,6 +155,7 @@ const Home = () => {
             projectsData={commercial?.slice(0, 4)}
             isLoading={isLoading}
           />
+          <AppointmentSection appointmentData={appointment} />
           <ProjectSlider
             tagLine="Investment Places"
             title="Places To Invest In UAE"
