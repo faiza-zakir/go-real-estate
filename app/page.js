@@ -49,8 +49,6 @@ const Home = () => {
     appointment,
     invest_places,
     why_partners,
-    testimonials,
-    testimonialsVideo,
   } = homeData;
   // const [residentialProjects, setResidentialProjects] = useState([]);
   // const [commercialProjects, setCommercialProjects] = useState([]);
