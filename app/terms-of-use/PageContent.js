@@ -8,7 +8,7 @@ import { fatchPagesContent } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 
 const intro = {
-  title: "Terms & Condition",
+  title: "Terms of Use",
   description: `Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.`,
 };
 
@@ -19,7 +19,7 @@ function PageContent() {
   const getPageData = async () => {
     try {
       setIsLoading(true);
-      const resp = await fatchPagesContent("terms-and-condition");
+      const resp = await fatchPagesContent("terms-of-use");
       setPageData(resp?.data);
     } catch (err) {
       // toast.error("Opps!, something went wrong, please try again later");
@@ -36,10 +36,10 @@ function PageContent() {
       {" "}
       <Banner
         // name={pageData?.content?.banner?.title}
-        name="Terms & Condition"
+        name="Terms of Use"
         indexpage="Home"
         indexvisit="/"
-        activepage="Terms & Condition"
+        activepage="Terms of Use"
         bgImg={
           pageData?.content?.banner?.background_image
             ? {

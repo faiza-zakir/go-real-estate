@@ -7,16 +7,16 @@ export async function generateMetadata() {
     description:
       "Read Global Opportunities Real Estate's terms and conditions. We offer a trustworthy and transparent real estate service that puts your interests first in every transaction.",
     alternates: {
-      canonical: "https://newedge-realty-next.vercel.app/terms-and-condition",
+      canonical: "https://newedge-realty-next.vercel.app/terms-of-use",
     },
   };
 }
 
-const TermsCondition = () => {
+const TermsOfUse = () => {
   return (
     <div>
       <PageContent />
     </div>
   );
 };
-export default TermsCondition;
+export default TermsOfUse;
