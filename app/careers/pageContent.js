@@ -14,7 +14,7 @@ const PageContent = () => {
   // const getPageData = async () => {
   //   try {
   //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("contact");
+  //     const resp = await fatchPagesContent("careers");
   //     setPageData(resp?.data);
   //   } catch (err) {
   //     toast.error("Opps!, something went wrong, please try again later");
@@ -30,10 +30,10 @@ const PageContent = () => {
     <>
       <Banner
         // name={pageData?.content?.banner?.title}
-        name="Contact Us"
+        name="Careers"
         indexpage="Home"
         indexvisit="/"
-        activepage="Contact Us"
+        activepage="Careers"
         // bgImg={
         //   pageData?.content?.banner?.background_image
         //     ? {

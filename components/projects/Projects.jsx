@@ -92,7 +92,7 @@ const Projects = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${projectData?.[0]?.property_type?.banner_image}`,
               }
-            : "/assets/banner/commercialbanner.webp"
+            : { src: "/assets/banner/commercialbanner.webp" }
         }
       />
       <FilterSection

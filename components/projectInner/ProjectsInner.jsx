@@ -46,7 +46,7 @@ const ProjectsInner = () => {
             ? {
                 src: ` ${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${singleProject?.banner_image}`,
               }
-            : "/assets/banner/contactbanner.webp"
+            : {src:"/assets/banner/contactbanner.webp"}
         }
       />
       <Overview singleProject={singleProject} />

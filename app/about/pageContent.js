@@ -60,7 +60,7 @@ const PageContent = () => {
         //     ? {
         //         src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
         //       }
-        //     : "/assets/banner/aboutbanner.webp"
+        //     : {src:"/assets/banner/aboutbanner.webp"}
         // }
         bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
       />

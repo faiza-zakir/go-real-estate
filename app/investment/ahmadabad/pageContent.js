@@ -48,7 +48,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : "/assets/banner/ahmadabadbanner.webp"
+            : {src:"/assets/banner/ahmadabadbanner.webp"}
         }
       />
       {isLoading ? (

@@ -66,7 +66,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : "/assets/banner/dholerabanner.webp"
+            : {src:"/assets/banner/dholerabanner.webp"}
         }
       />
       {isLoading ? (

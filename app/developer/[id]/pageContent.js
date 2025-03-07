@@ -44,7 +44,7 @@ const PageContent = () => {
                   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
                   singleDeveloper?.banner_image,
               }
-            : "/assets/banner/developerinnerbanner.webp"
+            : { src: "/assets/banner/developerinnerbanner.webp" }
         }
       />
       <Overview singleDeveloper={singleDeveloper} />

@@ -66,7 +66,7 @@ const PageContent = () => {
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : "/assets/banner/investmentbanner.webp"
+                : {src:"/assets/banner/investmentbanner.webp"}
             }
           />
           <Intro introData={pageData?.content?.intro} />
