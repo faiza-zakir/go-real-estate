@@ -18,7 +18,7 @@ const PageContent = () => {
       const resp = await fatchPagesContent("faqs");
       setPageData(resp?.data);
     } catch (err) {
-      toast.error("Opps!, something went wrong, please try again later");
+      // toast.error("Opps!, something went wrong, please try again later");
       console.log("Err: ", err);
     } finally {
       setIsLoading(false);
