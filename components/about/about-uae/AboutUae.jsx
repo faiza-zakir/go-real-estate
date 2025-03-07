@@ -26,9 +26,21 @@ const AboutUae = ({ aboutUaeData }) => {
           <Col lg={6}>
             <h2 className="main_sec_heading">{aboutUaeData?.title}</h2>
             <div
-              className="general-details"
+              className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutUaeData?.description }}
             />
+            <button
+              className="theme_btn2 me-3"
+              onClick={() => router.push("/about")}
+            >
+              Arabic Flyer
+            </button>
+            <button
+              className="theme_btn3"
+              onClick={() => router.push("/about")}
+            >
+              English Flyer
+            </button>
           </Col>
         </Row>
       </Container>

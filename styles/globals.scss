@@ -216,8 +216,8 @@ body {
   padding: 0.46rem 0.5rem;
   margin: 0;
   &:hover {
-    background: #be0022;
-    border: 1px solid #be0022;
+    background: #b22b39;
+    border: 1px solid #b22b39;
   }
   &:disabled {
     background: rgba(178, 43, 57, 0.3);
@@ -317,7 +317,7 @@ body {
       color: #000;
       text-align: center;
       .zero {
-        color: #be0022;
+        color: #b22b39;
         animation: bounce-up 2s infinite;
       }
       .four {

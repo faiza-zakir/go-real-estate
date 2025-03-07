@@ -4,74 +4,17 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import Select from "react-select";
-import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
+// import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
-// Set max visible options
-const maxVisibleOptions = 5;
-
-// min max prices
-
-const minBudgetData = [
-  {
-    name: "50 lac",
-    value: 5000000,
-  },
-  {
-    name: "2 Cr",
-    value: 20000000,
-  },
-  {
-    name: "5 Cr",
-    value: 50000000,
-  },
-  {
-    name: "10 Cr",
-    value: 100000000,
-  },
-  {
-    name: "15 Cr",
-    value: 150000000,
-  },
-];
-
-const maxBudgetData = [
-  {
-    name: "50 lac",
-    value: 5000000,
-  },
-  {
-    name: "2 Cr",
-    value: 20000000,
-  },
-  {
-    name: "5 Cr",
-    value: 50000000,
-  },
-  {
-    name: "10 Cr",
-    value: 100000000,
-  },
-  {
-    name: "15 Cr",
-    value: 150000000,
-  },
-];
-
 const initailObject = {
-  first_name: "",
-  last_name: "",
-  email: "",
-  company: "",
+  full_name: "",
   phone: "",
-  min_budget: "",
-  max_budget: "",
-  recordType: "",
-  lead_source: "Website",
+  email: "",
+  message: "",
 };
 
 const ContactFormSection = () => {
@@ -79,19 +22,7 @@ const ContactFormSection = () => {
   const [loading, setLoading] = useState(false);
   const [mobileValue, setMobileValue] = useState("");
   const [errors, setErrors] = useState({});
-  const [captchaToken, setCaptchaToken] = useState(null); // Store reCAPTCHA token
-  const [filteredMaxBudgetData, setFilteredMaxBudgetData] =
-    useState(maxBudgetData);
-
-  useEffect(() => {
-    const minBudgetNumeric = Number(
-      formValues.min_budget ? formValues.min_budget : 5000000
-    );
-    const filteredData = maxBudgetData.filter(
-      (val) => Number(val?.value) > minBudgetNumeric
-    );
-    setFilteredMaxBudgetData(filteredData);
-  }, [formValues.min_budget]);
+  // const [captchaToken, setCaptchaToken] = useState(null); // Store reCAPTCHA token
 
   const handleInputChange = (e) => {
     setFormValues({
@@ -102,28 +33,22 @@ const ContactFormSection = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const onCaptchaChange = (token) => {
-    setCaptchaToken(token);
-    setErrors({ ...errors, captcha: "" }); // Clear CAPTCHA error on success
-  };
+  // const onCaptchaChange = (token) => {
+  //   setCaptchaToken(token);
+  //   setErrors({ ...errors, captcha: "" }); // Clear CAPTCHA error on success
+  // };
 
-  const PostLeadFormData = async (updatedData, form) => {
+  const PostLeadFormData = async (updatedData) => {
     try {
       const payload = {
-        first_name: updatedData?.first_name,
-        last_name: updatedData?.last_name,
-        email: updatedData?.email,
-        company: updatedData?.company,
+        full_name: updatedData?.full_name,
         phone: updatedData?.phone,
-        min_budget: parseFloat(updatedData?.min_budget).toFixed(2),
-        max_budget: parseFloat(updatedData?.max_budget).toFixed(2),
-        recordType: updatedData?.recordType,
+        email: updatedData?.email,
+        message: updatedData?.message,
       };
 
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
-        // Submit to Salesforce Web-to-Lead form
-        form.submit();
         setLoading(false);
         setFormValues({ ...initailObject });
       }
@@ -136,37 +61,22 @@ const ContactFormSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {
-      first_name,
-      last_name,
-      email,
-      company,
-      min_budget,
-      max_budget,
-      recordType,
-    } = formValues;
+    const { full_name, email, message } = formValues;
     const errors = {};
-    if (!first_name) {
-      errors.first_name = "Please Enter First Name.";
-    } else if (!last_name) {
-      errors.last_name = "Please Enter Last Name.";
+    if (!full_name) {
+      errors.full_name = "Please Enter First Name.";
+    } else if (!mobileValue) {
+      errors.phone = "Please Enter Phone Number.";
     } else if (!email) {
       errors.email = "Please Enter Email.";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
       errors.email = "Invalid email address.";
-    } else if (!company) {
-      errors.company = "Please Enter Company Name.";
-    } else if (!mobileValue) {
-      errors.phone = "Please Enter Phone Number.";
-    } else if (!min_budget) {
-      errors.min_budget = "Please Select Min. Budget.";
-    } else if (!max_budget) {
-      errors.max_budget = "Please Select Max. Budget.";
-    } else if (!recordType) {
-      errors.recordType = "Please Select Type of Property.";
-    } else if (!captchaToken) {
-      errors.captcha = "Please Complete the CAPTCHA.";
+    } else if (!message) {
+      errors.message = "Please Enter Message.";
     }
+    // else if (!captchaToken) {
+    //   errors.captcha = "Please Complete the CAPTCHA.";
+    // }
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -174,10 +84,9 @@ const ContactFormSection = () => {
       return;
     }
 
-    const form = e.target;
     let updatedData = { ...formValues, phone: mobileValue };
     setLoading(true);
-    PostLeadFormData(updatedData, form);
+    PostLeadFormData(updatedData);
   };
 
   return (
@@ -185,107 +94,22 @@ const ContactFormSection = () => {
       <Container>
         <Row className="gx-lg-5 gy-5 gy-lg-0">
           <Col lg={6} className="order-last order-lg-first">
-            <Form
-              action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D9I000001Clyf"
-              method="POST"
-              className="contact_form_wrap"
-              onSubmit={handleSubmit}
-            >
-              <p className="para_comm">Fill the below form to contact us:</p>
-              {/* Hidden Salesforce fields */}
-              <input type="hidden" name="oid" value="00D9I000001Clyf" />
-              <input
-                type="hidden"
-                name="retURL"
-                value="https://newedge-realty-next.vercel.app/thankyou.html"
-              />
-              {/* <input type="hidden" name="debug" value="1" />
-      <input type="hidden" name="debugEmail" value="chetan@newedgerealty.in" /> */}
-              <input
-                type="hidden"
-                id="lead_source"
-                name="lead_source"
-                value="Website"
-              />
-              {/* Hidden field to pass  values */}
-              <input
-                type="hidden"
-                id="phone"
-                name="phone"
-                value={mobileValue}
-              />
-              <input
-                type="hidden"
-                id="00N9I000000s4oD"
-                name="00N9I000000s4oD"
-                value={formValues?.min_budget}
-              />
-              <input
-                type="hidden"
-                id="00N9I000000s4pp"
-                name="00N9I000000s4pp"
-                value={formValues?.max_budget}
-              />
-              <input
-                type="hidden"
-                id="00N9I000000vPGD"
-                name="00N9I000000vPGD"
-                value={formValues?.recordType}
-              />
+            <Form className="contact_form_wrap" onSubmit={handleSubmit}>
+              <h2 className="main_sec_heading">Get In Touch</h2>
               <Row className="g-0 gx-md-2 gx-lg-2">
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="first_name" className="mb-3">
-                    <Form.Label>First Name</Form.Label>
+                <Col sm={12}>
+                  <Form.Group controlId="full_name" className="mb-3">
+                    <Form.Label>Full Name</Form.Label>
                     <Form.Control
                       type="text"
-                      id="first_name"
-                      name="first_name"
-                      value={formValues.first_name}
+                      name="full_name"
+                      value={formValues.full_name}
                       onChange={handleInputChange}
                     />
-                    <p className="mt-2 form_error_msg">{errors?.first_name}</p>
+                    <p className="mt-2 form_error_msg">{errors?.full_name}</p>
                   </Form.Group>
                 </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="last_name" className="mb-3">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      id="last_name"
-                      name="last_name"
-                      value={formValues.last_name}
-                      onChange={handleInputChange}
-                    />
-                    <p className="mt-2 form_error_msg">{errors?.last_name}</p>
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="email" className="mb-3">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formValues.email}
-                      onChange={handleInputChange}
-                    />
-                    <p className="mt-2 form_error_msg">{errors?.email}</p>
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="company" className="mb-3">
-                    <Form.Label>Company</Form.Label>
-                    <Form.Control
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formValues.company}
-                      onChange={handleInputChange}
-                    />
-                    <p className="mt-2 form_error_msg">{errors?.company}</p>
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={6}>
+                <Col sm={12}>
                   <Form.Group controlId="phone" className="mb-3">
                     <Form.Label>Phone</Form.Label>
                     <PhoneInput
@@ -298,74 +122,34 @@ const ContactFormSection = () => {
                     <p className="mt-2 form_error_msg">{errors?.phone}</p>
                   </Form.Group>
                 </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="min_budget" className="mb-3">
-                    <Form.Label>Min. Budget</Form.Label>
-                    <Form.Select
-                      id="min_budget"
-                      name="min_budget"
-                      value={formValues.min_budget}
+                <Col sm={12}>
+                  <Form.Group controlId="email" className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={formValues.email}
                       onChange={handleInputChange}
-                    >
-                      <option value="" disabled>
-                        Select...
-                      </option>
-                      {minBudgetData?.map((val, i) => (
-                        <option key={"min" + i} value={val?.value}>
-                          {val?.name} AED
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <p className="mt-2 form_error_msg">{errors?.min_budget}</p>
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={6}>
-                  <Form.Group controlId="max_budget" className="mb-3">
-                    <Form.Label>Max. Budget</Form.Label>
-                    <Form.Select
-                      id="max_budget"
-                      name="max_budget"
-                      value={formValues.max_budget}
-                      onChange={handleInputChange}
-                    >
-                      <option value="" disabled>
-                        Select...
-                      </option>
-                      {filteredMaxBudgetData?.map((val, i) => (
-                        <option key={"max" + i} value={val?.value}>
-                          {val?.name} AED
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <p className="mt-2 form_error_msg">{errors?.max_budget}</p>
+                    />
+                    <p className="mt-2 form_error_msg">{errors?.email}</p>
                   </Form.Group>
                 </Col>
                 <Col lg={12}>
-                  <Form.Group controlId="recordType" className="mb-3">
-                    <Form.Label>Type of Property</Form.Label>
-                    <Form.Select
-                      id="recordType"
-                      name="recordType"
-                      value={formValues.recordType}
+                  <Form.Group controlId="message" className="mb-3">
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={4}
+                      name="message"
+                      value={formValues.message}
                       onChange={handleInputChange}
-                    >
-                      <option value="" disabled>
-                        Select...
-                      </option>
-                      <option value="Commercial">Commercial</option>
-                      <option value="Farm_House">Farm House</option>
-                      <option value="Industrial">Industrial</option>
-                      <option value="Pre_leased_Property">
-                        Pre-Leased Property
-                      </option>
-                      <option value="Land">Land</option>
-                      <option value="Residential">Residential</option>
-                    </Form.Select>
-                    <p className="mt-2 form_error_msg">{errors?.recordType}</p>
+                      placeholder="Type your message..."
+                    />
+                    <p className="mt-2 form_error_msg">{errors?.message}</p>
                   </Form.Group>
                 </Col>
                 {/* Google reCAPTCHA */}
-                <Col sm={12}>
+                {/* <Col sm={12}>
                   <div className="mb-4">
                     <ReCAPTCHA
                       sitekey="6LcV_WoqAAAAAF1KC63Gc6Rk0dYnogvW_4uiwe_w" // Add your site key here
@@ -373,7 +157,7 @@ const ContactFormSection = () => {
                     />
                     <p className="mt-2 form_error_msg">{errors?.captcha}</p>
                   </div>
-                </Col>
+                </Col> */}
                 <Col sm={12}>
                   <Button
                     className="theme_btn2"
