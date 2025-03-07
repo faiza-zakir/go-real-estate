@@ -123,7 +123,6 @@ const Home = () => {
             countsData={counts}
           />
           <ProjectSlider
-            tagLine="Our Projects"
             title="Featured Real Estate Projects"
             link="/residential"
             projectsData={featured_projects?.slice(0, 4)}
@@ -131,7 +130,6 @@ const Home = () => {
           />
           <AboutDubaiSection aboutData={about_dubai} />
           <ProjectSlider
-            tagLine="Our Properties"
             title="Residential Properties"
             link="/residential"
             projectsData={residential?.slice(0, 4)}
@@ -139,7 +137,6 @@ const Home = () => {
           />
           <WhyChooseSection whyChooseData={why_choose} />
           <ProjectSlider
-            tagLine="Our Properties"
             title="Commercial Properties"
             link="/residential"
             projectsData={commercial?.slice(0, 4)}
@@ -147,7 +144,6 @@ const Home = () => {
           />
           <AppointmentSection appointmentData={appointment} />
           <ProjectSlider
-            tagLine="Investment Places"
             title="Places To Invest In UAE"
             link="/residential"
             projectsData={invest_places?.slice(0, 4)}

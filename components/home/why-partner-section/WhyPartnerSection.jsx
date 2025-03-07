@@ -20,7 +20,6 @@ const WhyPartnerSection = ({ whyPartnersData }) => {
         <Row className="gy-5">
           <Col lg={6}>
             <div className="content_part">
-              <span className="tag_line">{whyPartnersData?.tagLine}</span>
               <h2 className="main_sec_heading">{whyPartnersData?.title}</h2>
               <p className="para_comm">{whyPartnersData?.description}</p>
               <button className="theme_btn2 me-3">Learn More</button>

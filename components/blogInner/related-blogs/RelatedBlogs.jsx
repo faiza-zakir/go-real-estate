@@ -82,7 +82,6 @@ const RelatedBlogs = ({ blogData }) => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">Explore</span>
             <h3 className="main_sec_heading">RELATED BLOGS</h3>
           </div>
 

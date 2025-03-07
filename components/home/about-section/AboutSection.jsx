@@ -33,7 +33,6 @@ const AboutSection = ({ aboutData, countsData }) => {
       <Container>
         <Row className="gy-5 gx-lg-5">
           <Col lg={6}>
-            <span className="tag_line">{aboutData?.tagLine}</span>
             <h2 className="main_sec_heading">{aboutData?.title}</h2>
             <p
               className="para_comm"

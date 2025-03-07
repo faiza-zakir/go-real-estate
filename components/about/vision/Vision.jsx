@@ -7,11 +7,9 @@ const Vision = ({ visionData }) => {
   return (
     <div className="vision_sec mt-60">
       <Container>
-        <Row className="gy-5 gx-lg-5">
+        <Row className="gy-5 gx-lg-5 align-items-center">
           <Col lg={6} className="order-last order-lg-first">
-            <span className="tag_line">{visionData?.tagLine}</span>
             <h2 className="main_sec_heading">{visionData?.title}</h2>
-            {/* <p className="para_comm">{visionData?.detail}</p> */}
             <div
               className="general-details"
               dangerouslySetInnerHTML={{ __html: visionData?.description }}
@@ -20,10 +18,11 @@ const Vision = ({ visionData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                src={
-                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                  visionData?.featured_img
-                }
+                // src={
+                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                //   visionData?.featured_img
+                // }
+                src={visionData?.featured_img}
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management | Global Opportunities Real Estate"

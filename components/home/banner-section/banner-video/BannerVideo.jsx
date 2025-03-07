@@ -65,7 +65,6 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
         <div className="banner-content mtb-60">
           <div className="bannerDetails">
             <div className="content_wrap">
-              <span className="tag_line">{content?.tagLine}</span>
               <h1>
                 {content?.title
                   ? content?.title

@@ -9,7 +9,6 @@ const WhyInvest = ({ whyInvestData }) => {
       <Container>
         <Row className="gy-5 gx-lg-5 align-items-center">
           <Col lg={6}>
-            <span className="tag_line">{whyInvestData?.tagLine}</span>
             <h2 className="main_sec_heading">{whyInvestData?.title}</h2>
             <p
               className="para_comm"

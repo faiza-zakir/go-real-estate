@@ -30,9 +30,6 @@ const BannerSection = () => {
             <Image src={item?.bg} alt="banner" />
             <div className="bannerDetails">
               <div className="content_wrap">
-                <span className="tag_line">
-                  Your One-Stop Real Estate & Property Consultancy
-                </span>
                 <h1>
                   Trusted Solutions for Businesses, Projects, and Homeowners
                   Since 1997

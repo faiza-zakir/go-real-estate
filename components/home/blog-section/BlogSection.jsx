@@ -110,7 +110,6 @@ const BlogSection = () => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">Explore</span>
             <h3 className="main_sec_heading">BLOGS & ARTICLES</h3>
           </div>
           <div className="desktop_view">

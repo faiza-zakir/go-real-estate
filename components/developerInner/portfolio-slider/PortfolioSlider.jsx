@@ -111,7 +111,6 @@ const PortfolioSlider = ({ singleDeveloper }) => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">Discover</span>
             <h3 className="main_sec_heading">Portfolio Highlights</h3>
           </div>
           {showArrows && (

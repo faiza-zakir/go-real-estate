@@ -109,7 +109,6 @@ const TestimonialsSection = () => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">Our Clients</span>
             <h2 className="main_sec_heading">TESTIMONIALS</h2>
           </div>
           {showArrows && (

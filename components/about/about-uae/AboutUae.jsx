@@ -3,31 +3,31 @@ import { Row, Col, Container } from "react-bootstrap";
 // css
 import "./styles.scss";
 
-const Mission = ({ missionData }) => {
+const AboutUae = ({ aboutUaeData }) => {
   return (
-    <div className="mission_sec mt-60">
+    <div className="about_uae_sec mt-60">
       <Container>
         <Row className="gy-5 gx-lg-5 align-items-center">
-          <Col lg={6}>
+          <Col lg={6} className="order-last order-lg-first">
             <figure>
               <Image
                 // src={
                 //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   missionData?.featured_img
+                //   aboutUaeData?.featured_img
                 // }
-                src={missionData?.featured_img}
+                src={aboutUaeData?.featured_img}
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management, Global Opportunities Real Estate"
-                title="Global Opportunities Real Estate Vision | Real Estate Services | Global Opportunities Real Estate"
+                title="Property Consultancy Firms | Property Management | Global Opportunities Real Estate"
               />
             </figure>
           </Col>
           <Col lg={6}>
-            <h2 className="main_sec_heading">{missionData?.title}</h2>
+            <h2 className="main_sec_heading">{aboutUaeData?.title}</h2>
             <div
               className="general-details"
-              dangerouslySetInnerHTML={{ __html: missionData?.description }}
+              dangerouslySetInnerHTML={{ __html: aboutUaeData?.description }}
             />
           </Col>
         </Row>
@@ -36,4 +36,4 @@ const Mission = ({ missionData }) => {
   );
 };
 
-export default Mission;
+export default AboutUae;

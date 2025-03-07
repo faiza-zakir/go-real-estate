@@ -37,7 +37,7 @@ const settings = {
   ],
 };
 
-const ProjectSlider = ({ tagLine, title, link, projectsData, isLoading }) => {
+const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
   const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -81,7 +81,6 @@ const ProjectSlider = ({ tagLine, title, link, projectsData, isLoading }) => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">{tagLine}</span>
             <h3 className="main_sec_heading">{title}</h3>
           </div>
           <div className="desktop_view">

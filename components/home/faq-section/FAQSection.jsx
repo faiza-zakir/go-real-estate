@@ -33,7 +33,6 @@ const FAQSection = () => {
       <Container>
         <div className="header_wrap">
           <div>
-            <span className="tag_line">Help</span>
             <h2 className="main_sec_heading">FAQs</h2>
           </div>
           <div className="desktop_view">

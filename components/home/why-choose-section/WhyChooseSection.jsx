@@ -70,7 +70,6 @@ const WhyChooseSection = ({ whyChooseData }) => {
           <div className="scroll-content">
             {/* Why Choose Us Section */}
             <div className="why-choose">
-              <span className="tag_line">{whyChooseData?.tagLine}</span>
               <h2 className="main_sec_heading">{whyChooseData?.title}</h2>
               <p className="para_comm">{whyChooseData?.description}</p>
               <button className="theme_btn2 me-3">Arabic Flyer</button>

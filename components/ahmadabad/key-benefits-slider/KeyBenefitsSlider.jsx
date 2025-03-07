@@ -88,7 +88,6 @@ const KeyBenefitsSlider = ({ keyBenefitsData }) => {
             <div className="key_benefit_wrap" key={item?.id}>
               <Row className="gy-5 gx-lg-5 align-items-center">
                 <Col lg={6}>
-                  <span className="tag_line">{item?.tagLine}</span>
                   <h2 className="main_sec_heading">{item?.title}</h2>
                   <p
                     className="para_comm"

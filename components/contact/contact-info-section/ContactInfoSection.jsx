@@ -9,7 +9,6 @@ const ContactInfoSection = ({ infoData }) => {
   return (
     <div className="contact-info-area mt-60">
       <Container>
-        <span className="tag_line">Support</span>
         <h2 className="main_sec_heading">CONTACT US</h2>
         <Row className="gx-lg-5 gx-md-5 gy-5 gy-lg-0">
           <Col md={6} lg={4}>

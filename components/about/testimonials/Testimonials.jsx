@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // api
-import { fetchTestimonialData } from "@/app/apis/commonApi";
+// import { fetchTestimonialData } from "@/app/apis/commonApi";
 // css
 import "./styles.scss";
 
@@ -38,29 +38,29 @@ const settings = {
   ],
 };
 
-const TestimonialsSection = () => {
+const Testimonials = ({ testimonialsData }) => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [testimonialsData, setTestimonialsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [testimonialsData, settestimonialsData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchTestimonialListData = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await fetchTestimonialData();
+  // useEffect(() => {
+  //   const fetchTestimonialListData = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const { data } = await fetchTestimonialData();
 
-        let updatedData = [...data]?.filter((item) => item?.type === "text");
-        setTestimonialsData(updatedData);
-      } catch (error) {
-        console.error("Error fetching Data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  //       let updatedData = [...data]?.filter((item) => item?.type === "text");
+  //       settestimonialsData(updatedData);
+  //     } catch (error) {
+  //       console.error("Error fetching Data:", error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
 
-    fetchTestimonialListData();
-  }, []);
+  //   fetchTestimonialListData();
+  // }, []);
 
   const truncateText = (text, wordLimit) => {
     const words = text.split(" ");
@@ -135,7 +135,7 @@ const TestimonialsSection = () => {
       <Container>
         <div className="header_wrap">
           <div>
-            <h2 className="main_sec_heading">TESTIMONIALS</h2>
+            <h2 className="main_sec_heading">Testimonials</h2>
           </div>
           {showArrows && (
             <div className="desktop_view">
@@ -144,38 +144,41 @@ const TestimonialsSection = () => {
             </div>
           )}
         </div>
-        {isLoading ? (
+        {/* {isLoading ? (
           <p className="para_comm text-center">loading...</p>
-        ) : (
-          <Slider
-            {...settings}
-            ref={sliderRef}
-            afterChange={(index) => setCurrentSlide(index)}
-          >
-            {testimonialsData?.map((item) => (
-              <div className="testimonial_wrap" key={item?.id}>
-                <div className="testimonial_item">
-                  <TestimonialContent review={item?.review} />
-                  <hr />
-                  <div className="d-flex align-items-center gap-3 mt-4">
-                    <img
-                      src={
-                        item?.user_img
-                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.user_img}`
-                          : "/assets/home/userImg.webp"
-                      }
-                      alt={item?.name}
-                    />
-                    <div className="content_sec">
-                      <h3 className="sub_heading">{item?.name}</h3>
-                      <p className="para_comm">{item?.designation}</p>
-                    </div>
+        ) : ( */}
+        <Slider
+          {...settings}
+          ref={sliderRef}
+          afterChange={(index) => setCurrentSlide(index)}
+        >
+          {testimonialsData?.map((item) => (
+            <div className="testimonial_wrap" key={item?.id}>
+              <div className="testimonial_item">
+                <TestimonialContent review={item?.review} />
+                <hr />
+                <div className="d-flex align-items-center gap-3 mt-4">
+                  <Image
+                    // src={
+                    //   item?.user_img
+                    //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.user_img}`
+                    //     : "/assets/about/userImg.webp"
+                    // }
+                    src={item?.user_img}
+                    width={60}
+                    height={60}
+                    alt={item?.name}
+                  />
+                  <div className="content_sec">
+                    <h3 className="sub_heading">{item?.name}</h3>
+                    <p className="para_comm">{item?.designation}</p>
                   </div>
                 </div>
               </div>
-            ))}
-          </Slider>
-        )}
+            </div>
+          ))}
+        </Slider>
+        {/* )} */}
         {showArrows && (
           <div className="mobile_view">
             <PrevArrow />
@@ -187,4 +190,4 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection;
+export default Testimonials;

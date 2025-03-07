@@ -6,7 +6,6 @@ const FaqsList = ({ faqsData, isLoading }) => {
   return (
     <div className="mt-60 faqs-area">
       <Container>
-        <span className="tag_line">ASK US</span>
         <h2 className="main_sec_heading">Frequently Asked Questions</h2>
         {isLoading ? (
           <p className="para_comm text-center">loading...</p>

@@ -3,9 +3,9 @@ import { Row, Col, Container } from "react-bootstrap";
 // css
 import "./styles.scss";
 
-const Mission = ({ missionData }) => {
+const Philosophy = ({ philosophyData }) => {
   return (
-    <div className="mission_sec mt-60">
+    <div className="philosophy_sec mt-60">
       <Container>
         <Row className="gy-5 gx-lg-5 align-items-center">
           <Col lg={6}>
@@ -13,21 +13,21 @@ const Mission = ({ missionData }) => {
               <Image
                 // src={
                 //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   missionData?.featured_img
+                //   philosophyData?.featured_img
                 // }
-                src={missionData?.featured_img}
+                src={philosophyData?.featured_img}
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management, Global Opportunities Real Estate"
-                title="Global Opportunities Real Estate Vision | Real Estate Services | Global Opportunities Real Estate"
+                title="Global Opportunities Real Estate Mission | Best Real Estate Company | Global Opportunities Real Estate"
               />
             </figure>
           </Col>
           <Col lg={6}>
-            <h2 className="main_sec_heading">{missionData?.title}</h2>
+            <h2 className="main_sec_heading">{philosophyData?.title}</h2>
             <div
               className="general-details"
-              dangerouslySetInnerHTML={{ __html: missionData?.description }}
+              dangerouslySetInnerHTML={{ __html: philosophyData?.description }}
             />
           </Col>
         </Row>
@@ -36,4 +36,4 @@ const Mission = ({ missionData }) => {
   );
 };
 
-export default Mission;
+export default Philosophy;
