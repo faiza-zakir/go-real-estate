@@ -173,7 +173,7 @@ const ContactFormSection = () => {
           <Col lg={6}>
             <figure>
               <Image
-                src="/assets/contact/contactImg.webp"
+                src="/assets/contact/contactImg.jpg"
                 layout="fill"
                 objectFit="cover"
                 alt="Real Estate Office Contact India | Global Opportunities Real Estate"
