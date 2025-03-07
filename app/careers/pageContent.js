@@ -1,22 +1,20 @@
 "use client";
-// import { useState, useEffect } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
-import BlogList from "@/components/blog/BlogList";
+import ContactInfoSection from "@/components/contact/contact-info-section/ContactInfoSection";
+import ContactFormSection from "@/components/contact/contact-form-section/ContactFormSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-import ContactSection from "@/components/home/contact-section/ContactSection";
-// api
-// import { fatchPagesContent, fetchBlogData } from "@/app/apis/commonApi";
-// img
 // import { toast } from "react-toastify";
+// import { useEffect, useState } from "react";
+// import { fatchPagesContent } from "@/app/apis/commonApi";
 
 const PageContent = () => {
-  // const [blogData, setBlogData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
   // const [pageData, setPageData] = useState({});
+  // const [isLoading, setIsLoading] = useState(true);
+
   // const getPageData = async () => {
   //   try {
   //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("blogs");
+  //     const resp = await fatchPagesContent("contact");
   //     setPageData(resp?.data);
   //   } catch (err) {
   //     toast.error("Opps!, something went wrong, please try again later");
@@ -25,46 +23,31 @@ const PageContent = () => {
   //     setIsLoading(false);
   //   }
   // };
-
   // useEffect(() => {
-  //   const fetchBlogListData = async () => {
-  //     try {
-  //       setIsLoading(true); // Show the loader
-
-  //       const { data } = await fetchBlogData();
-  //       setBlogData(data);
-  //     } catch (error) {
-  //       console.error("Error fetching Data:", error);
-  //     } finally {
-  //       setIsLoading(false); // Hide the loader
-  //     }
-  //   };
   //   getPageData();
-  //   fetchBlogListData();
   // }, []);
-
   return (
     <>
       <Banner
         // name={pageData?.content?.banner?.title}
-        name="Blog"
+        name="Contact Us"
         indexpage="Home"
         indexvisit="/"
-        activepage="Blog"
+        activepage="Contact Us"
         // bgImg={
         //   pageData?.content?.banner?.background_image
         //     ? {
         //         src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
         //       }
-        //     : { src: "/assets/banner/blogbanner.webp" }
+        //     : { src: "/assets/banner/contactbanner.webp" }
         // }
-        bgImg={{ src: "/assets/banner/blogbanner.webp" }}
+        bgImg={{ src: "/assets/banner/contactbanner.webp" }}
       />
-      <BlogList
-      // blogsList={blogData} isLoading={isLoading}
+      <ContactInfoSection
+      // infoData={pageData?.content?.info}
       />
+      <ContactFormSection />
       <FAQSection />
-      <ContactSection />
     </>
   );
 };

@@ -110,7 +110,7 @@ const BlogSection = () => {
       <Container>
         <div className="header_wrap">
           <div>
-            <h3 className="main_sec_heading">BLOGS & ARTICLES</h3>
+            <h3 className="main_sec_heading">BLOG & ARTICLES</h3>
           </div>
           <div className="desktop_view">
             <button

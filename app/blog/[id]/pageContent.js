@@ -51,11 +51,11 @@ const PageContent = () => {
     <>
       <Banner
         // name={singleBlog?.title}
-        name="Blogs"
+        name="Blog"
         indexpage="Home"
         indexvisit="/"
         // activepage={singleBlog?.title}
-        activepage="Blogs"
+        activepage="Blog"
         bgImg={
           singleBlog?.banner_image
             ? {

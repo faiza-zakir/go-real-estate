@@ -17,7 +17,7 @@ const BlogList = ({ blogsList, isLoading }) => {
           </div>
           <div className="desktop_view">
             <div className=" d-flex flex-wrap gap-3">
-              <button className="theme_btn3 active">Blogs</button>
+              <button className="theme_btn3 active">Blog</button>
               <button className="theme_btn3">Events and Conferences</button>
               <button className="theme_btn3">Case Studies</button>
               <button className="theme_btn3">Industry Reports</button>
@@ -26,7 +26,7 @@ const BlogList = ({ blogsList, isLoading }) => {
         </div>
         <div className="mobile_view">
           <div className=" d-flex flex-wrap justify-content-center gap-3">
-            <button className="theme_btn3 active">Blogs</button>
+            <button className="theme_btn3 active">Blog</button>
             <button className="theme_btn3">Events and Conferences</button>
             <button className="theme_btn3">Case Studies</button>
             <button className="theme_btn3">Industry Reports</button>
