@@ -20,8 +20,8 @@ const ContactInfoSection = ({ infoData }) => {
                 Suspendisse varius enim in ero.
               </p>
               {/* <a href={`mailto:${infoData?.email}`}>{infoData?.email}</a> */}
-              <a href="mailto:info@GoGroupRealEstate.com">
-                info@GoGroupRealEstate.com
+              <a href="mailto:info@gogrouprealestate.com">
+                info@gogrouprealestate.com
               </a>
             </div>
           </Col>

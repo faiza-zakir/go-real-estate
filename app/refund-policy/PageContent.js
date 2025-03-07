@@ -10,6 +10,11 @@ import Loader from "@/components/common/loader/Loader";
 
 import React from "react";
 
+const intro = {
+  title: "“Cancellation & Refund Policy”",
+  description: `Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.`,
+};
+
 function PageContent() {
   const [pageData, setPageData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +25,7 @@ function PageContent() {
       const resp = await fatchPagesContent("refund-policy");
       setPageData(resp?.data);
     } catch (err) {
-      toast.error("Opps!, something went wrong, please try again later");
+      // toast.error("Opps!, something went wrong, please try again later");
       console.log("Err: ", err);
     } finally {
       setIsLoading(false);
@@ -36,7 +41,8 @@ function PageContent() {
       ) : (
         <>
           <Banner
-            name={pageData?.content?.banner?.title}
+            // name={pageData?.content?.banner?.title}
+            name="Cancellation & Refund Policy"
             indexpage="Home"
             indexvisit="/"
             activepage="Cancellation & Refund Policy"
@@ -45,10 +51,13 @@ function PageContent() {
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : "/assets/banner/refundbanner.webp"
+                : { src: "/assets/banner/refundbanner.webp" }
             }
           />
-          <RefundIntro content={pageData?.content?.intro} />
+          <RefundIntro
+            // content={pageData?.content?.intro}
+            content={intro}
+          />
         </>
       )}
     </>

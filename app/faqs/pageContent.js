@@ -11,7 +11,6 @@ const PageContent = () => {
   const [faqData, setFaqData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [pageData, setPageData] = useState({});
-  console.log("🚀 ~ PageContent ~ pageData:", pageData);
 
   const getPageData = async () => {
     try {
@@ -45,7 +44,8 @@ const PageContent = () => {
   return (
     <>
       <Banner
-        name={pageData?.content?.banner?.title}
+        // name={pageData?.content?.banner?.title}
+        name="FAQ's"
         indexpage="Home"
         indexvisit="/"
         activepage="FAQ's"
@@ -54,7 +54,7 @@ const PageContent = () => {
             ? {
                 src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
               }
-            : "/assets/banner/faqbanner.webp"
+            : { src: "/assets/banner/faqbanner.webp" }
         }
       />
       <FaqsList faqsData={faqData} isLoading={isLoading} />
