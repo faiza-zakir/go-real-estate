@@ -33,7 +33,7 @@
       background-color: #fff;
       border-radius: 8px;
       &::placeholder {
-        color: rgba(0, 0, 0, 1);
+        color: rgba(0, 0, 0, 0.5);
       }
       &:focus {
         box-shadow: none;
@@ -68,7 +68,7 @@
       background-color: #fff;
       border-radius: 8px;
       &::placeholder {
-        color: rgba(0, 0, 0, 1);
+        color: rgba(0, 0, 0, 0.5);
       }
     }
     .form_error_msg {
@@ -116,14 +116,6 @@
     .react-tel-input .country-list .country {
       padding: 0.5rem 0.8rem;
       font-size: 14px;
-    }
-
-    .theme_btn2 {
-      &:disabled {
-        background: #000;
-        border: 1px solid #000;
-        opacity: 0.4;
-      }
     }
   }
 }

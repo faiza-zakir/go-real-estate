@@ -228,7 +228,7 @@ const BannerForm = () => {
         <Col md={6} lg={6}>
           <div className="form-group mb-3">
             <PhoneInput
-              country="us"
+              country="ae"
               value={mobileValue}
               onChange={setMobileValue}
               enableSearch={true}

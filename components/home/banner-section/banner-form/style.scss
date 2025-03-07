@@ -16,7 +16,7 @@
     background-color: #fff;
     border-radius: 8px;
     &::placeholder {
-      color: rgba(0, 0, 0, 1);
+      color: rgba(0, 0, 0, 0.5);
     }
     &:focus {
       box-shadow: none;
@@ -50,7 +50,7 @@
     background-color: #fff;
     border-radius: 8px;
     &::placeholder {
-      color: rgba(0, 0, 0, 1);
+      color: rgba(0, 0, 0, 0.5);
     }
   }
 
@@ -108,11 +108,6 @@
     width: 100%;
     @media (max-width: 992px) {
       width: auto;
-    }
-    &:disabled {
-      background: #000;
-      border: 1px solid #000;
-      opacity: 0.4;
     }
   }
 }

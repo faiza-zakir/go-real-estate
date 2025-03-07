@@ -165,6 +165,11 @@ body {
     background: #000;
     border: 1px solid #000;
   }
+  &:disabled {
+    background: #b22b39;
+    border: 1px solid #b22b39;
+    opacity: 0.4;
+  }
 }
 
 .theme_btn3 {

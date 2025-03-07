@@ -113,7 +113,7 @@ const ContactFormSection = () => {
                   <Form.Group controlId="phone" className="mb-3">
                     <Form.Label>Phone</Form.Label>
                     <PhoneInput
-                      country="in"
+                      country="ae"
                       value={mobileValue}
                       onChange={setMobileValue}
                       enableSearch={true}

@@ -328,7 +328,7 @@ const ProjectForm = ({ show, handleClose, propertyType, propertyName }) => {
             <Col md={6} lg={6}>
               <div className="mb-3">
                 <PhoneInput
-                  country="in"
+                  country="ae"
                   value={mobileValue}
                   onChange={setMobileValue}
                   enableSearch={true}
