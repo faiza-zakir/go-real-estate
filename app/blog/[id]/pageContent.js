@@ -50,10 +50,12 @@ const PageContent = () => {
   return (
     <>
       <Banner
-        name={singleBlog?.title}
+        // name={singleBlog?.title}
+        name="Blogs"
         indexpage="Home"
         indexvisit="/"
-        activepage={singleBlog?.title}
+        // activepage={singleBlog?.title}
+        activepage="Blogs"
         bgImg={
           singleBlog?.banner_image
             ? {
@@ -61,13 +63,13 @@ const PageContent = () => {
                   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
                   singleBlog?.banner_image,
               }
-            : "/assets/banner/blogbanner.webp"
+            : { src: "/assets/banner/blogbanner.webp" }
         }
       />
       <Details singleBlog={singleBlog} />
       <RelatedBlogs blogData={relatedBlog} />
-      <ContactSection />
       <FAQSection />
+      <ContactSection />
     </>
   );
 };

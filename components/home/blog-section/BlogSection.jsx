@@ -102,7 +102,7 @@ const BlogSection = () => {
     if (item?.feature_image) {
       return `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.feature_image}`;
     } else {
-      return "/assets/blog/blog1.webp";
+      return "/assets/blog/blog1.png";
     }
   };
   return (
@@ -136,7 +136,7 @@ const BlogSection = () => {
                     src={
                       item?.feature_image
                         ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.feature_image}`
-                        : "/assets/blog/blog1.webp"
+                        : "/assets/blog/blog1.png"
                     }
                     layout="fill"
                     objectFit="cover"

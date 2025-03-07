@@ -81,10 +81,7 @@ const RelatedBlogs = ({ blogData }) => {
     <div className="mt-60 blog-slider-sec">
       <Container>
         <div className="header_wrap">
-          <div>
-            <h3 className="main_sec_heading">RELATED BLOGS</h3>
-          </div>
-
+          <h3 className="main_sec_heading">Latest Articles</h3>
           {showArrows && (
             <div className="desktop_view">
               <PrevArrow />
@@ -97,31 +94,39 @@ const RelatedBlogs = ({ blogData }) => {
           ref={sliderRef}
           afterChange={(index) => setCurrentSlide(index)}
         >
-          {blogData?.map((item, i) => (
+          {/* {blogData?.map((item, i) => ( */}
+          {[1, 2, 3, 4, 5, 6]?.map((item, i) => (
             <div className="blog_item" key={item?.id}>
               <figure>
                 <Image
-                  src={
-                    item?.feature_image
-                      ? process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                        item?.feature_image
-                      : "/assets/blog/blog1.webp"
-                  }
+                  // src={
+                  //   item?.feature_image
+                  //     ? process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  //       item?.feature_image
+                  //     : "/assets/blog/blog1.png"
+                  // }
+                  src="/assets/blog/blog1.png"
                   layout="fill"
                   objectFit="cover"
-                  alt={item?.title}
+                  // alt={item?.title}
+                  alt="blog"
                 />
                 <span className="date">
-                  {moment(item?.date)?.format("MMMM D")}
+                  July 28
+                  {/* {moment(item?.date)?.format("MMMM D")} */}
                 </span>
               </figure>
               <div>
-                {/* <p className="para_comm">{item?.category}</p> */}
+                <p className="para_comm">
+                  Living Room
+                  {/* {item?.category} */}
+                </p>
                 <h3
                   className="sub_heading"
                   onClick={() => router.push(`/blog/${item?.route}`)}
                 >
-                  {item?.title}
+                  {/* {item?.title} */}
+                  Private Contemporary Home Balancing Openess
                 </h3>
               </div>
             </div>
