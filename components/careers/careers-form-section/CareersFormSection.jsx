@@ -17,7 +17,7 @@ const initailObject = {
   message: "",
 };
 
-const ContactFormSection = () => {
+const CareersFormSection = () => {
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [mobileValue, setMobileValue] = useState("");
@@ -90,12 +90,12 @@ const ContactFormSection = () => {
   };
 
   return (
-    <div className="contact-form-area mt-60">
+    <div className="careers-form-area mt-60">
       <Container>
         <Row className="gx-lg-5 gy-5 gy-lg-0">
           <Col lg={6} className="order-last order-lg-first">
             <Form onSubmit={handleSubmit}>
-              <h2 className="main_sec_heading">Get In Touch</h2>
+              <h2 className="main_sec_heading">Join Our Team</h2>
               <Row className="g-0 gx-md-2 gx-lg-2">
                 <Col sm={12}>
                   <Form.Group controlId="full_name" className="mb-3">
@@ -176,8 +176,8 @@ const ContactFormSection = () => {
                 src="/assets/contact/contactImg.jpg"
                 layout="fill"
                 objectFit="cover"
-                alt="Real Estate Office Contact India | Global Opportunities Real Estate"
-                title="Contact | Contact Real Estate Agents India | Global Opportunities Real Estate"
+                alt="Real Estate Office Careers India | Global Opportunities Real Estate"
+                title="Careers | Careers Real Estate Agents India | Global Opportunities Real Estate"
               />
             </figure>
           </Col>
@@ -187,4 +187,4 @@ const ContactFormSection = () => {
   );
 };
 
-export default ContactFormSection;
+export default CareersFormSection;

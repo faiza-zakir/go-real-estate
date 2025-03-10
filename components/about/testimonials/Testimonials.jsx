@@ -134,9 +134,7 @@ const Testimonials = ({ testimonialsData }) => {
     <div className="testimonials-sec mt-60">
       <Container>
         <div className="header_wrap">
-          <div>
-            <h2 className="main_sec_heading">Testimonials</h2>
-          </div>
+          <h2 className="main_sec_heading">Testimonials</h2>
           {showArrows && (
             <div className="desktop_view">
               <PrevArrow />

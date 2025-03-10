@@ -1,7 +1,7 @@
 "use client";
 import Banner from "@/components/common/common-banner/CommonBanner";
-import ContactInfoSection from "@/components/contact/contact-info-section/ContactInfoSection";
-import ContactFormSection from "@/components/contact/contact-form-section/ContactFormSection";
+import CareersInfoSection from "@/components/careers/careers-info-section/CareersInfoSection";
+import CareersFormSection from "@/components/careers/careers-form-section/CareersFormSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 // import { toast } from "react-toastify";
 // import { useEffect, useState } from "react";
@@ -43,10 +43,10 @@ const PageContent = () => {
         // }
         bgImg={{ src: "/assets/banner/contactbanner.webp" }}
       />
-      <ContactInfoSection
+      <CareersInfoSection
       // infoData={pageData?.content?.info}
       />
-      <ContactFormSection />
+      <CareersFormSection />
       <FAQSection />
     </>
   );

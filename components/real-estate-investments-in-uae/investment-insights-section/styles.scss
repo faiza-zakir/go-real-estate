@@ -1,0 +1,53 @@
+.investment-insights-sec {
+  .content_part {
+    padding-left: 8rem;
+    @media (max-width: 1280px) {
+      padding-left: 4rem;
+    }
+    @media (max-width: 767px) {
+      padding-left: 1rem;
+    }
+    .para_comm {
+      margin-bottom: 2rem;
+    }
+  }
+  figure {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    height: 500px;
+    @media (max-width: 576px) {
+      height: 350px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .rfm-marquee-container {
+    z-index: 2;
+    overflow: visible;
+  }
+  .process_item {
+    min-width: 300px;
+    margin-top: -180px;
+    margin-right: 20px;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .content_sec {
+      .main_sec_heading {
+        font-size: 50px;
+        margin-bottom: 1rem;
+      }
+      .sub_heading {
+        font-size: 18px;
+        margin-bottom: 0;
+        margin: 0;
+      }
+    }
+  }
+}
