@@ -10,10 +10,10 @@ const AboutInvestment = ({ aboutData }) => {
         <Row className="gy-5 gx-lg-5 align-items-center">
           <Col lg={6}>
             <h2 className="main_sec_heading">{aboutData?.title}</h2>
-            <p
-              className="para_comm"
+            <div
+              className="general-details"
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
-            ></p>
+            />
           </Col>
           <Col lg={6}>
             <figure>

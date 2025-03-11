@@ -25,12 +25,12 @@ const AboutOpportunity = ({ aboutData }) => {
           </Col>
           <Col lg={6}>
             <h2 className="main_sec_heading">{aboutData?.title}</h2>
-            <p
-              className="para_comm"
-              dangerouslySetInnerHTML={{
-                __html: aboutData?.description,
-              }}
-            ></p>
+            <div
+              className="general-details mb-4"
+              dangerouslySetInnerHTML={{ __html: aboutData?.description }}
+            />
+            <button className="theme_btn2 me-3">Arabic Flyer</button>
+            <button className="theme_btn3">English Flyer</button>
           </Col>
         </Row>
       </Container>

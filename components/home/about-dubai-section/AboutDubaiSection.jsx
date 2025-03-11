@@ -26,10 +26,10 @@ const AboutDubaiSection = ({ aboutData }) => {
           </Col>
           <Col sm={12} className="text-center">
             <h2 className="main_sec_heading">{aboutData?.title}</h2>
-            <p
-              className="para_comm"
+            <div
+              className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
-            ></p>
+            />
             <button
               className="theme_btn2 me-3"
               onClick={() => router.push("/about")}

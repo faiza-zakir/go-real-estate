@@ -12,8 +12,8 @@ export async function generateMetadata() {
   };
 }
 
-const AbuDhabiOpportunities = () => {
+const DubaiOpportunities = () => {
   return <PageContent />;
 };
 
-export default AbuDhabiOpportunities;
+export default DubaiOpportunities;
