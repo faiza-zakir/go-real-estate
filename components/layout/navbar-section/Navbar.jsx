@@ -19,6 +19,7 @@ const MainNavbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,10 +58,22 @@ const MainNavbar = () => {
               height={60}
             />
           </Navbar.Brand>
-          <Navbar.Toggle
-            aria-controls="offcanvasNavbar-expand-lg"
-            onClick={() => setShowOffcanvas(true)} // Open the offcanvas on click
-          />
+          <div className="d-flex align-items-center gap-3">
+            <Nav.Link
+              onClick={closeToggler}
+              as={Link}
+              href="/login"
+              className={`nav-item theme_btn form_mobile_view ${
+                pathname === "/login" ? "active" : ""
+              }`}
+            >
+              Log In
+            </Nav.Link>
+            <Navbar.Toggle
+              aria-controls="offcanvasNavbar-expand-lg"
+              onClick={() => setShowOffcanvas(true)} // Open the offcanvas on click
+            />
+          </div>
           <Navbar.Offcanvas
             show={showOffcanvas}
             onHide={closeToggler} // Close on hide
@@ -98,46 +111,121 @@ const MainNavbar = () => {
                 >
                   About Us
                 </Nav.Link>
-                <NavDropdown
-                  title="Real Estate Investments in UAE"
-                  id="about-dropdown"
-                  className="about_dropdown"
+                <div
+                  className="nav-item real-estate-wrapper form_desktop_view"
+                  onMouseEnter={() => setShowDropdown(true)}
                 >
-                  <NavDropdown.Item
+                  <Nav.Link
                     as={Link}
-                    onClick={closeToggler}
-                    href="/dubai-opportunities"
-                    className={`nav-drop-link ${
-                      pathname === "/dubai-opportunities" ? "active" : ""
-                    }`}
-                  >
-                    Dubai Opportunities <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/abu-dhabi-opportunities"
-                    className={`nav-drop-link ${
-                      pathname === "/abu-dhabi-opportunities" ? "active" : ""
-                    }`}
-                  >
-                    Abu Dhabi Opportunities
-                    <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    onClick={closeToggler}
-                    href="/ras-al-khaimah-opportunities"
-                    className={`nav-drop-link ${
-                      pathname === "/ras-al-khaimah-opportunities"
+                    href="/real-estate-investments-in-uae"
+                    className={`nav-item p-0 ${
+                      pathname === "/real-estate-investments-in-uae"
                         ? "active"
                         : ""
                     }`}
                   >
-                    Ras Al Khaimah Opportunities
-                    <FaAngleRight className="angle-arrow" />
-                  </NavDropdown.Item>
-                </NavDropdown>
+                    Real Estate Investments in UAE
+                  </Nav.Link>
+                  <NavDropdown
+                    show={showDropdown}
+                    title=""
+                    id="about-dropdown"
+                    className="about_dropdown"
+                    onMouseLeave={() => setShowDropdown(false)}
+                  >
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/dubai-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/dubai-opportunities" ? "active" : ""
+                      }`}
+                    >
+                      Dubai Opportunities{" "}
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/abu-dhabi-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/abu-dhabi-opportunities" ? "active" : ""
+                      }`}
+                    >
+                      Abu Dhabi Opportunities
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/ras-al-khaimah-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/ras-al-khaimah-opportunities"
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      Ras Al Khaimah Opportunities
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </div>
+                <div className="form_mobile_view">
+                  <NavDropdown
+                    title="Real Estate Investments in UAE"
+                    id="about-dropdown"
+                    className="about_dropdown"
+                  >
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/real-estate-investments-in-uae"
+                      className={`nav-drop-link ${
+                        pathname === "/real-estate-investments-in-uae"
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      Real Estate Investments in UAE{" "}
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/dubai-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/dubai-opportunities" ? "active" : ""
+                      }`}
+                    >
+                      Dubai Opportunities{" "}
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/abu-dhabi-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/abu-dhabi-opportunities" ? "active" : ""
+                      }`}
+                    >
+                      Abu Dhabi Opportunities
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      onClick={closeToggler}
+                      href="/ras-al-khaimah-opportunities"
+                      className={`nav-drop-link ${
+                        pathname === "/ras-al-khaimah-opportunities"
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      Ras Al Khaimah Opportunities
+                      <FaAngleRight className="angle-arrow" />
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </div>
                 <Nav.Link
                   onClick={closeToggler}
                   as={Link}
@@ -182,7 +270,7 @@ const MainNavbar = () => {
                   onClick={closeToggler}
                   as={Link}
                   href="/login"
-                  className={`nav-item theme_btn ${
+                  className={`nav-item theme_btn form_desktop_view ${
                     pathname === "/login" ? "active" : ""
                   }`}
                 >

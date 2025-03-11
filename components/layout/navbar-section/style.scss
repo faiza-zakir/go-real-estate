@@ -40,10 +40,9 @@
   padding: 1rem 0;
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-  // @media (max-width: 992px) {
-  //   background: #000;
-  //   border-bottom: 1px solid #000;
-  // }
+  @media (max-width: 992px) {
+    top: unset;
+  }
   .navbar-toggler {
     &:focus {
       box-shadow: none;
@@ -66,14 +65,11 @@
     font-weight: 500;
     padding-left: 0.7rem !important;
     padding-right: 0.7rem !important;
-    &:hover {
-      font-weight: 600;
-    }
+    &:hover,
     &.active,
     &:focus,
     &.show {
-      color: #fff;
-      border-bottom: 2px solid #fff;
+      color: #b22b39;
     }
   }
   .theme_btn {
@@ -97,6 +93,11 @@
 
   .about_dropdown .dropdown-menu {
     left: 60% !important;
+  }
+  .about_dropdown .nav-link {
+    @media (min-width: 992px) {
+      padding: 0 !important;
+    }
   }
 
   .dropdown-menu {
