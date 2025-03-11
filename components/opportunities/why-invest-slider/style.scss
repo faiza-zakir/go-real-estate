@@ -1,0 +1,19 @@
+.why_invest_area {
+  .mobile_view {
+    margin-top: 2rem;
+  }
+  .invest_item {
+    margin: 0 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    .content_sec {
+      .sub_heading {
+        margin: 1rem 0 0.5rem 0;
+      }
+      .para_comm {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

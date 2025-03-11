@@ -5,7 +5,6 @@ import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 // css
 import "./style.scss";
-import { useState } from "react";
 
 const Footer = () => {
   return (

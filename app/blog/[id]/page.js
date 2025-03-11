@@ -9,11 +9,11 @@ export async function generateMetadata({ params }) {
   return {
     title:
       // data?.content?.seo?.meta_title ||
-      "Newedge Property Management Services",
+      "GO Property Management Services",
 
     description:
       // data?.content?.seo?.meta_description ||
-      "Newedge, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
+      "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
     alternates: {
       canonical: "https://newedge-realty-next.vercel.app/blogs",
     },

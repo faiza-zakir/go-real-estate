@@ -1,35 +1,34 @@
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-// api
-import { fatchCredentialsClients } from "@/app/apis/commonApi";
 // css
-import "./styles.scss";
+import "./style.scss";
 
 const settings = {
   dots: false,
   arrows: false,
-  infinite: true,
+  infinite: false,
   slidesToShow: 4,
   slidesToScroll: 1,
   speed: 800,
-  autoplaySpeed: 2000,
   lazyLoad: true,
-  autoplay: true,
   responsive: [
     {
       breakpoint: 992,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
       },
     },
     {
       breakpoint: 767,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -38,31 +37,11 @@ const settings = {
   ],
 };
 
-const OurCredentials = () => {
+const WhyInvestSlider = ({ title, whyInvestData, isLoading }) => {
+  const router = useRouter();
   const sliderRef = useRef();
-  const [credentialsData, setCredentialsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchCredentialsListData = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await fatchCredentialsClients();
-
-        let updatedData = [...data]?.filter(
-          (item) => item?.type === "credentials"
-        );
-        setCredentialsData(updatedData);
-      } catch (error) {
-        console.error("Error fetching Data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCredentialsListData();
-  }, []);
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const nextSlide = () => {
     if (sliderRef.current) {
       sliderRef.current.slickNext();
@@ -77,7 +56,7 @@ const OurCredentials = () => {
     }
   };
 
-  const showArrows = credentialsData?.length > settings.slidesToShow;
+  const showArrows = whyInvestData?.length > settings.slidesToShow;
 
   const PrevArrow = () => (
     <button
@@ -93,22 +72,23 @@ const OurCredentials = () => {
     <button
       className="slider_custom_arrows ms-3"
       onClick={nextSlide}
-      disabled={currentSlide >= credentialsData?.length - settings.slidesToShow}
+      disabled={currentSlide >= whyInvestData?.length - settings.slidesToShow}
     >
       <FaAngleRight fontSize={"24px"} />
     </button>
   );
+
   return (
-    <div className="cred_sec mt-60">
+    <div className="why_invest_area mt-60">
       <Container>
         <div className="header_wrap">
-          <h2 className="main_sec_heading">Our Credentials</h2>
-          {/* {showArrows && (
+          <h2 className="main_sec_heading">{title}</h2>
+          {showArrows && (
             <div className="desktop_view">
               <PrevArrow />
               <NextArrow />
             </div>
-          )} */}
+          )}
         </div>
         {isLoading ? (
           <p className="para_comm text-center">loading...</p>
@@ -118,15 +98,37 @@ const OurCredentials = () => {
             ref={sliderRef}
             afterChange={(index) => setCurrentSlide(index)}
           >
-            {credentialsData?.map((item, i) => (
-              <div className="cred_item mt-4" key={i}>
-                <div className="img_wrap">
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.credential}`}
-                    width={100}
-                    height={160}
-                    alt="client"
-                  />
+            {whyInvestData?.map((report) => (
+              <div key={report?.id}>
+                <div
+                  className="invest_item"
+                  onClick={() =>
+                    router.push(
+                      `/${report?.property_type?.route}/${report?.route}`
+                    )
+                  }
+                >
+                  <figure>
+                    <Image
+                      // src={
+                      //   report?.icon
+                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.icon}`
+                      //     : "/assets/investment/serviceIcon.png"
+                      // }
+                      src={
+                        report?.icon
+                          ? report?.icon
+                          : "/assets/investment/serviceIcon.png"
+                      }
+                      width={60}
+                      height={60}
+                      alt={report?.title}
+                    />
+                  </figure>
+                  <div className="content_sec">
+                    <h3 className="sub_heading">{report?.title}</h3>
+                    <p className="para_comm">{report?.description}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -143,4 +145,4 @@ const OurCredentials = () => {
   );
 };
 
-export default OurCredentials;
+export default WhyInvestSlider;

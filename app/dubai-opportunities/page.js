@@ -12,8 +12,8 @@ export async function generateMetadata() {
   };
 }
 
-const RealEstateInvestmentsInUae = () => {
+const DubaiOpportunities = () => {
   return <PageContent />;
 };
 
-export default RealEstateInvestmentsInUae;
+export default DubaiOpportunities;

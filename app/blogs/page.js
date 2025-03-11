@@ -2,9 +2,9 @@ import PageContent from "./pageContent";
 
 export async function generateMetadata() {
   return {
-    title: "Real Estate Market Trends & Analysis | Newedge Blog",
+    title: "Real Estate Market Trends & Analysis | GO Blog",
     description:
-      "Stay updated with real estate blogs on market trends, in-depth analysis, and expert insights. Get valuable tips to navigate the property landscape with Newedge.",
+      "Stay updated with real estate blogs on market trends, in-depth analysis, and expert insights. Get valuable tips to navigate the property landscape with GO.",
     alternates: {
       canonical: "https://newedge-realty-next.vercel.app/blogs",
     },
