@@ -80,8 +80,8 @@ const Partners = ({ partnersData }) => {
                 <Image
                   // src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.logo}`}
                   src={item?.logo}
-                  width={130}
-                  height={130}
+                  width={209}
+                  height={104}
                   alt={item?.name}
                 />
               </div>
