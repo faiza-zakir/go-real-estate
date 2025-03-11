@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <NextTopLoader color="#fff" showSpinner={false} />
+        <NextTopLoader color="#b22b39" showSpinner={false} />
         {/* Google Analytics Tag (gtag.js) */}
         <Script
           strategy="afterInteractive" // Ensures the script is loaded after page interaction
