@@ -24,6 +24,11 @@ const Footer = () => {
               <h3>Quick Links</h3>
               <ul>
                 <li>
+                  <Link href="/real-estate-investments-in-uae">
+                    Real Estate Investments in UAE
+                  </Link>
+                </li>
+                <li>
                   <Link href="/dubai-opportunities">Dubai Opportunities</Link>
                 </li>
                 <li>
