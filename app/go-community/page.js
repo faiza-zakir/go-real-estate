@@ -6,13 +6,13 @@ export async function generateMetadata() {
     description:
       "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
     alternates: {
-      canonical: "https://newedge-realty-next.vercel.app/dubai-opportunities",
+      canonical: "https://newedge-realty-next.vercel.app/go-community",
     },
   };
 }
 
-const AbuDhabiOpportunities = () => {
+const GoCommunity = () => {
   return <PageContent />;
 };
 
-export default AbuDhabiOpportunities;
+export default GoCommunity;
