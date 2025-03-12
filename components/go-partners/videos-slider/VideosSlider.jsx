@@ -10,7 +10,7 @@ const settings = {
   dots: false,
   arrows: false,
   infinite: false,
-  slidesToShow: 3,
+  slidesToShow: 2,
   slidesToScroll: 1,
   speed: 800,
   lazyLoad: true,
@@ -36,7 +36,7 @@ const settings = {
   ],
 };
 
-const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
+const VideosSlider = ({ videoData, isLoading }) => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -54,7 +54,7 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
     }
   };
 
-  const showArrows = industryReportsData?.length > settings.slidesToShow;
+  const showArrows = videoData?.length > settings.slidesToShow;
 
   const PrevArrow = () => (
     <button
@@ -70,19 +70,17 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
     <button
       className="slider_custom_arrows ms-3"
       onClick={nextSlide}
-      disabled={
-        currentSlide >= industryReportsData?.length - settings.slidesToShow
-      }
+      disabled={currentSlide >= videoData?.length - settings.slidesToShow}
     >
       <FaAngleRight fontSize={"24px"} />
     </button>
   );
 
   return (
-    <div className="industry_reports_sec mt-60">
+    <div className="video_slider_sec mt-60">
       <Container>
         <div className="header_wrap">
-          <h2 className="main_sec_heading">Industry Reports</h2>
+          <h2 className="main_sec_heading">Watch Our Videos</h2>
           {showArrows && (
             <div className="desktop_view">
               <PrevArrow />
@@ -98,30 +96,28 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
             ref={sliderRef}
             afterChange={(index) => setCurrentSlide(index)}
           >
-            {industryReportsData?.map((report) => (
-              <div key={report?.id}>
-                <div className="report_item">
+            {videoData?.map((video) => (
+              <div key={video?.id}>
+                <div className="video_item">
                   <figure>
                     <Image
                       // src={
-                      //   report?.featured_img
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.featured_img}`
-                      //     : "/assets/home/commercial1.webp"
+                      //   video?.thumbnail
+                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${video?.thumbnail}`
+                      //     : "/assets/go-partners/thumbnail1.png"
                       // }
                       src={
-                        report?.featured_img
-                          ? report?.featured_img
-                          : "/assets/home/commercial1.webp"
+                        video?.thumbnail
+                          ? video?.thumbnail
+                          : "/assets/go-partners/thumbnail1.png"
                       }
                       layout="fill"
                       objectFit="cover"
-                      alt={report?.title}
+                      alt={video?.title}
                     />
                   </figure>
                   <div className="content_sec">
-                    <h3 className="sub_heading">{report?.title}</h3>
-                    <p className="para_comm">{report?.description}</p>
-                    <button className="theme_btn2">View Report</button>
+                    <h3 className="sub_heading">{video?.title}</h3>
                   </div>
                 </div>
               </div>
@@ -139,4 +135,4 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
   );
 };
 
-export default IndustryReportsSlider;
+export default VideosSlider;

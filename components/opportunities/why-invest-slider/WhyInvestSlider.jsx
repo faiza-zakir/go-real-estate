@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
@@ -38,7 +37,6 @@ const settings = {
 };
 
 const WhyInvestSlider = ({ title, whyInvestData, isLoading }) => {
-  const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -100,14 +98,7 @@ const WhyInvestSlider = ({ title, whyInvestData, isLoading }) => {
           >
             {whyInvestData?.map((report) => (
               <div key={report?.id}>
-                <div
-                  className="invest_item"
-                  onClick={() =>
-                    router.push(
-                      `/${report?.property_type?.route}/${report?.route}`
-                    )
-                  }
-                >
+                <div className="invest_item">
                   <figure>
                     <Image
                       // src={
