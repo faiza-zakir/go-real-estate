@@ -14,12 +14,14 @@ import { FaAngleRight } from "react-icons/fa";
 // css
 import "./style.scss";
 import TopBar from "./TopBar";
+import Login from "@/components/common/auth/login/Login";
 
 const MainNavbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +62,10 @@ const MainNavbar = () => {
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
             <Nav.Link
-              onClick={closeToggler}
               as={Link}
-              href="/login"
-              className={`nav-item theme_btn form_mobile_view ${
-                pathname === "/login" ? "active" : ""
-              }`}
+              href="#"
+              onClick={() => setShowLoginModal(true)}
+              className="nav-item theme_btn form_mobile_view"
             >
               Log In
             </Nav.Link>
@@ -267,15 +267,17 @@ const MainNavbar = () => {
                   GO Partners
                 </Nav.Link>
                 <Nav.Link
-                  onClick={closeToggler}
                   as={Link}
-                  href="/login"
-                  className={`nav-item theme_btn form_desktop_view ${
-                    pathname === "/login" ? "active" : ""
-                  }`}
+                  href="#"
+                  onClick={() => setShowLoginModal(true)}
+                  className="nav-item theme_btn form_desktop_view"
                 >
                   Log In
                 </Nav.Link>
+                <Login
+                  show={showLoginModal}
+                  handleClose={() => setShowLoginModal(false)}
+                />
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
