@@ -1,12 +1,9 @@
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { Row, Col, Container } from "react-bootstrap";
 // css
 import "./styles.scss";
 
 const AboutDubaiSection = ({ aboutData }) => {
-  const router = useRouter();
-
   return (
     <div className="about_dubai_sec mt-60">
       <Container>
@@ -30,18 +27,8 @@ const AboutDubaiSection = ({ aboutData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
             />
-            <button
-              className="theme_btn2 me-3"
-              onClick={() => router.push("/about")}
-            >
-              Arabic Flyer
-            </button>
-            <button
-              className="theme_btn3"
-              onClick={() => router.push("/about")}
-            >
-              English Flyer
-            </button>
+            <button className="theme_btn2 me-3">Arabic Flyer</button>
+            <button className="theme_btn3">English Flyer</button>
           </Col>
         </Row>
       </Container>

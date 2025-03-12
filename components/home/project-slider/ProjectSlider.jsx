@@ -136,10 +136,7 @@ const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
           </Slider>
         )}
         <div className="mobile_view">
-          <button
-            className="theme_btn2"
-            onClick={() => router.push(`/residential`)}
-          >
+          <button className="theme_btn2" onClick={() => router.push(link)}>
             See More
           </button>
         </div>

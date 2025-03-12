@@ -124,28 +124,28 @@ const Home = () => {
           />
           <ProjectSlider
             title="Featured Real Estate Projects"
-            link="/residential"
+            link="/real-estate-investments-in-uae"
             projectsData={featured_projects?.slice(0, 4)}
             isLoading={isLoading}
           />
           <AboutDubaiSection aboutData={about_dubai} />
           <ProjectSlider
             title="Residential Properties"
-            link="/residential"
+            link="/real-estate-investments-in-uae"
             projectsData={residential?.slice(0, 4)}
             isLoading={isLoading}
           />
           <WhyChooseSection whyChooseData={why_choose} />
           <ProjectSlider
             title="Commercial Properties"
-            link="/residential"
+            link="/real-estate-investments-in-uae"
             projectsData={commercial?.slice(0, 4)}
             isLoading={isLoading}
           />
           <AppointmentSection appointmentData={appointment} />
           <ProjectSlider
             title="Places To Invest In UAE"
-            link="/residential"
+            link="/real-estate-investments-in-uae"
             projectsData={invest_places?.slice(0, 4)}
             isLoading={isLoading}
           />

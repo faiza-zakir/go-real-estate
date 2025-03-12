@@ -29,18 +29,8 @@ const AboutUae = ({ aboutUaeData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutUaeData?.description }}
             />
-            <button
-              className="theme_btn2 me-3"
-              onClick={() => router.push("/about")}
-            >
-              Arabic Flyer
-            </button>
-            <button
-              className="theme_btn3"
-              onClick={() => router.push("/about")}
-            >
-              English Flyer
-            </button>
+            <button className="theme_btn2 me-3">Arabic Flyer</button>
+            <button className="theme_btn3">English Flyer</button>
           </Col>
         </Row>
       </Container>
