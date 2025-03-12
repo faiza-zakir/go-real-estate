@@ -1,21 +1,19 @@
 "use client";
 // import { useState, useEffect } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
-import AboutOpportunity from "@/components/opportunities/about-opportunity/AboutOpportunity";
-import WhyInvestSlider from "@/components/opportunities/why-invest-slider/WhyInvestSlider";
-import DevelopmentTrends from "@/components/opportunities/development-trends/DevelopmentTrends";
+import BecomePartner from "@/components/go-partners/become-partner/BecomePartner";
+import Partners from "@/components/about/partners/Partners";
+import PartnersBenefits from "@/components/go-partners/partners-benefits/PartnersBenefits";
+import ContactSection from "@/components/home/contact-section/ContactSection";
+import BlogSection from "@/components/go-partners/blog-section/BlogSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { goPartnersData } from "@/lib/goPartnersData";
-import BecomePartner from "@/components/go-partners/become-partner/BecomePartner";
-import Partners from "@/components/about/partners/Partners";
-import PartnersBenefits from "@/components/go-partners/partners-benefits/PartnersBenefits";
-import ContactSection from "@/components/home/contact-section/ContactSection";
 
 const PageContent = () => {
-  const { partners, about, partners_benefits } = goPartnersData;
+  const { partners, about, partners_benefits, blogs } = goPartnersData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -56,6 +54,7 @@ const PageContent = () => {
       <Partners partnersData={partners} />
       <BecomePartner aboutData={about} />
       <PartnersBenefits benefitsData={partners_benefits} />
+      <BlogSection blogsData={blogs} />
       <FAQSection />
       <ContactSection />
     </>
