@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
+import Register from "../register/Register";
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
 // css
@@ -13,6 +14,7 @@ const initailObject = {
 };
 
 const Login = ({ show, handleClose }) => {
+  const [showRegister, setShowRegister] = useState(false);
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -139,7 +141,13 @@ const Login = ({ show, handleClose }) => {
                   <p className="mt-2 form_error_msg">{errors?.password}</p>
                 </Form.Group>
                 <div className="d-flex align-items-center gap-2">
-                  <button className="theme_btn3 me-3">Create Account</button>
+                  <button
+                    type="button"
+                    className="theme_btn3 me-3"
+                    onClick={() => setShowRegister(true)}
+                  >
+                    Create Account
+                  </button>
                   <button
                     className="theme_btn2"
                     disabled={loading}
@@ -181,6 +189,10 @@ const Login = ({ show, handleClose }) => {
               </figure>
             </Col>
           </Row>
+          <Register
+            show={showRegister}
+            handleClose={() => setShowRegister(false)}
+          />
         </Container>
       </Modal.Body>
     </Modal>
