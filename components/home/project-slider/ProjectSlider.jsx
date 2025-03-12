@@ -99,14 +99,7 @@ const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
           >
             {projectsData?.map((project) => (
               <div key={project?.id}>
-                <div
-                  className="project_item"
-                  onClick={() =>
-                    router.push(
-                      `/${project?.property_type?.route}/${project?.route}`
-                    )
-                  }
-                >
+                <div className="project_item">
                   <figure>
                     <Image
                       // src={

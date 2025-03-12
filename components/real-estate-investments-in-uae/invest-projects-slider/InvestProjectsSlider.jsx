@@ -105,14 +105,7 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
           >
             {projectsData?.map((project) => (
               <div key={project?.id}>
-                <div
-                  className="project_item"
-                  onClick={() =>
-                    router.push(
-                      `/${project?.property_type?.route}/${project?.route}`
-                    )
-                  }
-                >
+                <div className="project_item">
                   <figure>
                     <Image
                       // src={
@@ -136,6 +129,12 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
                     </p>
                     <h3 className="sub_heading">{project?.title}</h3>
                     <p className="para_comm">{project?.location}</p>
+                    <div className="btn_wrap mt-3">
+                      <button className="theme_btn3">Arabic Flyer</button>
+                      <button className="theme_btn3 engBtn">
+                        English Flyer
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

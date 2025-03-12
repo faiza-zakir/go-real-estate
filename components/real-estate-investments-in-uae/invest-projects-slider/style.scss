@@ -5,10 +5,21 @@
   .project_item {
     padding: 0 0.5rem;
     position: relative;
-    cursor: pointer;
     &:hover {
       figure::before {
         opacity: 1;
+      }
+      .content_sec {
+        .location,
+        .sub_heading,
+        .para_comm {
+          transform: translateY(0);
+        }
+        .btn_wrap {
+          opacity: 1;
+          visibility: visible;
+          height: auto;
+        }
       }
     }
     figure {
@@ -49,6 +60,8 @@
         font-weight: 500;
         line-height: 160%;
         margin-bottom: 0.5rem;
+        transform: translateY(10px);
+        transition: all 0.5s ease-in-out;
         span {
           font-size: 12px;
           font-weight: 500;
@@ -57,10 +70,40 @@
       .sub_heading {
         color: #fff;
         margin-bottom: 0.5rem;
+        transform: translateY(10px);
+        transition: all 0.5s ease-in-out;
       }
       .para_comm {
         color: #fff;
         margin-bottom: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease-in-out;
+      }
+      .btn_wrap {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        .theme_btn3 {
+          font-size: 14px;
+          @media screen and (max-width: 1280px) {
+            padding: 0.5rem 0.8rem;
+          }
+        }
+        .engBtn {
+          background: transparent;
+          color: #fff;
+          border: 1px solid #fff;
+          &:hover {
+            background: #b22b39;
+            border: 1px solid #b22b39;
+          }
+        }
       }
     }
   }
