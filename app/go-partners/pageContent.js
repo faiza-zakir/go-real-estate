@@ -5,6 +5,8 @@ import BecomePartner from "@/components/go-partners/become-partner/BecomePartner
 import Partners from "@/components/about/partners/Partners";
 import PartnersBenefits from "@/components/go-partners/partners-benefits/PartnersBenefits";
 import ContactSection from "@/components/home/contact-section/ContactSection";
+import CaseStudiesSlider from "@/components/go-partners/case-studies/CaseStudiesSlider";
+import VideosSlider from "@/components/go-partners/videos-slider/VideosSlider";
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import BlogSection from "@/components/go-partners/blog-section/BlogSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
@@ -12,8 +14,6 @@ import FAQSection from "@/components/home/faq-section/FAQSection";
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { goPartnersData } from "@/lib/goPartnersData";
-import CaseStudiesSlider from "@/components/go-partners/case-studies/CaseStudiesSlider";
-import VideosSlider from "@/components/go-partners/videos-slider/VideosSlider";
 
 const PageContent = () => {
   const {

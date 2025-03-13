@@ -5,7 +5,7 @@ const BannerForm = dynamic(() => import("../banner-form/BannerForm"));
 // css
 import "./styles.scss";
 
-const BannerVideo = ({ content, setShowForm, showForm }) => {
+const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
   const router = useRouter();
   const videoRef = useRef(null);
   const [loadForm, setLoadForm] = useState(false);
@@ -70,26 +70,32 @@ const BannerVideo = ({ content, setShowForm, showForm }) => {
                   ? content?.title
                   : "Discover Exquisite Villas & Apartments In The Heart Of UAE With Go Real Estate"}
               </h1>
-              <button
-                className="theme_btn"
-                onClick={() => router.push(content?.link)}
-              >
-                Learn More
-              </button>
+              {!btnText && (
+                <button
+                  className="theme_btn"
+                  onClick={() => router.push(content?.link)}
+                >
+                  Learn More
+                </button>
+              )}
               {loadForm ? null : (
                 <button
-                  className="theme_btn ms-3 DesktopBTNTHEME"
+                  className={`theme_btn ms-3 DesktopBTNTHEME ${
+                    !btnText && "contact_btn"
+                  }`}
                   onClick={() => setLoadForm(true)}
                 >
-                  Contact Us
+                  {btnText ? btnText : "Contact Us"}
                 </button>
               )}
               {showForm ? null : (
                 <button
-                  className="theme_btn MobileBTNTHEME"
+                  className={`theme_btn mt-5 MobileBTNTHEME ${
+                    !btnText && "contact_btn"
+                  }`}
                   onClick={() => setShowForm(true)}
                 >
-                  Contact Us
+                  {btnText ? btnText : "Contact Us"}
                 </button>
               )}
             </div>
