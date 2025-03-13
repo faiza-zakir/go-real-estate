@@ -133,7 +133,7 @@ const Login = ({ show, handleClose }) => {
                     </Form.Label>
                   </div>
                   <Form.Control
-                    type="text"
+                    type="password"
                     name="password"
                     value={formValues.password}
                     onChange={handleInputChange}

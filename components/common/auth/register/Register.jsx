@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { Col, Container, Row, Form, Modal } from "react-bootstrap";
+import { Col, Container, Row, Form, Modal, InputGroup } from "react-bootstrap";
 import { toast } from "react-toastify";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { MdOutlineFileUpload } from "react-icons/md";
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
 // css
@@ -29,15 +30,33 @@ const initialUploadsData = {
 };
 
 const Register = ({ show, handleClose }) => {
-  const [step, setStep] = useState(1); // 1 for Register, 2 for Verification
+  const [step, setStep] = useState(1); // 1 for Register, 2 for Verification, 4 for Uploads
   const [registerData, setRegisterData] = useState(initialRegisterData);
   const [verificationData, setVerificationData] = useState(
     initialVerificationData
   );
   const [uploadsData, setUploadsData] = useState(initialUploadsData);
   const [mobileValue, setMobileValue] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loadingRegister, setLoadingRegister] = useState(false);
+  const [loadingVerification, setLoadingVerification] = useState(false);
+  const [loadingUploads, setLoadingUploads] = useState(false);
   const [errors, setErrors] = useState({});
+  // Create a reference to the hidden file input element
+  const hiddenFileInput = useRef(null);
+  const [uploadFile, setUploadFie] = useState([]);
+
+  // Programatically click the hidden file input element
+  // when the Button component is clicked
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
+  const handleChange = (event) => {
+    let downloadFile = [...event.target.files];
+    let updatedFiles = downloadFile.map((x) => ({
+      image: x,
+    }));
+    setUploadFie(updatedFiles);
+  };
 
   const handleRegisterChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
@@ -75,13 +94,12 @@ const Register = ({ show, handleClose }) => {
 
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
-        setLoading(false);
+        setLoadingRegister(false);
         setStep(2); // Move to verification step
-        // setRegisterData({ ...initialRegisterData });
       }
     } catch (error) {
       console.error("Error posting Data:", error);
-      setLoading(false);
+      setLoadingRegister(false);
       toast.error("Something Went wrong!");
     }
   };
@@ -160,7 +178,7 @@ const Register = ({ show, handleClose }) => {
     }
 
     let updatedRegisterData = { ...registerData, phone: mobileValue };
-    setLoading(true);
+    setLoadingRegister(true);
     PostRegisterFormData(updatedRegisterData);
   };
   // verification form data
@@ -174,13 +192,12 @@ const Register = ({ show, handleClose }) => {
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
         toast.success("Verification Successful!");
-        setLoading(false);
+        setLoadingVerification(false);
         setStep(4); // Move to uploads step
-        // setVerificationData({ ...initialVerificationData });
       }
     } catch (error) {
       console.error("Error posting Data:", error);
-      setLoading(false);
+      setLoadingVerification(false);
       toast.error("Something Went wrong!");
     }
   };
@@ -200,27 +217,32 @@ const Register = ({ show, handleClose }) => {
     }
 
     let updatedVerificationData = { ...verificationData };
-    setLoading(true);
+    setLoadingVerification(true);
     PostVerificationFormData(updatedVerificationData);
   };
   // uploads form data
-  const PostUploadsFormData = async (updatedUploadsData) => {
+
+  const PostUploadsFormData = async (imagesFormData) => {
     try {
-      const payload = {
-        emirates_id: updatedUploadsData?.emirates_id,
-        lorem_ipsum1: updatedUploadsData?.lorem_ipsum1,
-        lorem_ipsum2: updatedUploadsData?.lorem_ipsum2,
+      let header = {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${imagesFormData._boundary}`,
+        },
       };
 
-      const response = await postLeadForm(payload);
+      const response = await postLeadForm(imagesFormData, header);
       if (response.status === 200 || response.status === 201) {
         toast.success("Account Created Successfully!");
-        setLoading(false);
-        // setUploadsData({ ...initialUploadsData });
+        setLoadingUploads(false);
+        setRegisterData({ ...initialRegisterData });
+        setVerificationData({ ...initialVerificationData });
+        setUploadsData({ ...initialUploadsData });
+        setUploadFie([]);
+        handleClose();
       }
     } catch (error) {
       console.error("Error posting Data:", error);
-      setLoading(false);
+      setLoadingUploads(false);
       toast.error("Something Went wrong!");
     }
   };
@@ -230,8 +252,8 @@ const Register = ({ show, handleClose }) => {
     const errors = {};
 
     // Validation
-    if (!emirates_id) {
-      errors.emirates_id = "Please upload your Emirated ID.";
+    if (uploadFile?.length == 0) {
+      errors.emirates_id = "Please upload your Emirates ID.";
     }
     // If there are errors, stop the process
     if (Object.keys(errors).length > 0) {
@@ -240,8 +262,16 @@ const Register = ({ show, handleClose }) => {
     }
 
     let updatedUploadsData = { ...uploadsData };
-    setLoading(true);
-    PostUploadsFormData(updatedUploadsData);
+
+    let imagesFormData = new FormData();
+
+    uploadFile.forEach((x) => {
+      imagesFormData.append("emirates_id[]", x?.image);
+    });
+
+    imagesFormData.append("data", JSON.stringify(updatedUploadsData));
+    setLoadingUploads(true);
+    PostUploadsFormData(imagesFormData);
   };
 
   return (
@@ -347,7 +377,7 @@ const Register = ({ show, handleClose }) => {
                     </Col>
                   </Row>
                   <button type="submit" className="theme_btn2">
-                    {loading ? "Sending..." : "Next"}
+                    {loadingRegister ? "Sending..." : "Next"}
                   </button>
                 </Form>
               )}
@@ -376,7 +406,7 @@ const Register = ({ show, handleClose }) => {
                       Back
                     </button>
                     <button type="submit" className="theme_btn2">
-                      {loading ? "Verifying..." : "Verify"}
+                      {loadingVerification ? "Verifying..." : "Verify"}
                     </button>
                   </div>
                 </Form>
@@ -386,31 +416,94 @@ const Register = ({ show, handleClose }) => {
                 <Form onSubmit={handleUploadsSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label>Emirates ID</Form.Label>
-                    <Form.Control
-                      type="text"
+                    <InputGroup>
+                      <Form.Control
+                        type="text"
+                        name="emirates_id"
+                        readOnly
+                        value={
+                          uploadFile?.length > 0
+                            ? uploadFile?.[0]?.image?.name
+                            : "Upload"
+                        }
+                        style={{ borderRight: "0" }}
+                      />
+                      <InputGroup.Text>
+                        <MdOutlineFileUpload
+                          fontSize="20px"
+                          onClick={handleClick}
+                        />
+                      </InputGroup.Text>
+                    </InputGroup>
+                    <input
+                      type="file"
+                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      ref={hiddenFileInput}
+                      onChange={handleChange}
+                      style={{ display: "none" }}
                       name="emirates_id"
-                      value={uploadsData.emirates_id}
-                      onChange={handleUploadsChange}
                     />
                     <p className="form_error_msg">{errors?.emirates_id}</p>
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Lorem Ipsum</Form.Label>
-                    <Form.Control
-                      type="text"
+                    <InputGroup>
+                      <Form.Control
+                        type="text"
+                        name="lorem_ipsum1"
+                        readOnly
+                        value={
+                          uploadFile?.length > 0
+                            ? uploadFile?.[0]?.image?.name
+                            : "Upload"
+                        }
+                        style={{ borderRight: "0" }}
+                      />
+                      <InputGroup.Text>
+                        <MdOutlineFileUpload
+                          fontSize="20px"
+                          onClick={handleClick}
+                        />
+                      </InputGroup.Text>
+                    </InputGroup>
+                    <input
+                      type="file"
+                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      ref={hiddenFileInput}
+                      onChange={handleChange}
+                      style={{ display: "none" }}
                       name="lorem_ipsum1"
-                      value={uploadsData.lorem_ipsum1}
-                      onChange={handleUploadsChange}
                     />
                     <p className="form_error_msg">{errors?.lorem_ipsum1}</p>
                   </Form.Group>
                   <Form.Group className="mb-4">
                     <Form.Label>Lorem Ipsum</Form.Label>
-                    <Form.Control
-                      type="text"
+                    <InputGroup>
+                      <Form.Control
+                        type="text"
+                        name="lorem_ipsum2"
+                        readOnly
+                        value={
+                          uploadFile?.length > 0
+                            ? uploadFile?.[0]?.image?.name
+                            : "Upload"
+                        }
+                        style={{ borderRight: "0" }}
+                      />
+                      <InputGroup.Text>
+                        <MdOutlineFileUpload
+                          fontSize="20px"
+                          onClick={handleClick}
+                        />
+                      </InputGroup.Text>
+                    </InputGroup>
+                    <input
+                      type="file"
+                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      ref={hiddenFileInput}
+                      onChange={handleChange}
+                      style={{ display: "none" }}
                       name="lorem_ipsum2"
-                      value={uploadsData.lorem_ipsum2}
-                      onChange={handleUploadsChange}
                     />
                     <p className="form_error_msg">{errors?.lorem_ipsum2}</p>
                   </Form.Group>
@@ -423,7 +516,7 @@ const Register = ({ show, handleClose }) => {
                       Back
                     </button>
                     <button type="submit" className="theme_btn2">
-                      {loading ? "Creating..." : "Create Account"}
+                      {loadingUploads ? "Creating..." : "Create Account"}
                     </button>
                   </div>
                 </Form>
