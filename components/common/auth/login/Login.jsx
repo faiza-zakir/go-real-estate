@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Register from "../register/Register";
 // api
 import { postLeadForm } from "@/app/apis/commonApi";
@@ -16,6 +17,7 @@ const initailObject = {
 const Login = ({ show, handleClose }) => {
   const [showRegister, setShowRegister] = useState(false);
   const [formValues, setFormValues] = useState(initailObject);
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const handleInputChange = (e) => {
@@ -132,12 +134,21 @@ const Login = ({ show, handleClose }) => {
                       Forget Password?
                     </Form.Label>
                   </div>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    value={formValues.password}
-                    onChange={handleInputChange}
-                  />
+                  <div className="position-relative">
+                    <Form.Control
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      value={formValues.password}
+                      onChange={handleInputChange}
+                    />
+                    <span
+                      className="position-absolute end-0 top-50 translate-middle-y me-3"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <FaEyeSlash fontSize={18}/> : <FaEye fontSize={18} />}
+                    </span>
+                  </div>
                   <p className="mt-2 form_error_msg">{errors?.password}</p>
                 </Form.Group>
                 <div className="d-flex align-items-center gap-2">

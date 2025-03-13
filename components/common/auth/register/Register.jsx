@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { Col, Container, Row, Form, Modal, InputGroup } from "react-bootstrap";
+import { Col, Container, Row, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { MdOutlineFileUpload } from "react-icons/md";
@@ -30,6 +31,8 @@ const initialUploadsData = {
 };
 
 const Register = ({ show, handleClose }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showVerifyPassword, setShowVerifyPassword] = useState(false);
   const [step, setStep] = useState(1); // 1 for Register, 2 for Verification, 4 for Uploads
   const [registerData, setRegisterData] = useState(initialRegisterData);
   const [verificationData, setVerificationData] = useState(
@@ -352,24 +355,58 @@ const Register = ({ show, handleClose }) => {
                     <Col sm={12}>
                       <Form.Group className="mb-3">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control
+                        {/* <Form.Control
                           type="password"
                           name="password"
                           value={registerData.password}
                           onChange={handleRegisterChange}
-                        />
+                        /> */}
+                        <div className="position-relative">
+                          <Form.Control
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            value={registerData.password}
+                            onChange={handleRegisterChange}
+                          />
+                          <span
+                            className="position-absolute end-0 top-50 translate-middle-y me-3"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => setShowPassword((prev) => !prev)}
+                          >
+                            {showPassword ? (
+                              <FaEyeSlash fontSize={18} />
+                            ) : (
+                              <FaEye fontSize={18} />
+                            )}
+                          </span>
+                        </div>
                         <p className="form_error_msg">{errors?.password}</p>
                       </Form.Group>
                     </Col>
                     <Col sm={12}>
                       <Form.Group className="mb-4">
                         <Form.Label>Verify Password</Form.Label>
-                        <Form.Control
-                          type="password"
-                          name="verify_password"
-                          value={registerData.verify_password}
-                          onChange={handleRegisterChange}
-                        />
+                        <div className="position-relative">
+                          <Form.Control
+                            type={showVerifyPassword ? "text" : "password"}
+                            name="verify_password"
+                            value={registerData.verify_password}
+                            onChange={handleRegisterChange}
+                          />
+                          <span
+                            className="position-absolute end-0 top-50 translate-middle-y me-3"
+                            style={{ cursor: "pointer" }}
+                            onClick={() =>
+                              setShowVerifyPassword((prev) => !prev)
+                            }
+                          >
+                            {showVerifyPassword ? (
+                              <FaEyeSlash fontSize={18} />
+                            ) : (
+                              <FaEye fontSize={18} />
+                            )}
+                          </span>
+                        </div>
                         <p className="form_error_msg">
                           {errors?.verify_password}
                         </p>
@@ -416,7 +453,11 @@ const Register = ({ show, handleClose }) => {
                 <Form onSubmit={handleUploadsSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label>Emirates ID</Form.Label>
-                    <InputGroup>
+                    <div
+                      className="position-relative"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleClick}
+                    >
                       <Form.Control
                         type="text"
                         name="emirates_id"
@@ -426,15 +467,11 @@ const Register = ({ show, handleClose }) => {
                             ? uploadFile?.[0]?.image?.name
                             : "Upload"
                         }
-                        style={{ borderRight: "0" }}
                       />
-                      <InputGroup.Text>
-                        <MdOutlineFileUpload
-                          fontSize="20px"
-                          onClick={handleClick}
-                        />
-                      </InputGroup.Text>
-                    </InputGroup>
+                      <span className="position-absolute end-0 top-50 translate-middle-y me-3">
+                        <MdOutlineFileUpload fontSize={20} />
+                      </span>
+                    </div>
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -447,7 +484,11 @@ const Register = ({ show, handleClose }) => {
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Lorem Ipsum</Form.Label>
-                    <InputGroup>
+                    <div
+                      className="position-relative"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleClick}
+                    >
                       <Form.Control
                         type="text"
                         name="lorem_ipsum1"
@@ -457,15 +498,11 @@ const Register = ({ show, handleClose }) => {
                             ? uploadFile?.[0]?.image?.name
                             : "Upload"
                         }
-                        style={{ borderRight: "0" }}
                       />
-                      <InputGroup.Text>
-                        <MdOutlineFileUpload
-                          fontSize="20px"
-                          onClick={handleClick}
-                        />
-                      </InputGroup.Text>
-                    </InputGroup>
+                      <span className="position-absolute end-0 top-50 translate-middle-y me-3">
+                        <MdOutlineFileUpload fontSize={20} />
+                      </span>
+                    </div>
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -478,7 +515,11 @@ const Register = ({ show, handleClose }) => {
                   </Form.Group>
                   <Form.Group className="mb-4">
                     <Form.Label>Lorem Ipsum</Form.Label>
-                    <InputGroup>
+                    <div
+                      className="position-relative"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleClick}
+                    >
                       <Form.Control
                         type="text"
                         name="lorem_ipsum2"
@@ -488,15 +529,14 @@ const Register = ({ show, handleClose }) => {
                             ? uploadFile?.[0]?.image?.name
                             : "Upload"
                         }
-                        style={{ borderRight: "0" }}
                       />
-                      <InputGroup.Text>
-                        <MdOutlineFileUpload
-                          fontSize="20px"
-                          onClick={handleClick}
-                        />
-                      </InputGroup.Text>
-                    </InputGroup>
+                      <span
+                        className="position-absolute end-0 top-50 translate-middle-y me-3"
+                        style={{ cursor: "pointer" }}
+                      >
+                        <MdOutlineFileUpload fontSize={20} />
+                      </span>
+                    </div>
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
