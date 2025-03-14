@@ -1,9 +1,15 @@
 import Image from "next/image";
+import { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import ModalVideo from "react-modal-video";
+import { FaPlay } from "react-icons/fa";
 // css
 import "./styles.scss";
 
 const Founder = ({ founderData }) => {
+  const [isOpen, setOpen] = useState(false);
+  const [videoLink, setVideoLink] = useState("");
+
   return (
     <div className="founder_sec mt-60">
       <Container>
@@ -29,9 +35,26 @@ const Founder = ({ founderData }) => {
                 alt={founderData?.title}
                 title={founderData?.title}
               />
+              <div
+                className="icon_wrape"
+                onClick={() => {
+                  setVideoLink(founderData?.video_url);
+                  setOpen(true);
+                }}
+              >
+                <FaPlay fontSize={20} className="icon_style" />
+              </div>
             </figure>
           </Col>
         </Row>
+        <ModalVideo
+          channel={"youtube"}
+          isOpen={isOpen}
+          videoId={videoLink?.split("/")?.[3]}
+          allowFullScreen={true}
+          ratio="16:19"
+          onClose={() => setOpen(false)}
+        />
       </Container>
     </div>
   );
