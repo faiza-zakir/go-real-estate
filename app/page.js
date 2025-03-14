@@ -110,9 +110,13 @@ const Home = () => {
         // content={pageData?.content?.banner}
         content={bannerData}
       />
-      <section className="form_mobile_view mt-60">
-        <Container>{showForm && <BannerForm />}</Container>
-      </section>
+      {showForm && (
+        <section className="form_mobile_view mt-60">
+          <Container>
+            <BannerForm />
+          </Container>
+        </section>
+      )}
       <div ref={ref} style={{ minHeight: "20px" }}></div>
       {inView ? (
         <>

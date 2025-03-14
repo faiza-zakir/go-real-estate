@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
@@ -7,6 +8,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import "./style.scss";
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <div className="mt-60 footer-area">
       <div className="ptb-60">
@@ -18,6 +20,8 @@ const Footer = () => {
                 alt="logo"
                 width={100}
                 height={100}
+                onClick={() => router.push("/")}
+                style={{ cursor: "pointer" }}
               />
             </Col>
             <Col xs={12} sm={6} md={6} lg>

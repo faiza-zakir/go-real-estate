@@ -90,7 +90,7 @@ const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
               )}
               {showForm ? null : (
                 <button
-                  className={`theme_btn mt-5 MobileBTNTHEME ${
+                  className={`theme_btn mt-3 MobileBTNTHEME ${
                     !btnText && "contact_btn"
                   }`}
                   onClick={() => setShowForm(true)}
