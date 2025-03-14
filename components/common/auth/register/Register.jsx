@@ -44,21 +44,19 @@ const Register = ({ show, handleClose }) => {
   const [loadingVerification, setLoadingVerification] = useState(false);
   const [loadingUploads, setLoadingUploads] = useState(false);
   const [errors, setErrors] = useState({});
-  // Create a reference to the hidden file input element
-  const hiddenFileInput = useRef(null);
-  const [uploadFile, setUploadFie] = useState([]);
+  // Create references to the hidden file input elements
+  const hiddenFileInputEmiratesId = useRef(null);
+  const hiddenFileInputLoremIpsum1 = useRef(null);
+  const hiddenFileInputLoremIpsum2 = useRef(null);
 
-  // Programatically click the hidden file input element
-  // when the Button component is clicked
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
-  };
-  const handleChange = (event) => {
-    let downloadFile = [...event.target.files];
-    let updatedFiles = downloadFile.map((x) => ({
-      image: x,
-    }));
-    setUploadFie(updatedFiles);
+  const handleFileChange = (event, fieldName) => {
+    const file = event.target.files[0]; // Get first selected file
+    if (file) {
+      setUploadsData((prev) => ({
+        ...prev,
+        [fieldName]: file, // Assign file to the corresponding field
+      }));
+    }
   };
 
   const handleRegisterChange = (e) => {
@@ -69,14 +67,6 @@ const Register = ({ show, handleClose }) => {
   const handleVerificationChange = (e) => {
     setVerificationData({
       ...verificationData,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
-
-  const handleUploadsChange = (e) => {
-    setUploadsData({
-      ...uploadsData,
       [e.target.name]: e.target.value,
     });
     setErrors({ ...errors, [e.target.name]: "" });
@@ -251,28 +241,24 @@ const Register = ({ show, handleClose }) => {
   };
   const handleUploadsSubmit = async (e) => {
     e.preventDefault();
-    const { emirates_id } = uploadsData;
+    const { emirates_id, lorem_ipsum1, lorem_ipsum2 } = uploadsData;
     const errors = {};
 
-    // Validation
-    if (uploadFile?.length == 0) {
-      errors.emirates_id = "Please upload your Emirates ID.";
-    }
+    if (!emirates_id) errors.emirates_id = "Please upload your Emirates ID.";
+    if (!lorem_ipsum1) errors.lorem_ipsum1 = "Please upload Lorem Ipsum 1.";
+    if (!lorem_ipsum2) errors.lorem_ipsum2 = "Please upload Lorem Ipsum 2.";
+
     // If there are errors, stop the process
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       return;
     }
 
-    let updatedUploadsData = { ...uploadsData };
-
     let imagesFormData = new FormData();
+    imagesFormData.append("emirates_id", emirates_id);
+    imagesFormData.append("lorem_ipsum1", lorem_ipsum1);
+    imagesFormData.append("lorem_ipsum2", lorem_ipsum2);
 
-    uploadFile.forEach((x) => {
-      imagesFormData.append("emirates_id[]", x?.image);
-    });
-
-    imagesFormData.append("data", JSON.stringify(updatedUploadsData));
     setLoadingUploads(true);
     PostUploadsFormData(imagesFormData);
   };
@@ -455,18 +441,13 @@ const Register = ({ show, handleClose }) => {
                     <Form.Label>Emirates ID</Form.Label>
                     <div
                       className="position-relative"
+                      onClick={() => hiddenFileInputEmiratesId.current.click()}
                       style={{ cursor: "pointer" }}
-                      onClick={handleClick}
                     >
                       <Form.Control
                         type="text"
-                        name="emirates_id"
                         readOnly
-                        value={
-                          uploadFile?.length > 0
-                            ? uploadFile?.[0]?.image?.name
-                            : "Upload"
-                        }
+                        value={uploadsData.emirates_id?.name || "Upload"}
                       />
                       <span className="position-absolute end-0 top-50 translate-middle-y me-3">
                         <MdOutlineFileUpload fontSize={20} />
@@ -474,11 +455,11 @@ const Register = ({ show, handleClose }) => {
                     </div>
                     <input
                       type="file"
-                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                      ref={hiddenFileInput}
-                      onChange={handleChange}
-                      style={{ display: "none" }}
                       name="emirates_id"
+                      accept=".pdf,.doc,.docx"
+                      ref={hiddenFileInputEmiratesId}
+                      onChange={(e) => handleFileChange(e, "emirates_id")}
+                      style={{ display: "none" }}
                     />
                     <p className="form_error_msg">{errors?.emirates_id}</p>
                   </Form.Group>
@@ -486,18 +467,13 @@ const Register = ({ show, handleClose }) => {
                     <Form.Label>Lorem Ipsum</Form.Label>
                     <div
                       className="position-relative"
+                      onClick={() => hiddenFileInputLoremIpsum1.current.click()}
                       style={{ cursor: "pointer" }}
-                      onClick={handleClick}
                     >
                       <Form.Control
                         type="text"
-                        name="lorem_ipsum1"
                         readOnly
-                        value={
-                          uploadFile?.length > 0
-                            ? uploadFile?.[0]?.image?.name
-                            : "Upload"
-                        }
+                        value={uploadsData.lorem_ipsum1?.name || "Upload"}
                       />
                       <span className="position-absolute end-0 top-50 translate-middle-y me-3">
                         <MdOutlineFileUpload fontSize={20} />
@@ -505,11 +481,11 @@ const Register = ({ show, handleClose }) => {
                     </div>
                     <input
                       type="file"
-                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                      ref={hiddenFileInput}
-                      onChange={handleChange}
-                      style={{ display: "none" }}
                       name="lorem_ipsum1"
+                      accept=".pdf,.doc,.docx"
+                      ref={hiddenFileInputLoremIpsum1}
+                      onChange={(e) => handleFileChange(e, "lorem_ipsum1")}
+                      style={{ display: "none" }}
                     />
                     <p className="form_error_msg">{errors?.lorem_ipsum1}</p>
                   </Form.Group>
@@ -517,33 +493,25 @@ const Register = ({ show, handleClose }) => {
                     <Form.Label>Lorem Ipsum</Form.Label>
                     <div
                       className="position-relative"
+                      onClick={() => hiddenFileInputLoremIpsum2.current.click()}
                       style={{ cursor: "pointer" }}
-                      onClick={handleClick}
                     >
                       <Form.Control
                         type="text"
-                        name="lorem_ipsum2"
                         readOnly
-                        value={
-                          uploadFile?.length > 0
-                            ? uploadFile?.[0]?.image?.name
-                            : "Upload"
-                        }
+                        value={uploadsData.lorem_ipsum2?.name || "Upload"}
                       />
-                      <span
-                        className="position-absolute end-0 top-50 translate-middle-y me-3"
-                        style={{ cursor: "pointer" }}
-                      >
+                      <span className="position-absolute end-0 top-50 translate-middle-y me-3">
                         <MdOutlineFileUpload fontSize={20} />
                       </span>
                     </div>
                     <input
                       type="file"
-                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                      ref={hiddenFileInput}
-                      onChange={handleChange}
-                      style={{ display: "none" }}
                       name="lorem_ipsum2"
+                      accept=".pdf,.doc,.docx"
+                      ref={hiddenFileInputLoremIpsum2}
+                      onChange={(e) => handleFileChange(e, "lorem_ipsum2")}
+                      style={{ display: "none" }}
                     />
                     <p className="form_error_msg">{errors?.lorem_ipsum2}</p>
                   </Form.Group>
