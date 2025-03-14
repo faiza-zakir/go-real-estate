@@ -61,14 +61,17 @@ const MainNavbar = () => {
             />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
-            <Nav.Link
-              as={Link}
-              href="#"
-              onClick={() => setShowLoginModal(true)}
-              className="nav-item theme_btn form_mobile_view"
-            >
-              Log In
-            </Nav.Link>
+            {(pathname === "/go-partners" || pathname === "/") && (
+              <Nav.Link
+                as={Link}
+                href="#"
+                onClick={() => setShowLoginModal(true)}
+                className="nav-item theme_btn form_mobile_view"
+              >
+                Log In
+              </Nav.Link>
+            )}
+
             <Navbar.Toggle
               aria-controls="offcanvasNavbar-expand-lg"
               onClick={() => setShowOffcanvas(true)} // Open the offcanvas on click
@@ -266,18 +269,22 @@ const MainNavbar = () => {
                 >
                   GO Partners
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  href="#"
-                  onClick={() => setShowLoginModal(true)}
-                  className="nav-item theme_btn form_desktop_view"
-                >
-                  Log In
-                </Nav.Link>
-                <Login
-                  show={showLoginModal}
-                  handleClose={() => setShowLoginModal(false)}
-                />
+                {(pathname === "/go-partners" || pathname === "/") && (
+                  <>
+                    <Nav.Link
+                      as={Link}
+                      href="#"
+                      onClick={() => setShowLoginModal(true)}
+                      className="nav-item theme_btn form_desktop_view"
+                    >
+                      Log In
+                    </Nav.Link>
+                    <Login
+                      show={showLoginModal}
+                      handleClose={() => setShowLoginModal(false)}
+                    />
+                  </>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
