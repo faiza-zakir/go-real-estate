@@ -23,6 +23,9 @@ const initialRegisterData = {
 const initialVerificationData = {
   code: "",
 };
+const initialOtpData = {
+  otp: "",
+};
 
 const initialUploadsData = {
   emirates_id: "",
@@ -33,15 +36,19 @@ const initialUploadsData = {
 const Register = ({ show, handleClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
-  const [step, setStep] = useState(1); // 1 for Register, 2 for Verification, 4 for Uploads
+  const [step, setStep] = useState(1); // 1 for Register, 2 for Email Verification, 3 for Phone Verification, 4 for Uploads
   const [registerData, setRegisterData] = useState(initialRegisterData);
   const [verificationData, setVerificationData] = useState(
     initialVerificationData
   );
+  const [OtpVerificationData, setOtpVerificationData] = useState({
+    initialOtpData,
+  });
   const [uploadsData, setUploadsData] = useState(initialUploadsData);
   const [mobileValue, setMobileValue] = useState("");
   const [loadingRegister, setLoadingRegister] = useState(false);
   const [loadingVerification, setLoadingVerification] = useState(false);
+  const [loadingOtpVerification, setLoadingOtpVerification] = useState(false);
   const [loadingUploads, setLoadingUploads] = useState(false);
   const [errors, setErrors] = useState({});
   // Create references to the hidden file input elements
@@ -72,6 +79,14 @@ const Register = ({ show, handleClose }) => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
+  const handleOtpVerificationChange = (e) => {
+    setOtpVerificationData({
+      ...OtpVerificationData,
+      [e.target.name]: e.target.value,
+    });
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
   // register form data
   const PostRegisterFormData = async (updatedRegisterData) => {
     try {
@@ -83,12 +98,12 @@ const Register = ({ show, handleClose }) => {
         password: updatedRegisterData?.password,
         verify_password: updatedRegisterData?.verify_password,
       };
-      setStep(2); // Move to verification step
+      setStep(2); // Move to email verification step
 
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
         setLoadingRegister(false);
-        setStep(2); // Move to verification step
+        setStep(2); // Move to email verification step
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -174,19 +189,19 @@ const Register = ({ show, handleClose }) => {
     setLoadingRegister(true);
     PostRegisterFormData(updatedRegisterData);
   };
-  // verification form data
+  // Email verification form data
   const PostVerificationFormData = async (updatedVerificationData) => {
     try {
       const payload = {
         code: updatedVerificationData?.code,
       };
-      setStep(4); // Move to uploads step
+      setStep(3); // Move to phone verification step
 
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
         toast.success("Verification Successful!");
         setLoadingVerification(false);
-        setStep(4); // Move to uploads step
+        setStep(3); // Move to phone verification step
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -213,6 +228,47 @@ const Register = ({ show, handleClose }) => {
     setLoadingVerification(true);
     PostVerificationFormData(updatedVerificationData);
   };
+
+  // Phone verification form data
+  const PostOtpVerificationFormData = async (updatedOtpVerificationData) => {
+    try {
+      const payload = {
+        otp: updatedOtpVerificationData?.otp,
+      };
+      setStep(4); // Move to uploads step
+
+      const response = await postLeadForm(payload);
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Verification Successful!");
+        setLoadingOtpVerification(false);
+        setStep(4); // Move to uploads step
+      }
+    } catch (error) {
+      console.error("Error posting Data:", error);
+      setLoadingOtpVerification(false);
+      toast.error("Something Went wrong!");
+    }
+  };
+  const handleOtpVerificationSubmit = async (e) => {
+    e.preventDefault();
+    const { otp } = OtpVerificationData;
+    const errors = {};
+
+    // Validation
+    if (!otp) {
+      errors.otp = "Please enter the OTP.";
+    }
+    // If there are errors, stop the process
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    let updatedOtpVerificationData = { ...OtpVerificationData };
+    setLoadingOtpVerification(true);
+    PostOtpVerificationFormData(updatedOtpVerificationData);
+  };
+
   // uploads form data
 
   const PostUploadsFormData = async (imagesFormData) => {
@@ -430,6 +486,36 @@ const Register = ({ show, handleClose }) => {
                     </button>
                     <button type="submit" className="theme_btn2">
                       {loadingVerification ? "Verifying..." : "Verify"}
+                    </button>
+                  </div>
+                </Form>
+              )}
+
+              {step === 3 && (
+                <Form onSubmit={handleOtpVerificationSubmit}>
+                  <Form.Group className="mb-4">
+                    <Form.Label>Phone Verification</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="otp"
+                      value={OtpVerificationData.otp}
+                      onChange={handleOtpVerificationChange}
+                      maxLength={6}
+                      inputMode="numeric"
+                      className="verification_input"
+                    />
+                    <p className="form_error_msg">{errors?.otp}</p>
+                  </Form.Group>
+                  <div className="d-flex align-items-center gap-2">
+                    <button
+                      type="button"
+                      className="theme_btn3"
+                      onClick={() => setStep(2)}
+                    >
+                      Back
+                    </button>
+                    <button type="submit" className="theme_btn2">
+                      {loadingOtpVerification ? "Verifying..." : "Verify"}
                     </button>
                   </div>
                 </Form>
