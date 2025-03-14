@@ -245,7 +245,7 @@ const BrochureForm = ({
           <input
             type="hidden"
             name="retURL"
-            value="https://newedge-realty-next.vercel.app/thankyou.html"
+            value="https://gogrouprealestate.vercel.app/thankyou.html"
           />
           {/* <input type="hidden" name="debug" value="1" />
       <input type="hidden" name="debugEmail" value="chetan@newedgerealty.in" /> */}

@@ -6,7 +6,7 @@ export async function generateMetadata() {
     description:
       "Stay updated with real estate blogs on market trends, in-depth analysis, and expert insights. Get valuable tips to navigate the property landscape with GO.",
     alternates: {
-      canonical: "https://newedge-realty-next.vercel.app/blogs",
+      canonical: "https://gogrouprealestate.vercel.app/blogs",
     },
   };
 }

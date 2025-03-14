@@ -7,7 +7,7 @@ export async function generateMetadata() {
     description:
       "Discover Global Opportunities Real Estate's clear and transparent refund policy. Learn how we ensure a seamless experience in real estate services, prioritizing customer satisfaction.",
     alternates: {
-      canonical: "https://newedge-realty-next.vercel.app/refund-policy",
+      canonical: "https://gogrouprealestate.vercel.app/refund-policy",
     },
   };
 }

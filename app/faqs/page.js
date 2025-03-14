@@ -7,7 +7,7 @@ export async function generateMetadata() {
     description:
       "Got questions about buying commercial real estate? Our FAQs provide quick answers on property for sale, financing options, zoning regulations, and the purchasing process.",
     alternates: {
-      canonical: "https://newedge-realty-next.vercel.app/faqs",
+      canonical: "https://gogrouprealestate.vercel.app/faqs",
     },
   };
 }
