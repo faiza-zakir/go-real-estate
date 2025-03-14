@@ -14,7 +14,7 @@ const Founder = ({ founderData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: founderData?.description }}
             />
-            <button className="theme_btn2 me-3">Learn More</button>
+            <button className="theme_btn2">Learn More</button>
           </Col>
           <Col lg={6}>
             <figure>
