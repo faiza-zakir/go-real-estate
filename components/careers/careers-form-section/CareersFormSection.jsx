@@ -173,7 +173,7 @@ const CareersFormSection = () => {
           <Col lg={6}>
             <figure>
               <Image
-                src="/assets/contact/contactImg.jpg"
+                src="/assets/contact/contactImg.webp"
                 layout="fill"
                 objectFit="cover"
                 alt="Real Estate Office Careers India | Global Opportunities Real Estate"
