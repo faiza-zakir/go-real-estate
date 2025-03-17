@@ -34,13 +34,7 @@ const ContactInfoSection = ({ infoData }) => {
               {/* <a href={`tel:${infoData?.phone?.replace(/\s+/g, "")}`}>
                 {infoData?.phone}
               </a> */}
-              <a
-                href={"https://wa.me/15613775509"}
-                target={"_blank"}
-                rel="noopener noreferrer"
-              >
-                +1(561) 377-5509
-              </a>
+              <a href="tel:+97143215883">+971 4 321 5883</a>
             </div>
           </Col>
           <Col md={6} lg={4}>
