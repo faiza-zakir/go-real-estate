@@ -10,7 +10,7 @@ import ContactSection from "@/components/home/contact-section/ContactSection";
 import { goCommunityData } from "@/lib/goCommunityData";
 
 const PageContent = () => {
-  const { about } = goCommunityData;
+  const { about, faqs } = goCommunityData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +49,7 @@ const PageContent = () => {
         bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
       />
       <AboutCommunity aboutData={about} />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
       <ContactSection />
     </>
   );

@@ -9,6 +9,10 @@
     padding: 0 1rem;
   }
   .content_sec {
+    width: 60%;
+    @media (max-width: 776px) {
+      width: 100%;
+    }
     .main_sec_heading {
       color: #fff;
       width: 60%;

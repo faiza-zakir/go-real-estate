@@ -3,9 +3,9 @@ import PageContent from "./pageContent";
 export async function generateMetadata() {
   return {
     title:
-      "Contact real estate agents India| Global Opportunities Real Estate| Property India",
+      "Contact GO Real Estate at our Real Estate Office Dubai",
     description:
-      "Contact GO real estate agents India for reliable real estate services in India. Connect with experienced agents and offices to efficiently buy, sell, or rent properties.",
+      "Get in touch with GO Real Estate, a trusted real estate office in Dubai. Schedule an appointment today for expert guidance on your property investments. Join now",
     alternates: {
       canonical: "https://gogrouprealestate.vercel.app/contact",
     },

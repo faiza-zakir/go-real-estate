@@ -49,6 +49,7 @@ const Home = () => {
     appointment,
     invest_places,
     why_partners,
+    faqs
   } = homeData;
   // const [residentialProjects, setResidentialProjects] = useState([]);
   // const [commercialProjects, setCommercialProjects] = useState([]);
@@ -154,7 +155,7 @@ const Home = () => {
             isLoading={isLoading}
           />
           <WhyPartnerSection whyPartnersData={why_partners} />
-          <FAQSection />
+          <FAQSection faqsData={faqs} />
           <ContactSection />
         </>
       ) : null}

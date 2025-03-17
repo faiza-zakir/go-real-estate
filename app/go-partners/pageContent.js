@@ -24,6 +24,7 @@ const PageContent = () => {
     videos,
     industry_reports,
     blogs,
+    faqs,
   } = goPartnersData;
 
   // const [pageData, setPageData] = useState({});
@@ -69,7 +70,7 @@ const PageContent = () => {
       <VideosSlider videoData={videos} />
       <IndustryReportsSlider industryReportsData={industry_reports} />
       <BlogSection blogsData={blogs} />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
       <ContactSection />
     </>
   );

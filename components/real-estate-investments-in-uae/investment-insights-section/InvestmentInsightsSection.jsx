@@ -23,8 +23,13 @@ const InvestmentInsightsSection = ({ investmentInsightsData }) => {
               <h2 className="main_sec_heading">
                 {investmentInsightsData?.title}
               </h2>
-              <p className="para_comm">{investmentInsightsData?.description}</p>
-              <button className="theme_btn2 me-3">Learn More</button>
+              <div
+                className="general-details mb-4"
+                dangerouslySetInnerHTML={{
+                  __html: investmentInsightsData?.description,
+                }}
+              />
+              <button className="theme_btn2">Learn More</button>
             </div>
           </Col>
           <Col lg={6}>

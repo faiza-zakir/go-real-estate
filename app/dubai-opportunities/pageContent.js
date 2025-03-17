@@ -11,7 +11,8 @@ import FAQSection from "@/components/home/faq-section/FAQSection";
 import { dubaiOpportunitiesData } from "@/lib/dubaiOpportunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends } = dubaiOpportunitiesData;
+  const { about, why_invest, development_trends, faqs } =
+    dubaiOpportunitiesData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +59,7 @@ const PageContent = () => {
         devTrendsData={development_trends}
         title="Dubai Development Trends"
       />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
     </>
   );
 };

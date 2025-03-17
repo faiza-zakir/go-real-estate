@@ -7,6 +7,29 @@ import FAQSection from "@/components/home/faq-section/FAQSection";
 // import { useEffect, useState } from "react";
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 
+const faqs = [
+  {
+    id: 1,
+    question: "What is Broker?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+  },
+  {
+    id: 2,
+    question: "Can i pay my own taxes and insurance?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+  },
+  {
+    id: 3,
+    question: "Can a home depreciate in value?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+  },
+  {
+    id: 4,
+    question: "Is an old home as good a value as a new home?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+  },
+];
+
 const PageContent = () => {
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +70,7 @@ const PageContent = () => {
       // infoData={pageData?.content?.info}
       />
       <CareersFormSection />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
     </>
   );
 };

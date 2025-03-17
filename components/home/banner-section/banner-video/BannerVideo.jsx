@@ -68,7 +68,7 @@ const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
               <h1>
                 {content?.title
                   ? content?.title
-                  : "Discover Exquisite Villas & Apartments In The Heart Of UAE With Go Real Estate"}
+                  : "Unlock Exclusive Investment Opportunities in Dubai's Thriving Real Estate Market"}
               </h1>
               {!btnText && (
                 <button

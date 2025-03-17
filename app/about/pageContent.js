@@ -27,6 +27,7 @@ const PageContent = () => {
     philosophy,
     partners,
     testimonials,
+    faqs,
   } = aboutData;
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -91,7 +92,7 @@ const PageContent = () => {
       />
       <Partners partnersData={partners} />
       <Testimonials testimonialsData={testimonials} />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
     </>
   );
 };

@@ -27,6 +27,7 @@ const PageContent = () => {
     industry_reports,
     case_studies,
     why_invest,
+    faqs,
   } = educationalPortalData;
 
   const [showForm, setShowForm] = useState(false);
@@ -71,7 +72,7 @@ const PageContent = () => {
         whyInvestData={why_invest}
         title="Why Invest In Dubai Real Estate"
       />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
       <ContactSection />
     </>
   );

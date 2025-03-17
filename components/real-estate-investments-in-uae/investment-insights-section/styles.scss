@@ -7,9 +7,6 @@
     @media (max-width: 767px) {
       padding-left: 1rem;
     }
-    .para_comm {
-      margin-bottom: 2rem;
-    }
   }
   figure {
     position: relative;
@@ -31,6 +28,7 @@
     overflow: visible;
   }
   .process_item {
+    width: 90%;
     min-width: 300px;
     margin-top: -180px;
     margin-right: 20px;

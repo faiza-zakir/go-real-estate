@@ -2,9 +2,9 @@ import PageContent from "./pageContent";
 
 export async function generateMetadata() {
   return {
-    title: "GO Property Management Services | Trusted Real Estate Agency",
+    title: "Real Estate Investment in UAE | GO Real Estate Dubai",
     description:
-      "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
+      "Explore lucrative investment in Dubai real estate with GO Real Estate. Secure high returns in UAE’s booming property market with expert guidance. Jon us today!",
     alternates: {
       canonical:
         "https://gogrouprealestate.vercel.app/real-estate-investments-in-uae",

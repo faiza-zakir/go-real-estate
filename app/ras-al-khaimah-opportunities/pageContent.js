@@ -11,7 +11,7 @@ import FAQSection from "@/components/home/faq-section/FAQSection";
 import { rakOpportunitiesData } from "@/lib/rakOpportunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends } = rakOpportunitiesData;
+  const { about, why_invest, development_trends, faqs } = rakOpportunitiesData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +58,7 @@ const PageContent = () => {
         devTrendsData={development_trends}
         title="RAK Development Trends"
       />
-      <FAQSection />
+      <FAQSection faqsData={faqs} />
     </>
   );
 };
