@@ -16,8 +16,7 @@ const ContactInfoSection = ({ infoData }) => {
               <MdOutlineMailOutline className="icon-style" />
               <h3 className="sub_heading">Email</h3>
               <p className="para_comm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
+                Reach out to us for any inquiries or support
               </p>
               {/* <a href={`mailto:${infoData?.email}`}>{infoData?.email}</a> */}
               <a href="mailto:info@gogrouprealestate.com">
@@ -30,8 +29,7 @@ const ContactInfoSection = ({ infoData }) => {
               <FiPhone className="icon-style" />
               <h3 className="sub_heading">Phone</h3>
               <p className="para_comm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
+                Call us for immediate assistance and information.
               </p>
               {/* <a href={`tel:${infoData?.phone?.replace(/\s+/g, "")}`}>
                 {infoData?.phone}
@@ -50,8 +48,7 @@ const ContactInfoSection = ({ infoData }) => {
               <GrLocation className="icon-style" />
               <h3 className="sub_heading">Office</h3>
               <p className="para_comm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
+                Visit us for personalized service and consultations:
               </p>
               <a
                 href="https://www.google.com/maps/place/Dubai+-+United+Arab+Emirates/@25.0762804,54.8978044,10z/data=!3m1!4b1!4m6!3m5!1s0x3e5f43496ad9c645:0xbde66e5084295162!8m2!3d25.2048493!4d55.2707828!16zL20vMDFmMDhy?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
