@@ -12,7 +12,7 @@ const faqs = [
     id: 1,
     question:
       "How can I contact Global Opportunities Real Estate for inquiries?",
-    answer: `<p>You can reach out to us through our <strong>real estate office in Dubai</strong> via phone, email, or our online contact form. Whether you need assistance with <strong>real estate consultation services</strong> or general <strong>real estate inquiries in Dubai,</strong> our dedicated team is here to help.</p>`,
+    answer: `<p>You can reach out to us through our <strong>real estate office in Dubai</strong> via phone, email, or our online contact form. Whether you need assistance with <strong>real estate consultation services</strong> or general <strong>real estate inquiries in Dubai</strong>, our dedicated team is here to help.</p>`,
   },
   {
     id: 2,

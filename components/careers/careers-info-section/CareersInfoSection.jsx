@@ -8,12 +8,12 @@ const CareersInfoSection = ({ infoData }) => {
     {
       id: 1,
       title: "Conduct Thorough Due Diligence",
-      description: `<p>Before pursuing <strong>real estate careers in Dubai,</strong> it is crucial to research market trends, legal requirements, and property valuations to make informed decisions. Understanding the evolving landscape of <strong>real estate employment opportunities</strong> ensures long-term success in the industry.</p>`,
+      description: `<p>Before pursuing <strong>real estate careers in Dubai</strong>, it is crucial to research market trends, legal requirements, and property valuations to make informed decisions. Understanding the evolving landscape of <strong>real estate employment opportunities</strong> ensures long-term success in the industry.</p>`,
     },
     {
       id: 2,
       title: "Understand the Financing Options",
-      description: `<p>Navigating financing options is essential for those seeking <strong>real estate jobs in the UAE,</strong> as investment strategies and mortgage terms vary. Whether working as a property consultant or in a <strong>real estate sales career,</strong> knowledge of financial planning is key to securing profitable deals.</p>`,
+      description: `<p>Navigating financing options is essential for those seeking <strong>real estate jobs in the UAE</strong>, as investment strategies and mortgage terms vary. Whether working as a property consultant or in a <strong>real estate sales career</strong>, knowledge of financial planning is key to securing profitable deals.</p>`,
     },
     {
       id: 3,
@@ -23,7 +23,7 @@ const CareersInfoSection = ({ infoData }) => {
     {
       id: 4,
       title: "Invest with a Long-Term Perspective",
-      description: `<p>A successful career in <strong>real estate career opportunities</strong> requires a forward-thinking approach, focusing on sustainable investments and steady market growth. Whether considering <strong>real estate agent positions</strong> or <strong>careers in property management,</strong> long-term vision is vital for stability and profitability.</p>`,
+      description: `<p>A successful career in <strong>real estate career opportunities</strong> requires a forward-thinking approach, focusing on sustainable investments and steady market growth. Whether considering <strong>real estate agent positions</strong> or <strong>careers in property management</strong>, long-term vision is vital for stability and profitability.</p>`,
     },
   ];
   return (

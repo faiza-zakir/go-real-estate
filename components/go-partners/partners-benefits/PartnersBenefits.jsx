@@ -43,7 +43,7 @@ const PartnersBenefits = ({ benefitsData }) => {
         } else {
           scrollContainer.scrollLeft += 2;
         }
-      }, 15);
+      }, 20);
     };
 
     if (isInView) {
@@ -62,7 +62,10 @@ const PartnersBenefits = ({ benefitsData }) => {
           <div className="scroll-content">
             <div className="why-choose">
               <h2 className="main_sec_heading">{benefitsData?.title}</h2>
-              <p className="para_comm">{benefitsData?.description}</p>
+              <div
+                className="general-details mb-4"
+                dangerouslySetInnerHTML={{ __html: benefitsData?.description }}
+              />
               <button className="theme_btn2 me-3">Arabic Flyer</button>
               <button className="theme_btn3">English Flyer</button>
             </div>
