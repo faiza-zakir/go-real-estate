@@ -119,7 +119,11 @@ const BannerForm = () => {
       const response = await postLeadForm(payload);
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
+        toast.success(
+          "We have received your query. Our team will get in touch with you shortly."
+        );
         setFormValues({ ...initailObject });
+        setMobileValue("");
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -252,7 +256,7 @@ const BannerForm = () => {
         <Col sm={12}>
           <Form.Group controlId="purchase_objective" className="mb-3">
             <Form.Select
-              name="Purchase Objective"
+              name="purchase_objective"
               value={formValues.purchase_objective}
               onChange={handleInputChange}
             >

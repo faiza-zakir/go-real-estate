@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 // import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 // api
-import { postLeadForm } from "@/app/apis/commonApi";
+import { postContactForm } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -38,7 +38,7 @@ const ContactFormSection = () => {
   //   setErrors({ ...errors, captcha: "" }); // Clear CAPTCHA error on success
   // };
 
-  const PostLeadFormData = async (updatedData) => {
+  const PostContactFormData = async (updatedData) => {
     try {
       const payload = {
         full_name: updatedData?.full_name,
@@ -47,10 +47,14 @@ const ContactFormSection = () => {
         message: updatedData?.message,
       };
 
-      const response = await postLeadForm(payload);
+      const response = await postContactForm(payload);
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
+        toast.success(
+          "We have received your query. Our team will get in touch with you shortly."
+        );
         setFormValues({ ...initailObject });
+        setMobileValue("");
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -86,7 +90,7 @@ const ContactFormSection = () => {
 
     let updatedData = { ...formValues, phone: mobileValue };
     setLoading(true);
-    PostLeadFormData(updatedData);
+    PostContactFormData(updatedData);
   };
 
   return (

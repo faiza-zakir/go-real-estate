@@ -1,9 +1,15 @@
 import API from "./config";
 
+// Contact Form
+
+export const postContactForm = (formData) => {
+  return API.post("/Contact-form", formData);
+};
+
 // Lead Form
 
 export const postLeadForm = (formData) => {
-  return API.post("/forms", formData);
+  return API.post("/banner-forms", formData);
 };
 
 // Project Inner API
