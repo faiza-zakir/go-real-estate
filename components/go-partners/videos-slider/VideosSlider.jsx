@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { Container } from "react-bootstrap";
+import ModalVideo from "react-modal-video";
 import Slider from "react-slick";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaPlay } from "react-icons/fa";
 // css
 import "./style.scss";
 
@@ -39,6 +40,8 @@ const settings = {
 const VideosSlider = ({ videoData, isLoading }) => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isOpen, setOpen] = useState(false);
+  const [videoLink, setVideoLink] = useState("");
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -115,6 +118,15 @@ const VideosSlider = ({ videoData, isLoading }) => {
                       objectFit="cover"
                       alt={video?.title}
                     />
+                    <div
+                      className="icon_wrape"
+                      onClick={() => {
+                        setVideoLink(video?.video_url);
+                        setOpen(true);
+                      }}
+                    >
+                      <FaPlay fontSize={20} className="icon_style" />
+                    </div>
                   </figure>
                   <div className="content_sec">
                     <h3 className="sub_heading">{video?.title}</h3>
@@ -130,6 +142,14 @@ const VideosSlider = ({ videoData, isLoading }) => {
             <NextArrow />
           </div>
         )}
+        <ModalVideo
+          channel={"youtube"}
+          isOpen={isOpen}
+          videoId={videoLink?.split("/")?.[3]}
+          allowFullScreen={true}
+          ratio="16:9"
+          onClose={() => setOpen(false)}
+        />
       </Container>
     </div>
   );

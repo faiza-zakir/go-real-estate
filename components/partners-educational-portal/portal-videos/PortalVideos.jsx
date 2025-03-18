@@ -2,9 +2,8 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import { Container } from "react-bootstrap";
 import ModalVideo from "react-modal-video";
-import { FaPlay } from "react-icons/fa";
 import Slider from "react-slick";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaPlay } from "react-icons/fa";
 // css
 import "./style.scss";
 
