@@ -15,7 +15,10 @@ const DevelopmentTrends = ({ title, devTrendsData }) => {
                 <Accordion.Item eventKey={i + 1} key={item?.id}>
                   <Accordion.Header>{item?.title}</Accordion.Header>
                   <Accordion.Body>
-                    <div>{item?.description}</div>
+                    <div
+                      className="general-details"
+                      dangerouslySetInnerHTML={{ __html: item?.description }}
+                    />
                   </Accordion.Body>
                 </Accordion.Item>
               ))}

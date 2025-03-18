@@ -3,9 +3,9 @@ import PageContent from "./pageContent";
 export async function generateMetadata() {
   return {
     title:
-      "Careers real estate agents India| Global Opportunities Real Estate| Property India",
+      "Real Estate Careers in Dubai | GO Real Estate Jobs",
     description:
-      "Careers GO real estate agents India for reliable real estate services in India. Connect with experienced agents and offices to efficiently buy, sell, or rent properties.",
+      "Explore exciting real estate careers in Dubai with GO Real Estate. Join our team of experts and grow your career in the thriving UAE property market. Apply today!",
     alternates: {
       canonical: "https://gogrouprealestate.vercel.app/careers",
     },

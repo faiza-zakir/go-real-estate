@@ -52,11 +52,11 @@ const PageContent = () => {
       <AboutOpportunity aboutData={about} />
       <WhyInvestSlider
         whyInvestData={why_invest}
-        title="Why Invest In RAK Real Estate"
+        title="Why Invest in Ras Al Khaimah Real Estate?"
       />
       <DevelopmentTrends
         devTrendsData={development_trends}
-        title="RAK Development Trends"
+        title="Ras Al Khaimah Development Trends"
       />
       <FAQSection faqsData={faqs} />
     </>

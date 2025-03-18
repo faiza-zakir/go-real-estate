@@ -39,7 +39,9 @@
       font-size: 16px;
       line-height: 160%;
       padding: 1rem 0;
-      text-align: justify;
+      p {
+        margin: 0;
+      }
     }
   }
 }

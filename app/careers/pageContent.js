@@ -10,23 +10,25 @@ import FAQSection from "@/components/home/faq-section/FAQSection";
 const faqs = [
   {
     id: 1,
-    question: "What is Broker?",
-    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+    question: "What are the best real estate jobs in the UAE for beginners?",
+    answer: `<p>Entry-level roles such as <strong>real estate agent positions</strong> or assistant property consultants provide excellent opportunities for newcomers to gain experience in the industry.</p>`,
   },
   {
     id: 2,
-    question: "Can i pay my own taxes and insurance?",
-    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+    question: "How can I find real estate job vacancies in Dubai?",
+    answer: `<p>Many leading firms post <strong>real estate job openings in Dubai</strong> on online job portals, company websites, and networking platforms, making it easy to explore available opportunities.</p>`,
   },
   {
     id: 3,
-    question: "Can a home depreciate in value?",
-    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+    question:
+      "What skills are required for a successful career in real estate employment in Dubai?",
+    answer: `<p>Strong negotiation skills, market knowledge, and excellent communication abilities are essential for thriving in <strong>real estate career paths</strong> and securing high-value deals.</p>`,
   },
   {
     id: 4,
-    question: "Is an old home as good a value as a new home?",
-    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.`,
+    question:
+      "Are there opportunities for career growth in real estate career opportunities?",
+    answer: `<p>Yes, professionals can advance from junior <strong>real estate agent positions</strong> to senior management roles, such as investment advisors or directors, by gaining experience and building a strong network.</p>`,
   },
 ];
 

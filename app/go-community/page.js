@@ -2,9 +2,9 @@ import PageContent from "./pageContent";
 
 export async function generateMetadata() {
   return {
-    title: "GO Property Management Services | Trusted Real Estate Agency",
+    title: "GO Community | Global Opportunities Real Estate (GO Real Estate)",
     description:
-      "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
+      "Join the GO Community at Global Opportunities Real Estate, where investors and homeowners connect, share insights, and explore the best real estate opportunities.",
     alternates: {
       canonical: "https://gogrouprealestate.vercel.app/go-community",
     },

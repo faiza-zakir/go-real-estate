@@ -2,9 +2,9 @@ import PageContent from "./pageContent";
 
 export async function generateMetadata() {
   return {
-    title: "GO Property Management Services | Trusted Real Estate Agency",
+    title: "Abu Dhabi Property Market | GO Real Estate Investment",
     description:
-      "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
+      "Explore Abu Dhabi's property market with GO Real Estate. Discover lucrative investment opportunities in a stable, growing market with high returns. Join us now",
     alternates: {
       canonical: "https://gogrouprealestate.vercel.app/abu-dhabi-opportunities",
     },

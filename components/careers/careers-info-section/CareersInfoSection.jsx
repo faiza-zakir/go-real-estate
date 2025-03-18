@@ -7,23 +7,23 @@ const CareersInfoSection = ({ infoData }) => {
   const careersInfoData = [
     {
       id: 1,
-      question: "Conduct Thorough Due Diligence",
-      answer: `Ensure you perform comprehensive research on the land’s history, current status, and any potential future changes. This will help you avoid surprises and make a well-informed decision.`,
+      title: "Conduct Thorough Due Diligence",
+      description: `<p>Before pursuing <strong>real estate careers in Dubai,</strong> it is crucial to research market trends, legal requirements, and property valuations to make informed decisions. Understanding the evolving landscape of <strong>real estate employment opportunities</strong> ensures long-term success in the industry.</p>`,
     },
     {
       id: 2,
-      question: "Understand the Financing Options",
-      answer: `Ensure you perform comprehensive research on the land’s history, current status, and any potential future changes. This will help you avoid surprises and make a well-informed decision.`,
+      title: "Understand the Financing Options",
+      description: `<p>Navigating financing options is essential for those seeking <strong>real estate jobs in the UAE,</strong> as investment strategies and mortgage terms vary. Whether working as a property consultant or in a <strong>real estate sales career,</strong> knowledge of financial planning is key to securing profitable deals.</p>`,
     },
     {
       id: 3,
-      question: "Hire Legal Expertise",
-      answer: `Ensure you perform comprehensive research on the land’s history, current status, and any potential future changes. This will help you avoid surprises and make a well-informed decision.`,
+      title: "Hire Legal Expertise",
+      description: `<p>Professionals in <strong>property consultant jobs</strong> must work closely with legal advisors to ensure compliance with UAE property laws and regulations. Partnering with experts can safeguard investments and enhance credibility in <strong>real estate employment opportunities.</strong></p>`,
     },
     {
       id: 4,
-      question: "Invest with a Long-Term Perspective",
-      answer: `Ensure you perform comprehensive research on the land’s history, current status, and any potential future changes. This will help you avoid surprises and make a well-informed decision.`,
+      title: "Invest with a Long-Term Perspective",
+      description: `<p>A successful career in <strong>real estate career opportunities</strong> requires a forward-thinking approach, focusing on sustainable investments and steady market growth. Whether considering <strong>real estate agent positions</strong> or <strong>careers in property management,</strong> long-term vision is vital for stability and profitability.</p>`,
     },
   ];
   return (
@@ -46,9 +46,12 @@ const CareersInfoSection = ({ infoData }) => {
             <Accordion defaultActiveKey={1} flush>
               {careersInfoData?.map((item, i) => (
                 <Accordion.Item eventKey={i + 1} key={item?.id}>
-                  <Accordion.Header>{item?.question}</Accordion.Header>
+                  <Accordion.Header>{item?.title}</Accordion.Header>
                   <Accordion.Body>
-                    <div>{item?.answer}</div>
+                    <div
+                      className="general-details"
+                      dangerouslySetInnerHTML={{ __html: item?.description }}
+                    />
                   </Accordion.Body>
                 </Accordion.Item>
               ))}

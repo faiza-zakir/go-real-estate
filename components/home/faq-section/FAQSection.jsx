@@ -23,7 +23,10 @@ const FAQSection = ({ faqsData }) => {
             <Accordion.Item eventKey={i + 1} key={item?.id}>
               <Accordion.Header>{item?.question}</Accordion.Header>
               <Accordion.Body>
-                <div>{item?.answer}</div>
+                <div
+                  className="general-details"
+                  dangerouslySetInnerHTML={{ __html: item?.answer }}
+                />
               </Accordion.Body>
             </Accordion.Item>
           ))}

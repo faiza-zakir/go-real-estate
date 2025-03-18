@@ -53,7 +53,7 @@ const PageContent = () => {
       <AboutOpportunity aboutData={about} />
       <WhyInvestSlider
         whyInvestData={why_invest}
-        title="Why Invest In Abu Dhabi Real Estate"
+        title="Why Invest In Abu Dhabi Real Estate?"
       />
       <DevelopmentTrends
         devTrendsData={development_trends}
