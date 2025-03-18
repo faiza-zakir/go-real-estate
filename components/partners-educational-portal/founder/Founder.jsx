@@ -10,6 +10,15 @@ const Founder = ({ founderData }) => {
   const [isOpen, setOpen] = useState(false);
   const [videoLink, setVideoLink] = useState("");
 
+  const downloadFile = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="founder_sec mt-60">
       <Container>
@@ -20,7 +29,16 @@ const Founder = ({ founderData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: founderData?.description }}
             />
-            <button className="theme_btn2">Learn More</button>
+            <button
+              className="theme_btn2"
+              onClick={() =>
+                downloadFile(
+                  "https://gogrouprealestate.com/webinars/wp-content/uploads/2024/05/GO-Group-Management.pdf"
+                )
+              }
+            >
+              Learn More
+            </button>
           </Col>
           <Col lg={6}>
             <figure>
@@ -52,7 +70,7 @@ const Founder = ({ founderData }) => {
           isOpen={isOpen}
           videoId={videoLink?.split("/")?.[3]}
           allowFullScreen={true}
-          ratio="16:19"
+          ratio="16:9"
           onClose={() => setOpen(false)}
         />
       </Container>

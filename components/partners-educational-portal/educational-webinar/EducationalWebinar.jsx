@@ -148,8 +148,18 @@ const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
                     <p className="para_comm">Date: {item?.date}</p>
                     <p className="para_comm m-0">Time: {item?.time}</p>
                     <div className="d-flex justify-content-center align-items-center gap-3 mt-3 slider_btn">
-                      <button className="theme_btn3">Registration Link</button>
-                      <button className="theme_btn2">View Flyer</button>
+                      <button
+                        className="theme_btn3"
+                        onClick={() => downloadFile(item?.registration_link)}
+                      >
+                        Registration Link
+                      </button>
+                      <button
+                        className="theme_btn2"
+                        onClick={() => downloadFile(item?.flyer_url)}
+                      >
+                        View Flyer
+                      </button>
                     </div>
                   </div>
                 </div>

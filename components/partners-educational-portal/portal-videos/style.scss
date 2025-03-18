@@ -36,6 +36,24 @@
         object-fit: cover;
       }
     }
+    .icon_wrape {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem;
+      border-radius: 50%;
+      z-index: 1;
+      display: flex;
+      justify-self: center;
+      align-items: center;
+      cursor: pointer;
+      .icon_style {
+        color: #fff;
+      }
+    }
     .content_sec {
       position: absolute;
       z-index: 2;
