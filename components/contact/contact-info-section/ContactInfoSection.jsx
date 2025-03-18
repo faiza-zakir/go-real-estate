@@ -45,23 +45,27 @@ const ContactInfoSection = ({ infoData }) => {
                 Visit us for personalized service and consultations:
               </p>
               <a
-                href="https://www.google.com/maps/place/Dubai+-+United+Arab+Emirates/@25.0762804,54.8978044,10z/data=!3m1!4b1!4m6!3m5!1s0x3e5f43496ad9c645:0xbde66e5084295162!8m2!3d25.2048493!4d55.2707828!16zL20vMDFmMDhy?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+                href="https://www.google.com/maps/place/11440+Okeechobee+Blvd+%23203,+Royal+Palm+Beach,+FL+33411,+USA/@26.7055034,-80.2236385,17z/data=!3m1!4b1!4m5!3m4!1s0x88d92efa87c90dc9:0x99f0bf54e79f3e7b!8m2!3d26.7055034!4d-80.2236385?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {/* {infoData?.address} */}
-                <strong>US Office:</strong> 11440 Okeechobee Blvd, Suite 203,
-                Royal Palm Beach, FL 33411
+                US Office:{" "}
+                <span style={{ fontWeight: "400" }}>
+                  11440 Okeechobee Blvd, Suite 203, Royal Palm Beach, FL 33411
+                </span>
               </a>
               <br />
               <a
-                href="https://www.google.com/maps/place/Dubai+-+United+Arab+Emirates/@25.0762804,54.8978044,10z/data=!3m1!4b1!4m6!3m5!1s0x3e5f43496ad9c645:0xbde66e5084295162!8m2!3d25.2048493!4d55.2707828!16zL20vMDFmMDhy?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+                href="https://www.google.com/maps/place/B2B+Tower/@25.1912682,55.2827183,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f68248ccaa99b:0x467fdf5f16bdf75b!8m2!3d25.1912682!4d55.2852986!16s%2Fm%2F03d2bqw?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {/* {infoData?.address} */}
-                <strong>UAE Office:</strong> Office 1612 - B2B Tower, Business
-                Bay, Dubai
+                UAE Office:{" "}
+                <span style={{ fontWeight: "400" }}>
+                  Office 1612 - B2B Tower, Business Bay, Dubai
+                </span>
               </a>
             </div>
           </Col>

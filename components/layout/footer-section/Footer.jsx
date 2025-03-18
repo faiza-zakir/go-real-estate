@@ -16,12 +16,17 @@ const Footer = () => {
           <Row className="gy-5 gy-lg-0">
             <Col sm={12} md={6} lg>
               <Image
-                src="/assets/logo/logo.svg"
+                src="/assets/logo/clrlogo.png"
                 alt="logo"
                 width={100}
-                height={100}
+                height={110}
                 onClick={() => router.push("/")}
-                style={{ cursor: "pointer" }}
+                style={{
+                  cursor: "pointer",
+                  background: "#fff",
+                  borderRadius: "5px",
+                  padding: "0.5rem",
+                }}
               />
             </Col>
             <Col xs={12} sm={6} md={6} lg>
