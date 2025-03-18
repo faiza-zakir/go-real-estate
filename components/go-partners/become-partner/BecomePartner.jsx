@@ -1,9 +1,14 @@
+import { useState } from "react";
 import Image from "next/image";
 import { Row, Col, Container } from "react-bootstrap";
+import Register from "@/components/common/auth/register/Register";
 // css
 import "./styles.scss";
+import Login from "@/components/common/auth/login/Login";
 
 const BecomePartner = ({ aboutData }) => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   return (
     <div className="become_partner_sec mt-60">
       <Container>
@@ -29,9 +34,18 @@ const BecomePartner = ({ aboutData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
             />
-            <button className="theme_btn2 me-3">Register Now</button>
+            <button
+              className="theme_btn2 me-3"
+              onClick={() => setShowLoginModal(true)}
+            >
+              Register Now
+            </button>
           </Col>
         </Row>
+        <Login
+          show={showLoginModal}
+          handleClose={() => setShowLoginModal(false)}
+        />
       </Container>
     </div>
   );
