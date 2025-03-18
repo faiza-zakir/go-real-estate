@@ -40,6 +40,15 @@ const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const downloadFile = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const nextSlide = () => {
     if (sliderRef.current) {
       sliderRef.current.slickNext();
@@ -84,8 +93,26 @@ const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
         <div className="header_wrap">
           <h2 className="main_sec_heading">Educational Webinar</h2>
           <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-            <button className="theme_btn3">Download Flyer</button>
-            <button className="theme_btn2">Download Brochure</button>
+            <button
+              className="theme_btn3"
+              onClick={() =>
+                downloadFile(
+                  "https://gogrouprealestate.com/webinars/wp-content/uploads/2024/05/GO-Real-Estate.pdf"
+                )
+              }
+            >
+              Download Flyer
+            </button>
+            <button
+              className="theme_btn2"
+              onClick={() =>
+                downloadFile(
+                  "https://gogrouprealestate.com/webinars/wp-content/uploads/2024/05/GO-Real-Estate-Brochure_compressed-1.pdf"
+                )
+              }
+            >
+              Download Brochure
+            </button>
           </div>
         </div>
         {isLoading ? (
