@@ -6,7 +6,7 @@ import moment from "moment";
 import { Container } from "react-bootstrap";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // api
-// import { fetchblogsData } from "@/app/apis/commonApi";
+import { fetchblogsData } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -44,24 +44,24 @@ const BlogSection = ({ blogsData }) => {
   const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
-  // const [blogsData, setBlogsData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [blogsData, setBlogsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchBlogListData = async () => {
-  //     try {
-  //       setIsLoading(true); // Show the loader
-  //       const { data } = await fetchblogsData();
-  //       setBlogsData(data?.slice(0, 5));
-  //     } catch (error) {
-  //       console.error("Error fetching Data:", error);
-  //     } finally {
-  //       setIsLoading(false); // Hide the loader
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchBlogListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fetchblogsData();
+        setBlogsData(data?.slice(0, 5));
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
 
-  //   fetchBlogListData();
-  // }, []);
+    fetchBlogListData();
+  }, []);
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -111,53 +111,43 @@ const BlogSection = ({ blogsData }) => {
             </div>
           )}
         </div>
-        {/* {isLoading ? (
+        {isLoading ? (
           <p className="para_comm text-center">loading...</p>
-        ) : ( */}
-        <Slider
-          {...settings}
-          ref={sliderRef}
-          afterChange={(index) => setCurrentSlide(index)}
-        >
-          {[1, 2, 3, 4, 5, 6]?.map((item, i) => (
-            <div className="blog_item" key={item?.id}>
-              <figure>
-                <Image
-                  // src={
-                  //   item?.feature_image
-                  //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.feature_image}`
-                  //     : "/assets/blog/blog1.png"
-                  // }
-                  src="/assets/blog/blog1.png"
-                  alt="blog"
-                  layout="fill"
-                  objectFit="cover"
-                  // width=
-                  // height={"100"}
-                  // alt={item?.title}
-                />
-                <span className="date">
-                  {/* {moment(item?.date)?.format("MMMM D")} */}
-                  July 28
-                </span>
-              </figure>
-              <div>
-                <p className="para_comm">
-                  Living Room
-                  {/* {item?.category} */}
-                </p>
-                <h3
-                  className="sub_heading"
-                  onClick={() => router.push(`/blog/${item?.route}`)}
-                >
-                  {/* {item?.title} */}
-                  Private Contemporary Home Balancing Openess
-                </h3>
+        ) : (
+          <Slider
+            {...settings}
+            ref={sliderRef}
+            afterChange={(index) => setCurrentSlide(index)}
+          >
+            {blogsData?.map((item) => (
+              <div
+                className="blog_item"
+                key={item?.id}
+                onClick={() => router.push(`/blog/${item?.route}`)}
+              >
+                <figure>
+                  <Image
+                    src={
+                      item?.feature_image
+                        ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.feature_image}`
+                        : "/assets/blog/blog1.png"
+                    }
+                    layout="fill"
+                    objectFit="cover"
+                    alt={item?.title}
+                  />
+                  <span className="date">
+                    {moment(item?.date)?.format("MMMM D")}
+                  </span>
+                </figure>
+                <div>
+                  <p className="para_comm">{item?.category?.title}</p>
+                  <h3 className="sub_heading">{item?.title}</h3>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-        {/* )} */}
+            ))}
+          </Slider>
+        )}
         {showArrows && (
           <div className="mobile_view">
             <PrevArrow />

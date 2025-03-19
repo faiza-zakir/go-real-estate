@@ -117,7 +117,7 @@ const RelatedBlogs = ({ blogData }) => {
                 </span>
               </figure>
               <div>
-                <p className="para_comm">{item?.category}</p>
+                <p className="para_comm">{item?.category?.title}</p>
                 <h3 className="sub_heading">{item?.title}</h3>
               </div>
             </div>

@@ -15,7 +15,7 @@ const Details = ({ singleBlog }) => {
           <li>
             <PiLineVertical />
           </li>
-          <li>{singleBlog?.category}</li>
+          <li>{singleBlog?.category?.title}</li>
           <li>
             <PiLineVertical />
           </li>
