@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 // import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 // api
-import { postLeadForm } from "@/app/apis/commonApi";
+import { postCareerForm } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -38,7 +38,7 @@ const CareersFormSection = () => {
   //   setErrors({ ...errors, captcha: "" }); // Clear CAPTCHA error on success
   // };
 
-  const PostLeadFormData = async (updatedData) => {
+  const PostCareerFormData = async (updatedData) => {
     try {
       const payload = {
         full_name: updatedData?.full_name,
@@ -47,10 +47,14 @@ const CareersFormSection = () => {
         message: updatedData?.message,
       };
 
-      const response = await postLeadForm(payload);
+      const response = await postCareerForm(payload);
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
+        toast.success(
+          "We have received your query. Our team will get in touch with you shortly."
+        );
         setFormValues({ ...initailObject });
+        setMobileValue("");
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -86,7 +90,7 @@ const CareersFormSection = () => {
 
     let updatedData = { ...formValues, phone: mobileValue };
     setLoading(true);
-    PostLeadFormData(updatedData);
+    PostCareerFormData(updatedData);
   };
 
   return (

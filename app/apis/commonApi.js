@@ -6,6 +6,12 @@ export const postContactForm = (formData) => {
   return API.post("/Contact-form", formData);
 };
 
+// Career Form
+
+export const postCareerForm = (formData) => {
+  return API.post("/career", formData);
+};
+
 // Lead Form
 
 export const postLeadForm = (formData) => {
