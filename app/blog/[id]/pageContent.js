@@ -6,6 +6,7 @@ import Details from "@/components/blogInner/Details/Details";
 import RelatedBlogs from "@/components/blogInner/related-blogs/RelatedBlogs";
 import ContactSection from "@/components/home/contact-section/ContactSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
+import Loader from "@/components/common/loader/Loader";
 // api
 import {
   fetchBlogData,
@@ -70,23 +71,29 @@ const PageContent = () => {
 
   return (
     <>
-      <Banner
-        name={singleBlog?.title}
-        indexpage="Home"
-        indexvisit="/"
-        activepage={singleBlog?.title}
-        bgImg={
-          pageData?.content?.banner?.background_image
-            ? {
-                src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
-              }
-            : { src: "/assets/banner/blogbanner.webp" }
-        }
-      />
-      <Details singleBlog={singleBlog} />
-      <RelatedBlogs blogData={relatedBlog} />
-      <FAQSection faqsData={pageData?.content?.faqs} />
-      <ContactSection />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Banner
+            name={singleBlog?.title}
+            indexpage="Home"
+            indexvisit="/"
+            activepage={singleBlog?.title}
+            bgImg={
+              pageData?.content?.banner?.background_image
+                ? {
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+                  }
+                : { src: "/assets/banner/blogbanner.webp" }
+            }
+          />
+          <Details singleBlog={singleBlog} />
+          <RelatedBlogs blogData={relatedBlog} />
+          <FAQSection faqsData={pageData?.content?.faqs} />
+          <ContactSection />
+        </>
+      )}
     </>
   );
 };
