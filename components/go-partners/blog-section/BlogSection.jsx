@@ -40,7 +40,7 @@ const settings = {
   ],
 };
 
-const BlogSection = ({ blogsData }) => {
+const BlogSection = () => {
   const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
