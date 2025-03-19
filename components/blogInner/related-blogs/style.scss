@@ -3,6 +3,7 @@
     margin-top: 2rem;
   }
   .blog_item {
+    cursor: pointer;
     padding: 0 0.5rem;
     figure {
       position: relative;
@@ -35,10 +36,6 @@
     }
     .sub_heading {
       margin: 0;
-      cursor: pointer;
-      &:hover {
-        color: #000000;
-      }
     }
   }
 }
