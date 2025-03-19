@@ -1,16 +1,21 @@
+import { fatchPagesContent } from "@/app/apis/commonApi";
 import PageContent from "./pageContent";
 
-// export async function generateMetadata() {
-//   return {
-//     title:
-//       "Commercial Property for Sale| Global Opportunities Real Estate India| FAQs",
-//     description:
-//       "Got questions about buying commercial real estate? Our FAQs provide quick answers on property for sale, financing options, zoning regulations, and the purchasing process.",
-//     alternates: {
-//       canonical: "https://gogrouprealestate.vercel.app/faqs",
-//     },
-//   };
-// }
+export async function generateMetadata() {
+  const { data } = await fatchPagesContent("faqs");
+
+  return {
+    title:
+      data?.content?.seo?.meta_title ||
+      "FAQs | Global Opportunities Real Estate (GO Real Estate)",
+    description:
+      data?.content?.seo?.meta_description ||
+      "Find answers to common real estate questions with GO Real Estate. Explore investment insights, buying guides, and expert advice for property decisions in Dubai.",
+    alternates: {
+      canonical: "https://gogrouprealestate.vercel.app/faqs",
+    },
+  };
+}
 
 const Faqs = () => {
   return <PageContent />;

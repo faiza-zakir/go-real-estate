@@ -12,6 +12,7 @@
   }
   .blog_item {
     padding: 0 0.5rem;
+    cursor: pointer;
     figure {
       position: relative;
       // overflow: hidden;
@@ -43,10 +44,6 @@
     }
     .sub_heading {
       margin: 0;
-      cursor: pointer;
-      &:hover {
-        color: #000000;
-      }
     }
   }
 }

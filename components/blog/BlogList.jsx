@@ -32,51 +32,41 @@ const BlogList = ({ blogsList, isLoading }) => {
             <button className="theme_btn3">Industry Reports</button>
           </div>
         </div>
-        {/* {isLoading ? (
+        {isLoading ? (
           <p className="para_comm text-center">loading...</p>
-        ) : ( */}
-        <Row className="gy-5 gx-lg-2">
-          {/* {blogsList?.map((blog) => ( */}
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9]?.map((blog) => (
-            <Col md={6} lg={4} key={blog?.id}>
-              <div className="blog_item">
-                <figure>
-                  <Image
-                    // src={
-                    //   blog?.feature_image
-                    //     ? process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                    //       blog?.feature_image
-                    //     : "/assets/blog/blog1.webp"
-                    // }
-                    src="/assets/blog/blog1.png"
-                    layout="fill"
-                    objectFit="cover"
-                    // alt={blog?.title}
-                    alt="blog"
-                  />
-                  <span className="date">
-                    {/* {moment(blog?.date)?.format("MMMM D")} */}
-                    July 28
-                  </span>
-                </figure>
-                <div>
-                  <p className="para_comm">
-                    Living Room
-                    {/* {blog?.category} */}
-                  </p>
-                  <h3
-                    className="sub_heading"
-                    onClick={() => router.push(`/blog/${blog?.route}`)}
-                  >
-                    {/* {blog?.title} */}
-                    Private Contemporary Home Balancing Openess
-                  </h3>
+        ) : (
+          <Row className="gy-5 gx-lg-2">
+            {blogsList?.map((blog) => (
+              <Col md={6} lg={4} key={blog?.id}>
+                <div
+                  className="blog_item"
+                  onClick={() => router.push(`/blog/${blog?.route}`)}
+                >
+                  <figure>
+                    <Image
+                      src={
+                        blog?.feature_image
+                          ? process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                            blog?.feature_image
+                          : "/assets/blog/blog1.png"
+                      }
+                      layout="fill"
+                      objectFit="cover"
+                      alt={blog?.title}
+                    />
+                    <span className="date">
+                      {moment(blog?.date)?.format("MMMM D")}
+                    </span>
+                  </figure>
+                  <div>
+                    <p className="para_comm">{blog?.category?.title}</p>
+                    <h3 className="sub_heading">{blog?.title}</h3>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-        {/* )} */}
+              </Col>
+            ))}
+          </Row>
+        )}
       </Container>
     </div>
   );

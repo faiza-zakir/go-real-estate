@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
       // data?.content?.seo?.meta_description ||
       "GO, is your trusted real estate agency specializing in property management. We maximize your property's value with tailored solutions and exceptional service.",
     alternates: {
-      canonical: "https://gogrouprealestate.vercel.app/blogs",
+      canonical: "https://gogrouprealestate.vercel.app/blog",
     },
   };
 }

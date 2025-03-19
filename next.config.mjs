@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     // unoptimized: true,
-    domains: ["prismcloudhosting.com"],
+    domains: ["gorealestate.b-cdn.net"],
   },
 };
 
