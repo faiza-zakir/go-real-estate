@@ -51,7 +51,7 @@ const CareersFormSection = () => {
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
         toast.success(
-          "We have received your query. Our team will get in touch with you shortly."
+          "We have received your application. Our team will get in touch with you shortly."
         );
         setFormValues({ ...initailObject });
         setMobileValue("");
