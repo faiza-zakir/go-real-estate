@@ -1,11 +1,16 @@
-import PageContentData from "./PageContent";
-// Generate metadata for the page
+import { fatchPagesContent } from "@/app/apis/commonApi";
+import PageContent from "./pageContent";
+
 export async function generateMetadata() {
+  const { data } = await fatchPagesContent("privacy-policy");
+
   return {
     title:
-      "Privacy Policy | Global Opportunities Real Estate - Your Data, Our Priority",
+      data?.content?.seo?.meta_title ||
+      "Read the Privacy Policy by Global Opportunities Real Estate",
     description:
-      "Learn about Global Opportunities Real Estate's privacy policy and how we protect your personal data. We value your privacy and ensure secure real estate transactions.",
+      data?.content?.seo?.meta_description ||
+      "Read the Privacy Policy of Global Opportunities Real Estate to learn how we collect, use, and protect your personal information while using our services. Join us",
     alternates: {
       canonical: "https://gogrouprealestate.vercel.app/privacy-policy",
     },
@@ -13,10 +18,7 @@ export async function generateMetadata() {
 }
 
 const PrivacyPolicy = () => {
-  return (
-    <div>
-      <PageContentData />
-    </div>
-  );
+  return <PageContent />;
 };
+
 export default PrivacyPolicy;

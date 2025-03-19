@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
-import PrivacyIntro from "@/components/common/privacy-intro/PrivacyIntro";
+import TermsIntro from "@/components/common/terms-intro/TermsIntro";
 import { fatchPagesContent } from "@/app/apis/commonApi";
 import Loader from "@/components/common/loader/Loader";
 
@@ -12,7 +12,7 @@ function PageContent() {
   const getPageData = async () => {
     try {
       setIsLoading(true);
-      const resp = await fatchPagesContent("privacy-policy");
+      const resp = await fatchPagesContent("terms-and-conditions");
       setPageData(resp?.data);
     } catch (err) {
       console.log("Err: ", err);
@@ -23,7 +23,6 @@ function PageContent() {
   useEffect(() => {
     getPageData();
   }, []);
-
   return (
     <>
       {isLoading ? (
@@ -34,16 +33,16 @@ function PageContent() {
             name={pageData?.content?.banner?.title}
             indexpage="Home"
             indexvisit="/"
-            activepage="Privacy Policy"
+            activepage="Terms & Conditions"
             bgImg={
               pageData?.content?.banner?.background_image
                 ? {
                     src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
                   }
-                : { src: "/assets/banner/privacybanner.webp" }
+                : { src: "/assets/banner/termsbanner.webp" }
             }
           />
-          <PrivacyIntro content={pageData?.content?.intro} />
+          <TermsIntro content={pageData?.content?.intro} />
         </>
       )}
     </>

@@ -163,7 +163,7 @@ const Footer = () => {
             </p>
             {/* <Link href="/refund-policy">Refund Policy</Link> */}
             <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-of-use">Terms of Use</Link>
+            <Link href="/terms-and-conditions">Terms & Conditions</Link>
           </div>
           <ul className="d-flex gap-3 align-items-center social-icons">
             <li>
