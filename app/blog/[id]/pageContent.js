@@ -7,13 +7,33 @@ import RelatedBlogs from "@/components/blogInner/related-blogs/RelatedBlogs";
 import ContactSection from "@/components/home/contact-section/ContactSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fetchBlogData, fetchBlogDeatilsData } from "@/app/apis/commonApi";
+import {
+  fetchBlogData,
+  fetchBlogDeatilsData,
+  fatchPagesContent,
+} from "@/app/apis/commonApi";
 
 const PageContent = () => {
   const { id } = useParams();
   const [singleBlog, setSingleBlog] = useState({});
   const [relatedBlog, setRelatedBlog] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [pageData, setPageData] = useState({});
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        setIsLoading(true);
+        const resp = await fatchPagesContent("blog");
+        setPageData(resp?.data);
+      } catch (err) {
+        console.log("Err: ", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getPageData();
+  }, []);
 
   useEffect(() => {
     const fetchBlogListData = async () => {
@@ -55,11 +75,17 @@ const PageContent = () => {
         indexpage="Home"
         indexvisit="/"
         activepage={singleBlog?.title}
-        bgImg={{ src: "/assets/banner/blogbanner.webp" }}
+        bgImg={
+          pageData?.content?.banner?.background_image
+            ? {
+                src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+              }
+            : { src: "/assets/banner/blogbanner.webp" }
+        }
       />
       <Details singleBlog={singleBlog} />
       <RelatedBlogs blogData={relatedBlog} />
-      <FAQSection />
+      <FAQSection faqsData={pageData?.content?.faqs} />
       <ContactSection />
     </>
   );
