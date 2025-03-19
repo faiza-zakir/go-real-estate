@@ -1,4 +1,4 @@
-import PageContent from "./PageContent";
+import PageContent from "./pageContent";
 // Generate metadata for the page
 export async function generateMetadata() {
   return {

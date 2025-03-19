@@ -1,5 +1,5 @@
 import { fatchPagesContent } from "@/app/apis/commonApi";
-import PageContent from "./PageContent";
+import PageContent from "./pageContent";
 
 export async function generateMetadata() {
   const { data } = await fatchPagesContent("terms-and-conditions");
