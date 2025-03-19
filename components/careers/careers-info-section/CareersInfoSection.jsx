@@ -42,7 +42,7 @@ const CareersInfoSection = ({ infoData }) => {
             </figure>
           </Col>
           <Col lg={6}>
-            <h2 className="main_sec_heading">Peoples & Careers</h2>
+            <h2 className="main_sec_heading">People & Careers</h2>
             <Accordion defaultActiveKey={1} flush>
               {careersInfoData?.map((item, i) => (
                 <Accordion.Item eventKey={i + 1} key={item?.id}>
