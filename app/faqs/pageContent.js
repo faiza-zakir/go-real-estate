@@ -7,8 +7,8 @@ import { fatchPagesContent, fetchFaqData } from "@/app/apis/commonApi";
 
 const PageContent = () => {
   const [faqData, setFaqData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [pageData, setPageData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPageData = async () => {
     try {
@@ -21,19 +21,18 @@ const PageContent = () => {
       setIsLoading(false);
     }
   };
-
+  const fetchFaqListData = async () => {
+    try {
+      setIsLoading(true); // Show the loader
+      const { data } = await fetchFaqData();
+      setFaqData(data);
+    } catch (error) {
+      console.error("Error fetching Data:", error);
+    } finally {
+      setIsLoading(false); // Hide the loader
+    }
+  };
   useEffect(() => {
-    const fetchFaqListData = async () => {
-      try {
-        setIsLoading(true); // Show the loader
-        const { data } = await fetchFaqData();
-        setFaqData(data);
-      } catch (error) {
-        console.error("Error fetching Data:", error);
-      } finally {
-        setIsLoading(false); // Hide the loader
-      }
-    };
     getPageData();
     fetchFaqListData();
   }, []);
