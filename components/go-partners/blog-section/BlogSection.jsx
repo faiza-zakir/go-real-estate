@@ -6,7 +6,7 @@ import moment from "moment";
 import { Container } from "react-bootstrap";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // api
-import { fetchblogsData } from "@/app/apis/commonApi";
+import { fetchBlogData } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -51,7 +51,7 @@ const BlogSection = () => {
     const fetchBlogListData = async () => {
       try {
         setIsLoading(true); // Show the loader
-        const { data } = await fetchblogsData();
+        const { data } = await fetchBlogData();
         setBlogsData(data?.slice(0, 5));
       } catch (error) {
         console.error("Error fetching Data:", error);
