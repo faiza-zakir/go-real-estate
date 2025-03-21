@@ -1,8 +1,11 @@
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import moment from "moment-timezone";
+// api
+import { fatchWebinars } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -36,9 +39,27 @@ const settings = {
   ],
 };
 
-const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
+const EducationalWebinar = () => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [educationalWebinarData, setEducationalWebinarData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchWebinarsListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fatchWebinars();
+        setEducationalWebinarData(data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
+
+    fetchWebinarsListData();
+  }, []);
 
   const downloadFile = (path) => {
     const link = document.createElement("a");
@@ -128,14 +149,9 @@ const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
                 <div className="edu_item">
                   <figure>
                     <Image
-                      // src={
-                      //   item?.featured_img
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.featured_img}`
-                      //     : "/assets/edu-portal/webinar.png"
-                      // }
                       src={
                         item?.featured_img
-                          ? item?.featured_img
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.featured_img}`
                           : "/assets/edu-portal/webinar.png"
                       }
                       layout="fill"
@@ -145,8 +161,29 @@ const EducationalWebinar = ({ educationalWebinarData, isLoading }) => {
                   </figure>
                   <div className="content_sec">
                     <h3 className="sub_heading">{item?.title}</h3>
-                    <p className="para_comm">Date: {item?.date}</p>
-                    <p className="para_comm m-0">Time: {item?.time}</p>
+                    <p className="para_comm">
+                      Date: {moment(item?.date).format("dddd, MMMM D, YYYY")}
+                    </p>
+                    <p className="para_comm m-0">
+                      Time:{" "}
+                      {moment
+                        .tz(
+                          `${item?.date} ${item?.time}`,
+                          "YYYY-MM-DD HH:mm:ss",
+                          "America/New_York"
+                        )
+                        .format("hh:mm A (z)")}{" "}
+                      -{" "}
+                      {moment
+                        .tz(
+                          `${item?.date} ${item?.time}`,
+                          "YYYY-MM-DD HH:mm:ss",
+                          "America/New_York"
+                        )
+                        .tz("Asia/Dubai")
+                        .format("hh:mm A")}{" "}
+                      {" (GST)"}
+                    </p>
                     <div className="d-flex justify-content-center align-items-center gap-3 mt-3 slider_btn">
                       <button
                         className="theme_btn3"
