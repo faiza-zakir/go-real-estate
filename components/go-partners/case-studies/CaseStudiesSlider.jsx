@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+// api
+import { fatchCaseStudies } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -36,9 +38,27 @@ const settings = {
   ],
 };
 
-const CaseStudiesSlider = ({ caseStudiesData, isLoading }) => {
+const CaseStudiesSlider = () => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [caseStudiesData, setCaseStudiesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchCaseStudiesListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fatchCaseStudies();
+        setCaseStudiesData(data?.data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
+
+    fetchCaseStudiesListData();
+  }, []);
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -96,30 +116,34 @@ const CaseStudiesSlider = ({ caseStudiesData, isLoading }) => {
             ref={sliderRef}
             afterChange={(index) => setCurrentSlide(index)}
           >
-            {caseStudiesData?.map((report) => (
-              <div key={report?.id}>
+            {caseStudiesData?.map((item) => (
+              <div key={item?.id}>
                 <div className="report_item">
                   <figure>
                     <Image
-                      // src={
-                      //   report?.featured_img
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.featured_img}`
-                      //     : "/assets/home/commercial1.webp"
-                      // }
                       src={
-                        report?.featured_img
-                          ? report?.featured_img
-                          : "/assets/home/commercial1.webp"
+                        item?.featured_img
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.featured_img}`
+                          : "/assets/go-partners/caseStudy1.png"
                       }
                       layout="fill"
                       objectFit="cover"
-                      alt={report?.title}
+                      alt={item?.title}
                     />
                   </figure>
                   <div className="content_sec">
-                    <h3 className="sub_heading">{report?.title}</h3>
-                    <p className="para_comm">{report?.description}</p>
-                    <button className="theme_btn2">View Now</button>
+                    <h3 className="sub_heading">{item?.title}</h3>
+                    <div
+                      className="general-details mb-3"
+                      dangerouslySetInnerHTML={{ __html: item?.description }}
+                    />
+
+                    <button
+                      className="theme_btn2"
+                      onClick={() => window.open(item?.url, "_blank")}
+                    >
+                      View Now
+                    </button>
                   </div>
                 </div>
               </div>

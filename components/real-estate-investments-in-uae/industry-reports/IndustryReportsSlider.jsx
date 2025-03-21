@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+// api
+import { fatchIndustryReports } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
@@ -36,9 +38,27 @@ const settings = {
   ],
 };
 
-const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
+const IndustryReportsSlider = () => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [industryReportsData, setIndustryReportsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchReportsListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fatchIndustryReports();
+        setIndustryReportsData(data?.data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
+
+    fetchReportsListData();
+  }, []);
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -103,15 +123,10 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
                 <div className="report_item">
                   <figure>
                     <Image
-                      // src={
-                      //   report?.featured_img
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.featured_img}`
-                      //     : "/assets/home/commercial1.webp"
-                      // }
                       src={
                         report?.featured_img
-                          ? report?.featured_img
-                          : "/assets/home/commercial1.webp"
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.featured_img}`
+                          : "/assets/investment/indReport.png"
                       }
                       layout="fill"
                       objectFit="cover"
@@ -120,8 +135,16 @@ const IndustryReportsSlider = ({ industryReportsData, isLoading }) => {
                   </figure>
                   <div className="content_sec">
                     <h3 className="sub_heading">{report?.title}</h3>
-                    <p className="para_comm">{report?.description}</p>
-                    <button className="theme_btn2">View Report</button>
+                    <div
+                      className="general-details mb-3"
+                      dangerouslySetInnerHTML={{ __html: report?.description }}
+                    />
+                    <button
+                      className="theme_btn2"
+                      onClick={() => window.open(report?.url, "_blank")}
+                    >
+                      View Report
+                    </button>
                   </div>
                 </div>
               </div>

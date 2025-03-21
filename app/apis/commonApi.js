@@ -67,7 +67,7 @@ export const fatchProjects = () => {
 //  Partners API
 
 export const fatchPartners = () => {
-  return API.get(`/partners`);
+  return API.get(`/partner`);
 };
 
 //  Webinars API

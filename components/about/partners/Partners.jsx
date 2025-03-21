@@ -1,9 +1,9 @@
 import Image from "next/image";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 // api
-// import { fatchCredentialsClients } from "@/app/apis/commonApi";
+import { fatchPartners } from "@/app/apis/commonApi";
 
 // css
 import "./styles.scss";
@@ -45,50 +45,47 @@ const settings = {
   ],
 };
 
-const Partners = ({ partnersData }) => {
-  // const [partnersData, setPartnersData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+const Partners = () => {
+  const [partnersData, setPartnersData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchClientsListData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const { data } = await fatchCredentialsClients();
+  useEffect(() => {
+    const fetchPartnersListData = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await fatchPartners();
+        setPartnersData(data?.data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  //       let updatedData = [...data]?.filter((item) => item?.type === "clients");
-  //       setPartnersData(updatedData);
-  //     } catch (error) {
-  //       console.error("Error fetching Data:", error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchClientsListData();
-  // }, []);
+    fetchPartnersListData();
+  }, []);
 
   return (
     <div className="partners_sec mt-60">
       <Container>
-        {/* {isLoading ? (
-              <p className="para_comm text-center">loading...</p>
-            ) : ( */}
-        <Slider {...settings}>
-          {partnersData?.map((item, i) => (
-            <div className="partners_item" key={i}>
-              <div className="img_wrape">
-                <Image
-                  // src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.logo}`}
-                  src={item?.logo}
-                  width={209}
-                  height={104}
-                  alt={item?.name}
-                />
+        {isLoading ? (
+          <p className="para_comm text-center">loading...</p>
+        ) : (
+          <Slider {...settings}>
+            {partnersData?.map((item, i) => (
+              <div className="partners_item" key={i}>
+                <div className="img_wrape">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.logo}`}
+                    width={209}
+                    height={104}
+                    alt={item?.name}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-        {/* )} */}
+            ))}
+          </Slider>
+        )}
       </Container>
     </div>
   );
