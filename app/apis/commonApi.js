@@ -1,5 +1,11 @@
 import API from "./config";
 
+// Subscribe Form
+
+export const postSubscribeForm = (formData) => {
+  return API.post("/subscribe", formData);
+};
+
 // Contact Form
 
 export const postContactForm = (formData) => {

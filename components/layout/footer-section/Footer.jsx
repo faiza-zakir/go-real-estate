@@ -1,14 +1,90 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+// api
+import { postSubscribeForm } from "@/app/apis/commonApi";
 // css
 import "./style.scss";
 
+const initailObject = {
+  full_name: "",
+  email: "",
+};
+
 const Footer = () => {
   const router = useRouter();
+  const [formValues, setFormValues] = useState(initailObject);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+    // Clear error message when user starts typing again
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const PostSubscribeFormData = async (updatedData) => {
+    try {
+      const payload = {
+        full_name: updatedData?.full_name,
+        email: updatedData?.email,
+      };
+
+      const response = await postSubscribeForm(payload);
+      if (response.status === 200 || response.status === 201) {
+        setLoading(false);
+        toast.success("You have subscribed successfully.");
+        setFormValues({ ...initailObject });
+      }
+    } catch (error) {
+      console.error("Error posting Data:", error);
+      setLoading(false);
+      toast.error("Something Went wrong!");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { full_name, email } = formValues;
+    const errors = {};
+
+    if (!full_name) {
+      errors.full_name = "Please enter your full name.";
+    }
+
+    // Email validation
+    if (!email) {
+      errors.email = "Please enter your email.";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      errors.email = "Invalid email format.";
+    } else if (email.length < 5) {
+      errors.email = "Email must be at least 5 characters long.";
+    } else if (/\.\./.test(email)) {
+      errors.email = "Email cannot contain consecutive dots.";
+    } else if (
+      /(@example\.com|@tempmail\.com|@disposable\.com)$/i.test(email)
+    ) {
+      errors.email = "Disposable email addresses are not allowed.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      setLoading(false);
+      return;
+    }
+
+    let updatedData = { ...formValues };
+    setLoading(true);
+    PostSubscribeFormData(updatedData);
+  };
   return (
     <div className="mt-60 footer-area">
       <div className="ptb-60">
@@ -99,33 +175,29 @@ const Footer = () => {
             </Col>
             <Col xs={12} sm={6} md={6} lg={4}>
               <h3>Stay In Loop</h3>
-              <Form>
-                <Form.Group controlId="name" className="mb-3">
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="full_name" className="mb-3">
                   <Form.Control
                     type="text"
-                    name="name"
-                    // value={formValues.email}
-                    // onChange={handleInputChange}
+                    name="full_name"
+                    value={formValues.full_name}
+                    onChange={handleInputChange}
                     placeholder="Enter Your Name"
                   />
-                  {/* <p className="mt-2 form_error_msg">{errors?.email}</p> */}
+                  <p className="mt-2 form_error_msg">{errors?.full_name}</p>
                 </Form.Group>
                 <Form.Group controlId="email" className="mb-3">
                   <Form.Control
                     type="email"
                     name="email"
-                    // value={formValues.email}
-                    // onChange={handleInputChange}
+                    value={formValues.email}
+                    onChange={handleInputChange}
                     placeholder="Enter Your Email"
                   />
-                  {/* <p className="mt-2 form_error_msg">{errors?.email}</p> */}
+                  <p className="mt-2 form_error_msg">{errors?.email}</p>
                 </Form.Group>
-                <Button
-                  className="theme_btn"
-                  // disabled={loading}
-                  type="submit"
-                >
-                  {/* {loading ? "Sending..." : "Submit"} */} Subscribe
+                <Button className="theme_btn" disabled={loading} type="submit">
+                  {loading ? "Sending..." : "Subscribe"}
                 </Button>
               </Form>
             </Col>
