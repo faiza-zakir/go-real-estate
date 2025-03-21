@@ -24,18 +24,6 @@ export const postLeadForm = (formData) => {
   return API.post("/banner-forms", formData);
 };
 
-// Project Inner API
-
-export const postDeveloperContact = (formData) => {
-  return API.post("/developer-contact-form", formData);
-};
-
-// brochure form
-
-export const postBrochureForm = (formData) => {
-  return API.post("/brochure-forms", formData);
-};
-
 // Faqs API
 
 export const fetchFaqData = () => {
@@ -58,41 +46,6 @@ export const fetchTestimonialData = () => {
   return API.get("/testimonials");
 };
 
-// Developer API
-
-export const fatchDeveloperList = () => {
-  return API.get("/developers");
-};
-
-export const fatchDeveloperSingle = (id) => {
-  return API.get(`/developers/${id}`);
-};
-
-export const fatchProjectsrList = () => {
-  return API.get("/projects");
-};
-// Project API
-
-export const fatchProjectList = () => {
-  return API.get("/projects");
-};
-
-export const fatchProjectSingle = (id) => {
-  return API.get(`/projects/${id}`);
-};
-
-// About API
-
-export const fatchAboutData = () => {
-  return API.get("/site-info/8");
-};
-
-// Zone-Locations API
-
-export const fatchZonesList = () => {
-  return API.get("/zones-with-locations");
-};
-
 // Home Banner Video
 
 export const fatchHomeBannerVideo = () => {
@@ -105,8 +58,32 @@ export const fatchPagesContent = (route) => {
   return API.get(`/pages/${route}`);
 };
 
-//  Clients & Credentials API
+// Project API
 
-export const fatchCredentialsClients = () => {
-  return API.get(`/credentials`);
+export const fatchProjects = () => {
+  return API.get("/projects");
+};
+
+//  Partners API
+
+export const fatchPartners = () => {
+  return API.get(`/partners`);
+};
+
+//  Webinars API
+
+export const fatchWebinars = () => {
+  return API.get(`/webinars`);
+};
+
+//  Case Studies API
+
+export const fatchCaseStudies = () => {
+  return API.get(`/case-study`);
+};
+
+//  Industry Reports API
+
+export const fatchIndustryReports = () => {
+  return API.get(`/industry_reports`);
 };

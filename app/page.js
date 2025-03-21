@@ -8,7 +8,7 @@ import BannerVideo from "@/components/home/banner-section/banner-video/BannerVid
 // data
 import { homeData } from "@/lib/homeData";
 // api
-import { fatchPagesContent, fatchProjectList } from "@/app/apis/commonApi";
+import { fatchPagesContent, fatchProjects } from "@/app/apis/commonApi";
 import { toast } from "react-toastify";
 //
 const BannerForm = dynamic(() =>
@@ -49,7 +49,7 @@ const Home = () => {
     appointment,
     invest_places,
     why_partners,
-    faqs
+    faqs,
   } = homeData;
   // const [residentialProjects, setResidentialProjects] = useState([]);
   // const [commercialProjects, setCommercialProjects] = useState([]);
@@ -81,7 +81,7 @@ const Home = () => {
   //   const fetchProjectListData = async () => {
   //     try {
   //       setIsLoading(true); // Show the loader
-  //       const { data } = await fatchProjectList();
+  //       const { data } = await fatchProjects();
   //       const projectlist = data?.filter(
   //         (project) => project?.featured_property === true
   //       );
