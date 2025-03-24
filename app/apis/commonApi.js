@@ -87,3 +87,27 @@ export const fatchCaseStudies = () => {
 export const fatchIndustryReports = () => {
   return API.get(`/industry_reports`);
 };
+
+// Login Form
+
+export const postLoginForm = (formData) => {
+  return API.post("/go-partners-login", formData);
+};
+
+// Register Form
+
+export const postRegisterForm = (formData) => {
+  return API.post("/go-partners-register", formData);
+};
+
+// Email Verification Form
+
+export const postVerifyEmailForm = (formData) => {
+  return API.post("/go-partners-verify-email", formData);
+};
+
+// Phone Verification Form
+
+export const postVerifyPhoneForm = (formData) => {
+  return API.post("/go-partners-verify-phone", formData);
+};

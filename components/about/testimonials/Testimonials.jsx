@@ -41,7 +41,7 @@ const settings = {
 const Testimonials = () => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [testimonialsData, settestimonialsData] = useState([]);
+  const [testimonialsData, setTestimonialsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Testimonials = () => {
         setIsLoading(true);
         const { data } = await fetchTestimonialData();
         let updatedData = [...data]?.filter((item) => item?.type === "text");
-        settestimonialsData(updatedData);
+        setTestimonialsData(updatedData);
       } catch (error) {
         console.error("Error fetching Data:", error);
       } finally {
