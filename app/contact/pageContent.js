@@ -5,6 +5,7 @@ import ContactInfoSection from "@/components/contact/contact-info-section/Contac
 import ContactFormSection from "@/components/contact/contact-form-section/ContactFormSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+import Loader from "@/components/common/loader/Loader";
 // import { toast } from "react-toastify";
 // api
 import { fatchPagesContent } from "@/app/apis/commonApi";
@@ -33,23 +34,29 @@ const PageContent = () => {
 
   return (
     <>
-      <Banner
-        name={pageData?.content?.banner?.title}
-        indexpage="Home"
-        indexvisit="/"
-        activepage="Contact Us"
-        bgImg={
-          pageData?.content?.banner?.background_image
-            ? {
-                src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
-              }
-            : { src: "/assets/banner/contactbanner.webp" }
-        }
-      />
-      <ContactInfoSection infoData={pageData?.content?.info} />
-      <ContactFormSection />
-      <FAQSection faqsData={pageData?.content?.faqs} />
-      <HiddenContent hiddenData={hidden_content} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Banner
+            name={pageData?.content?.banner?.title}
+            indexpage="Home"
+            indexvisit="/"
+            activepage="Contact Us"
+            bgImg={
+              pageData?.content?.banner?.background_image
+                ? {
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+                  }
+                : { src: "/assets/banner/contactbanner.webp" }
+            }
+          />
+          <ContactInfoSection infoData={pageData?.content?.info} />
+          <ContactFormSection />
+          <FAQSection faqsData={pageData?.content?.faqs} />
+          <HiddenContent hiddenData={hidden_content} />
+        </>
+      )}
     </>
   );
 };

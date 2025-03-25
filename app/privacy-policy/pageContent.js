@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
 import PrivacyIntro from "@/components/common/privacy-intro/PrivacyIntro";
-import { fatchPagesContent } from "@/app/apis/commonApi";
 import Loader from "@/components/common/loader/Loader";
+// api
+import { fatchPagesContent } from "@/app/apis/commonApi";
 
 function PageContent() {
   const [pageData, setPageData] = useState({});
