@@ -161,7 +161,10 @@ const Login = ({ show, handleClose }) => {
                     <button
                       type="button"
                       className="theme_btn3 me-3"
-                      onClick={() => setShowRegister(true)}
+                      onClick={() => {
+                        setShowRegister(true);
+                        handleClose();
+                      }}
                     >
                       Create Account
                     </button>
