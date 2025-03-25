@@ -12,7 +12,7 @@ import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 import { dubaiOpportunitiesData } from "@/lib/dubaiOpportunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends, faqs } =
+  const { about, why_invest, development_trends, faqs, hidden_content } =
     dubaiOpportunitiesData;
 
   // const [pageData, setPageData] = useState({});
@@ -61,7 +61,7 @@ const PageContent = () => {
         title="Dubai Development Trends"
       />
       <FAQSection faqsData={faqs} />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

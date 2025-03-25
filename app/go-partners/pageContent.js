@@ -26,6 +26,7 @@ const PageContent = () => {
     industry_reports,
     blogs,
     faqs,
+    hidden_content,
   } = goPartnersData;
 
   // const [pageData, setPageData] = useState({});
@@ -73,7 +74,7 @@ const PageContent = () => {
       <BlogSection blogsData={blogs} />
       <FAQSection faqsData={faqs} />
       <ContactSection />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

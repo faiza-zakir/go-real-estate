@@ -22,6 +22,7 @@ const PageContent = () => {
     investment_insights,
     industry_reports,
     faqs,
+    hidden_content,
   } = uaeInvestmentData;
   const [projects, setProjects] = useState([]);
   // const [pageData, setPageData] = useState({});
@@ -79,7 +80,7 @@ const PageContent = () => {
       <InvestmentInsightsSection investmentInsightsData={investment_insights} />
       <IndustryReportsSlider industryReportsData={industry_reports} />
       <FAQSection faqsData={faqs} />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

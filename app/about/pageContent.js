@@ -29,6 +29,7 @@ const PageContent = () => {
     partners,
     testimonials,
     faqs,
+    hidden_content,
   } = aboutData;
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -94,7 +95,7 @@ const PageContent = () => {
       <Partners partnersData={partners} />
       <Testimonials testimonialsData={testimonials} />
       <FAQSection faqsData={faqs} />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

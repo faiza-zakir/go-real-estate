@@ -50,6 +50,7 @@ const Home = () => {
     appointment,
     why_partners,
     faqs,
+    hidden_content,
   } = homeData;
   const [featuredProjects, setFeaturedProjects] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -161,7 +162,7 @@ const Home = () => {
           <WhyPartnerSection whyPartnersData={why_partners} />
           <FAQSection faqsData={faqs} />
           <ContactSection />
-          <HiddenContent />
+          <HiddenContent hiddenData={hidden_content} />
         </>
       ) : null}
     </>

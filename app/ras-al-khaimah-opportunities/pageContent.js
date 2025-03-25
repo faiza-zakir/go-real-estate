@@ -12,7 +12,8 @@ import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 import { rakOpportunitiesData } from "@/lib/rakOpportunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends, faqs } = rakOpportunitiesData;
+  const { about, why_invest, development_trends, faqs, hidden_content } =
+    rakOpportunitiesData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +61,7 @@ const PageContent = () => {
         title="Ras Al Khaimah Development Trends"
       />
       <FAQSection faqsData={faqs} />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

@@ -11,7 +11,7 @@ import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 import { goCommunityData } from "@/lib/goCommunityData";
 
 const PageContent = () => {
-  const { about, faqs } = goCommunityData;
+  const { about, faqs, hidden_content } = goCommunityData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,7 @@ const PageContent = () => {
       <AboutCommunity aboutData={about} />
       <FAQSection faqsData={faqs} />
       <ContactSection />
-      <HiddenContent />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };
