@@ -18,10 +18,7 @@ const ContactInfoSection = ({ infoData }) => {
               <p className="para_comm">
                 Reach out to us for any inquiries or support
               </p>
-              {/* <a href={`mailto:${infoData?.email}`}>{infoData?.email}</a> */}
-              <a href="mailto:info@gogrouprealestate.com">
-                info@gogrouprealestate.com
-              </a>
+              <a href={`mailto:${infoData?.email}`}>{infoData?.email}</a>
             </div>
           </Col>
           <Col md={6} lg={4}>
@@ -31,10 +28,9 @@ const ContactInfoSection = ({ infoData }) => {
               <p className="para_comm">
                 Call us for immediate assistance and information.
               </p>
-              {/* <a href={`tel:${infoData?.phone?.replace(/\s+/g, "")}`}>
+              <a href={`tel:${infoData?.phone?.replace(/\s+/g, "")}`}>
                 {infoData?.phone}
-              </a> */}
-              <a href="tel:+97143215883">+971 4 321 5883</a>
+              </a>
             </div>
           </Col>
           <Col md={6} lg={4}>
@@ -49,11 +45,8 @@ const ContactInfoSection = ({ infoData }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* {infoData?.address} */}
                 US Office:{" "}
-                <span style={{ fontWeight: "400" }}>
-                  11440 Okeechobee Blvd, Suite 203, Royal Palm Beach, FL 33411
-                </span>
+                <span style={{ fontWeight: "400" }}>{infoData?.address1}</span>
               </a>
               <br />
               <a
@@ -61,11 +54,8 @@ const ContactInfoSection = ({ infoData }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* {infoData?.address} */}
                 UAE Office:{" "}
-                <span style={{ fontWeight: "400" }}>
-                  Office 1612 - B2B Tower, Business Bay, Dubai
-                </span>
+                <span style={{ fontWeight: "400" }}>{infoData?.address2}</span>
               </a>
             </div>
           </Col>
