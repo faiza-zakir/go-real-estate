@@ -7,7 +7,12 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { MdOutlineFileUpload } from "react-icons/md";
 // api
-import { postLeadForm } from "@/app/apis/commonApi";
+import {
+  postRegisterForm,
+  postVerifyEmailForm,
+  postVerifyPhoneForm,
+  postUploadDocForm,
+} from "@/app/apis/commonApi";
 // css
 import "./styles.scss";
 
@@ -21,16 +26,18 @@ const initialRegisterData = {
 };
 
 const initialVerificationData = {
+  partner_id: "",
   code: "",
 };
 const initialOtpData = {
-  otp: "",
+  partner_id: "",
+  code: "",
 };
 
 const initialUploadsData = {
   emirates_id: "",
-  lorem_ipsum1: "",
-  lorem_ipsum2: "",
+  // lorem_ipsum1: "",
+  // lorem_ipsum2: "",
 };
 
 const Register = ({ show, handleClose }) => {
@@ -38,6 +45,7 @@ const Register = ({ show, handleClose }) => {
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
   const [step, setStep] = useState(1); // 1 for Register, 2 for Email Verification, 3 for Phone Verification, 4 for Uploads
   const [registerData, setRegisterData] = useState(initialRegisterData);
+  const [partnerId, setPartnerId] = useState("");
   const [verificationData, setVerificationData] = useState(
     initialVerificationData
   );
@@ -98,10 +106,11 @@ const Register = ({ show, handleClose }) => {
         password: updatedRegisterData?.password,
         verify_password: updatedRegisterData?.verify_password,
       };
-      setStep(2); // Move to email verification step
 
-      const response = await postLeadForm(payload);
+      const response = await postRegisterForm(payload);
       if (response.status === 200 || response.status === 201) {
+        toast.success(response.data.message);
+        setPartnerId(response.data.partner_id);
         setLoadingRegister(false);
         setStep(2); // Move to email verification step
       }
@@ -111,6 +120,8 @@ const Register = ({ show, handleClose }) => {
       toast.error("Something Went wrong!");
     }
   };
+  console.log(partnerId);
+
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     const { first_name, last_name, email, password, verify_password } =
@@ -193,13 +204,13 @@ const Register = ({ show, handleClose }) => {
   const PostVerificationFormData = async (updatedVerificationData) => {
     try {
       const payload = {
+        partner_id: partnerId,
         code: updatedVerificationData?.code,
       };
-      setStep(3); // Move to phone verification step
 
-      const response = await postLeadForm(payload);
+      const response = await postVerifyEmailForm(payload);
       if (response.status === 200 || response.status === 201) {
-        toast.success("Verification Successful!");
+        toast.success(response.data.message || "Verification Successful!");
         setLoadingVerification(false);
         setStep(3); // Move to phone verification step
       }
@@ -233,13 +244,14 @@ const Register = ({ show, handleClose }) => {
   const PostOtpVerificationFormData = async (updatedOtpVerificationData) => {
     try {
       const payload = {
-        otp: updatedOtpVerificationData?.otp,
+        partner_id: partnerId,
+        code: updatedOtpVerificationData?.code,
       };
       setStep(4); // Move to uploads step
 
-      const response = await postLeadForm(payload);
+      const response = await postVerifyPhoneForm(payload);
       if (response.status === 200 || response.status === 201) {
-        toast.success("Verification Successful!");
+        toast.success(response.data.message || "Verification Successful!");
         setLoadingOtpVerification(false);
         setStep(4); // Move to uploads step
       }
@@ -251,12 +263,12 @@ const Register = ({ show, handleClose }) => {
   };
   const handleOtpVerificationSubmit = async (e) => {
     e.preventDefault();
-    const { otp } = OtpVerificationData;
+    const { code } = OtpVerificationData;
     const errors = {};
 
     // Validation
-    if (!otp) {
-      errors.otp = "Please enter the OTP.";
+    if (!code) {
+      errors.code = "Please enter the Code.";
     }
     // If there are errors, stop the process
     if (Object.keys(errors).length > 0) {
@@ -279,9 +291,9 @@ const Register = ({ show, handleClose }) => {
         },
       };
 
-      const response = await postLeadForm(imagesFormData, header);
+      const response = await postUploadDocForm(imagesFormData, header);
       if (response.status === 200 || response.status === 201) {
-        toast.success("Account Created Successfully!");
+        toast.success(response.data.message || "Account Created Successfully!");
         setLoadingUploads(false);
         setRegisterData({ ...initialRegisterData });
         setVerificationData({ ...initialVerificationData });
@@ -301,8 +313,8 @@ const Register = ({ show, handleClose }) => {
     const errors = {};
 
     if (!emirates_id) errors.emirates_id = "Please upload your Emirates ID.";
-    if (!lorem_ipsum1) errors.lorem_ipsum1 = "Please upload Lorem Ipsum 1.";
-    if (!lorem_ipsum2) errors.lorem_ipsum2 = "Please upload Lorem Ipsum 2.";
+    // if (!lorem_ipsum1) errors.lorem_ipsum1 = "Please upload Lorem Ipsum 1.";
+    // if (!lorem_ipsum2) errors.lorem_ipsum2 = "Please upload Lorem Ipsum 2.";
 
     // If there are errors, stop the process
     if (Object.keys(errors).length > 0) {
@@ -311,9 +323,9 @@ const Register = ({ show, handleClose }) => {
     }
 
     let imagesFormData = new FormData();
-    imagesFormData.append("emirates_id", emirates_id);
-    imagesFormData.append("lorem_ipsum1", lorem_ipsum1);
-    imagesFormData.append("lorem_ipsum2", lorem_ipsum2);
+    imagesFormData.append("file", emirates_id);
+    // imagesFormData.append("lorem_ipsum1", lorem_ipsum1);
+    // imagesFormData.append("lorem_ipsum2", lorem_ipsum2);
 
     setLoadingUploads(true);
     PostUploadsFormData(imagesFormData);
@@ -497,14 +509,14 @@ const Register = ({ show, handleClose }) => {
                     <Form.Label>Phone Verification</Form.Label>
                     <Form.Control
                       type="text"
-                      name="otp"
-                      value={OtpVerificationData.otp}
+                      name="code"
+                      value={OtpVerificationData.code}
                       onChange={handleOtpVerificationChange}
                       maxLength={6}
                       inputMode="numeric"
                       className="verification_input"
                     />
-                    <p className="form_error_msg">{errors?.otp}</p>
+                    <p className="form_error_msg">{errors?.code}</p>
                   </Form.Group>
                   <div className="d-flex align-items-center gap-2">
                     <button
@@ -549,7 +561,7 @@ const Register = ({ show, handleClose }) => {
                     />
                     <p className="form_error_msg">{errors?.emirates_id}</p>
                   </Form.Group>
-                  <Form.Group className="mb-3">
+                  {/* <Form.Group className="mb-3">
                     <Form.Label>Lorem Ipsum</Form.Label>
                     <div
                       className="position-relative"
@@ -600,7 +612,7 @@ const Register = ({ show, handleClose }) => {
                       style={{ display: "none" }}
                     />
                     <p className="form_error_msg">{errors?.lorem_ipsum2}</p>
-                  </Form.Group>
+                  </Form.Group> */}
                   <div className="d-flex align-items-center gap-2">
                     <button
                       type="button"

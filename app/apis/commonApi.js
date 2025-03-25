@@ -111,3 +111,9 @@ export const postVerifyEmailForm = (formData) => {
 export const postVerifyPhoneForm = (formData) => {
   return API.post("/go-partners-verify-phone", formData);
 };
+
+// Upload doc. Form
+
+export const postUploadDocForm = (formData) => {
+  return API.post("/upload-document", formData);
+};

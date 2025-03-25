@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Register from "../register/Register";
 // api
-import { postLeadForm } from "@/app/apis/commonApi";
+import { postLoginForm } from "@/app/apis/commonApi";
 // css
 import "./styles.scss";
 
@@ -28,14 +28,14 @@ const Login = ({ show, handleClose }) => {
     // Clear error message when user starts typing again
     setErrors({ ...errors, [e.target.name]: "" });
   };
-  const PostLeadFormData = async (updatedData) => {
+  const PostLoginFormData = async (updatedData) => {
     try {
       const payload = {
         email: updatedData?.email,
         password: updatedData?.password,
       };
 
-      const response = await postLeadForm(payload);
+      const response = await postLoginForm(payload);
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
         setFormValues({ ...initailObject });
@@ -90,7 +90,7 @@ const Login = ({ show, handleClose }) => {
 
     let updatedData = { ...formValues };
     setLoading(true);
-    PostLeadFormData(updatedData);
+    PostLoginFormData(updatedData);
   };
   return (
     <Modal
@@ -146,7 +146,11 @@ const Login = ({ show, handleClose }) => {
                       style={{ cursor: "pointer" }}
                       onClick={() => setShowPassword((prev) => !prev)}
                     >
-                      {showPassword ? <FaEyeSlash fontSize={18}/> : <FaEye fontSize={18} />}
+                      {showPassword ? (
+                        <FaEyeSlash fontSize={18} />
+                      ) : (
+                        <FaEye fontSize={18} />
+                      )}
                     </span>
                   </div>
                   <p className="mt-2 form_error_msg">{errors?.password}</p>
