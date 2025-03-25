@@ -94,124 +94,126 @@ const Login = ({ show, handleClose }) => {
     PostLoginFormData(updatedData);
   };
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}
-      backdrop="static"
-      keyboard={false}
-      size="xl"
-      centered
-      className="login-modal"
-    >
-      <Modal.Header closeButton></Modal.Header>
-      <Modal.Body>
-        <Container>
-          <Row className="align-items-center justify-content-between">
-            <Col lg={6} md={6} sm={12}>
-              <h2 className="main_sec_heading">
-                Global Opportunities Real Estate
-              </h2>
-              <p className="para_comm">
-                Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos.
-              </p>
-              <Form>
-                <Form.Group controlId="email" className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={formValues.email}
-                    onChange={handleInputChange}
-                  />
-                  <p className="mt-2 form_error_msg">{errors?.email}</p>
-                </Form.Group>
-                <Form.Group controlId="full_name" className="mb-4">
-                  <div className="d-flex align-items-center justify-content-between">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Label className="forget_pass">
-                      Forget Password?
-                    </Form.Label>
-                  </div>
-                  <div className="position-relative">
+    <>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        size="xl"
+        centered
+        className="login-modal"
+      >
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <Container>
+            <Row className="align-items-center justify-content-between">
+              <Col lg={6} md={6} sm={12}>
+                <h2 className="main_sec_heading">
+                  Global Opportunities Real Estate
+                </h2>
+                <p className="para_comm">
+                  Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                  vulputate libero et velit interdum, ac aliquet odio mattis.
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra, per inceptos himenaeos.
+                </p>
+                <Form>
+                  <Form.Group controlId="email" className="mb-3">
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      value={formValues.password}
+                      type="email"
+                      name="email"
+                      value={formValues.email}
                       onChange={handleInputChange}
                     />
-                    <span
-                      className="position-absolute end-0 top-50 translate-middle-y me-3"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => setShowPassword((prev) => !prev)}
+                    <p className="mt-2 form_error_msg">{errors?.email}</p>
+                  </Form.Group>
+                  <Form.Group controlId="full_name" className="mb-4">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Label className="forget_pass">
+                        Forget Password?
+                      </Form.Label>
+                    </div>
+                    <div className="position-relative">
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formValues.password}
+                        onChange={handleInputChange}
+                      />
+                      <span
+                        className="position-absolute end-0 top-50 translate-middle-y me-3"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setShowPassword((prev) => !prev)}
+                      >
+                        {showPassword ? (
+                          <FaEyeSlash fontSize={18} />
+                        ) : (
+                          <FaEye fontSize={18} />
+                        )}
+                      </span>
+                    </div>
+                    <p className="mt-2 form_error_msg">{errors?.password}</p>
+                  </Form.Group>
+                  <div className="d-flex align-items-center gap-2">
+                    <button
+                      type="button"
+                      className="theme_btn3 me-3"
+                      onClick={() => setShowRegister(true)}
                     >
-                      {showPassword ? (
-                        <FaEyeSlash fontSize={18} />
-                      ) : (
-                        <FaEye fontSize={18} />
-                      )}
-                    </span>
+                      Create Account
+                    </button>
+                    <button
+                      className="theme_btn2"
+                      disabled={loading}
+                      onClick={handleSubmit}
+                    >
+                      {loading ? "Sending..." : "Login"}
+                    </button>
                   </div>
-                  <p className="mt-2 form_error_msg">{errors?.password}</p>
-                </Form.Group>
-                <div className="d-flex align-items-center gap-2">
-                  <button
-                    type="button"
-                    className="theme_btn3 me-3"
-                    onClick={() => setShowRegister(true)}
-                  >
-                    Create Account
-                  </button>
-                  <button
-                    className="theme_btn2"
-                    disabled={loading}
-                    onClick={handleSubmit}
-                  >
-                    {loading ? "Sending..." : "Login"}
-                  </button>
-                </div>
-                <div className="d-flex align-items-center gap-3 my-4 additonal_login">
-                  <div className="line_style" />
-                  <p className="para_comm m-0">or</p>
-                  <div className="line_style" />
-                </div>
-                <div className="d-flex align-items-center justify-content-center gap-3">
+                  <div className="d-flex align-items-center gap-3 my-4 additonal_login">
+                    <div className="line_style" />
+                    <p className="para_comm m-0">or</p>
+                    <div className="line_style" />
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center gap-3">
+                    <Image
+                      src="/assets/logo/google-logo.png"
+                      width={35}
+                      height={35}
+                      alt="google logo"
+                    />
+                    <Image
+                      src="/assets/logo/linkedin-logo.png"
+                      width={35}
+                      height={35}
+                      alt="linkedin logo"
+                    />
+                  </div>
+                </Form>
+              </Col>
+              <Col lg={6} md={6} sm={12}>
+                <figure>
                   <Image
-                    src="/assets/logo/google-logo.png"
-                    width={35}
-                    height={35}
-                    alt="google logo"
+                    src="/assets/auth/login.png"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Login"
+                    title="Login to Global Opportunities Real Estate"
                   />
-                  <Image
-                    src="/assets/logo/linkedin-logo.png"
-                    width={35}
-                    height={35}
-                    alt="linkedin logo"
-                  />
-                </div>
-              </Form>
-            </Col>
-            <Col lg={6} md={6} sm={12}>
-              <figure>
-                <Image
-                  src="/assets/auth/login.png"
-                  layout="fill"
-                  objectFit="cover"
-                  alt="Login"
-                  title="Login to Global Opportunities Real Estate"
-                />
-              </figure>
-            </Col>
-          </Row>
-          <Register
-            show={showRegister}
-            handleClose={() => setShowRegister(false)}
-          />
-        </Container>
-      </Modal.Body>
-    </Modal>
+                </figure>
+              </Col>
+            </Row>
+          </Container>
+        </Modal.Body>
+      </Modal>
+      <Register
+        show={showRegister}
+        handleClose={() => setShowRegister(false)}
+      />
+    </>
   );
 };
 
