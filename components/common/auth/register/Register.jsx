@@ -115,9 +115,9 @@ const Register = ({ show, handleClose }) => {
         setStep(2); // Move to email verification step
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Something Went wrong!");
       console.error("Error posting Data:", error);
       setLoadingRegister(false);
-      toast.error("Something Went wrong!");
     }
   };
   console.log(partnerId);
@@ -215,9 +215,9 @@ const Register = ({ show, handleClose }) => {
         setStep(3); // Move to phone verification step
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Something Went wrong!");
       console.error("Error posting Data:", error);
       setLoadingVerification(false);
-      toast.error("Something Went wrong!");
     }
   };
   const handleVerificationSubmit = async (e) => {
@@ -256,9 +256,9 @@ const Register = ({ show, handleClose }) => {
         setStep(4); // Move to uploads step
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Something Went wrong!");
       console.error("Error posting Data:", error);
       setLoadingOtpVerification(false);
-      toast.error("Something Went wrong!");
     }
   };
   const handleOtpVerificationSubmit = async (e) => {
@@ -302,9 +302,9 @@ const Register = ({ show, handleClose }) => {
         handleClose();
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Something Went wrong!");
       console.error("Error posting Data:", error);
       setLoadingUploads(false);
-      toast.error("Something Went wrong!");
     }
   };
   const handleUploadsSubmit = async (e) => {

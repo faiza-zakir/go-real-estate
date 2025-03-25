@@ -42,9 +42,9 @@ const Login = ({ show, handleClose }) => {
         setFormValues({ ...initailObject });
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Something Went wrong!");
       console.error("Error posting Data:", error);
       setLoading(false);
-      toast.error("Something Went wrong!");
     }
   };
 
