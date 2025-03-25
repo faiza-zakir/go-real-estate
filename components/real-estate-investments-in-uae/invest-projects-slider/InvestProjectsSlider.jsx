@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
@@ -38,9 +37,17 @@ const settings = {
 };
 
 const InvestProjectsSlider = ({ projectsData, isLoading }) => {
-  const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleFlyerDownload = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -106,16 +113,12 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
             {projectsData?.map((project) => (
               <div key={project?.id}>
                 <div className="project_item">
+                  <span className="status_sec">{project?.property_for}</span>
                   <figure>
                     <Image
-                      // src={
-                      //   project?.featured_img
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${project?.featured_img}`
-                      //     : "/assets/home/commercial1.webp"
-                      // }
                       src={
                         project?.featured_img
-                          ? project?.featured_img
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${project?.featured_img}`
                           : "/assets/home/commercial1.webp"
                       }
                       layout="fill"
@@ -128,10 +131,28 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
                       <span>Starting from</span> AED {project?.price}
                     </p>
                     <h3 className="sub_heading">{project?.title}</h3>
-                    <p className="para_comm">{project?.location}</p>
+                    <p className="para_comm">{project?.locations?.title}</p>
                     <div className="btn_wrap mt-3">
-                      <button className="theme_btn3">Arabic Flyer</button>
-                      <button className="theme_btn3 engBtn">
+                      <button
+                        className="theme_btn3"
+                        onClick={() =>
+                          handleFlyerDownload(
+                            process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                              project?.arabic_flyer
+                          )
+                        }
+                      >
+                        Arabic Flyer
+                      </button>
+                      <button
+                        className="theme_btn3 engBtn"
+                        onClick={() =>
+                          handleFlyerDownload(
+                            process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                              project?.english_flyer
+                          )
+                        }
+                      >
                         English Flyer
                       </button>
                     </div>

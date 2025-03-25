@@ -206,7 +206,7 @@ const Footer = () => {
       </div>
       <Container>
         {/* More Information Section using Accordion */}
-        <div className="border-top border-bottom py-3 more_info">
+        {/* <div className="border-top border-bottom py-3 more_info">
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>More Information</Accordion.Header>
@@ -220,8 +220,8 @@ const Footer = () => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </div>
-        <div className="footer-bottom py-4">
+        </div> */}
+        <div className="footer-bottom py-3 border-top">
           <div className="d-flex gap-3 align-items-center">
             <p>
               © 2024 Designed And Managed By{" "}

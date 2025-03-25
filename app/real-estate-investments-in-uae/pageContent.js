@@ -1,5 +1,5 @@
 "use client";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
 import AboutInvestment from "@/components/real-estate-investments-in-uae/about-investment/AboutInvestment";
 import InvestProjectsSlider from "@/components/real-estate-investments-in-uae/invest-projects-slider/InvestProjectsSlider";
@@ -9,23 +9,22 @@ import InvestmentInsightsSection from "@/components/real-estate-investments-in-u
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-// import { fatchPagesContent } from "@/app/apis/commonApi";
+import { fatchPagesContent, fatchProjects } from "@/app/apis/commonApi";
 // data
 import { uaeInvestmentData } from "@/lib/uaeInvestmentData";
 
 const PageContent = () => {
   const {
     about,
-    projects,
     why_choose,
     services,
     investment_insights,
     industry_reports,
     faqs,
   } = uaeInvestmentData;
-
+  const [projects, setProjects] = useState([]);
   // const [pageData, setPageData] = useState({});
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // const getPageData = async () => {
   //   try {
@@ -39,9 +38,21 @@ const PageContent = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   getPageData();
-  // }, []);
+  useEffect(() => {
+    const fetchProjectListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fatchProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
+    // getPageData();
+    fetchProjectListData();
+  }, []);
 
   return (
     <>
