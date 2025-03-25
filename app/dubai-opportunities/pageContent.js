@@ -5,6 +5,7 @@ import AboutOpportunity from "@/components/opportunities/about-opportunity/About
 import WhyInvestSlider from "@/components/opportunities/why-invest-slider/WhyInvestSlider";
 import DevelopmentTrends from "@/components/opportunities/development-trends/DevelopmentTrends";
 import FAQSection from "@/components/home/faq-section/FAQSection";
+import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
@@ -60,6 +61,7 @@ const PageContent = () => {
         title="Dubai Development Trends"
       />
       <FAQSection faqsData={faqs} />
+      <HiddenContent />
     </>
   );
 };

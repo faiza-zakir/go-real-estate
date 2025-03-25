@@ -8,6 +8,7 @@ import ServicesSlider from "@/components/real-estate-investments-in-uae/services
 import InvestmentInsightsSection from "@/components/real-estate-investments-in-uae/investment-insights-section/InvestmentInsightsSection";
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import FAQSection from "@/components/home/faq-section/FAQSection";
+import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 // api
 import { fatchPagesContent, fatchProjects } from "@/app/apis/commonApi";
 // data
@@ -78,6 +79,7 @@ const PageContent = () => {
       <InvestmentInsightsSection investmentInsightsData={investment_insights} />
       <IndustryReportsSlider industryReportsData={industry_reports} />
       <FAQSection faqsData={faqs} />
+      <HiddenContent />
     </>
   );
 };

@@ -36,18 +36,18 @@ const AboutDubaiSection = dynamic(() =>
   import("@/components/home/about-dubai-section/AboutDubaiSection")
 );
 
+const HiddenContent = dynamic(() =>
+  import("@/components/common/hidden-content/HiddenContent")
+);
+
 const Home = () => {
   const {
     bannerData,
     about,
     counts,
-    featured_projects,
     about_dubai,
-    residential,
     why_choose,
-    commercial,
     appointment,
-    invest_places,
     why_partners,
     faqs,
   } = homeData;
@@ -161,6 +161,7 @@ const Home = () => {
           <WhyPartnerSection whyPartnersData={why_partners} />
           <FAQSection faqsData={faqs} />
           <ContactSection />
+          <HiddenContent />
         </>
       ) : null}
     </>

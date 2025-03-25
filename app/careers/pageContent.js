@@ -3,36 +3,15 @@ import Banner from "@/components/common/common-banner/CommonBanner";
 import CareersInfoSection from "@/components/careers/careers-info-section/CareersInfoSection";
 import CareersFormSection from "@/components/careers/careers-form-section/CareersFormSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
+import HiddenContent from "@/components/common/hidden-content/HiddenContent";
 // import { toast } from "react-toastify";
 // import { useEffect, useState } from "react";
 // import { fatchPagesContent } from "@/app/apis/commonApi";
-
-const faqs = [
-  {
-    id: 1,
-    question: "What are the best real estate jobs in the UAE for beginners?",
-    answer: `<p>Entry-level roles such as <strong>real estate agent positions</strong> or assistant property consultants provide excellent opportunities for newcomers to gain experience in the industry.</p>`,
-  },
-  {
-    id: 2,
-    question: "How can I find real estate job vacancies in Dubai?",
-    answer: `<p>Many leading firms post <strong>real estate job openings in Dubai</strong> on online job portals, company websites, and networking platforms, making it easy to explore available opportunities.</p>`,
-  },
-  {
-    id: 3,
-    question:
-      "What skills are required for a successful career in real estate employment in Dubai?",
-    answer: `<p>Strong negotiation skills, market knowledge, and excellent communication abilities are essential for thriving in <strong>real estate career paths</strong> and securing high-value deals.</p>`,
-  },
-  {
-    id: 4,
-    question:
-      "Are there opportunities for career growth in real estate career opportunities?",
-    answer: `<p>Yes, professionals can advance from junior <strong>real estate agent positions</strong> to senior management roles, such as investment advisors or directors, by gaining experience and building a strong network.</p>`,
-  },
-];
+// data
+import { careerData } from "@/lib/careerData";
 
 const PageContent = () => {
+  const { faqs, hidden_content } = careerData;
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -73,6 +52,7 @@ const PageContent = () => {
       />
       <CareersFormSection />
       <FAQSection faqsData={faqs} />
+      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };
