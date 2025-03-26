@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Col, Container, Row, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -10,7 +11,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import {
   postRegisterForm,
   postVerifyEmailForm,
-  postVerifyPhoneForm,
+  // postVerifyPhoneForm,
   postUploadDocForm,
 } from "@/app/apis/commonApi";
 // css
@@ -41,6 +42,7 @@ const initialUploadsData = {
 };
 
 const Register = ({ show, handleClose }) => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
   const [step, setStep] = useState(1); // 1 for Register, 2 for Email Verification, 3 for Phone Verification, 4 for Uploads
@@ -302,6 +304,7 @@ const Register = ({ show, handleClose }) => {
         setUploadsData({ ...initialUploadsData });
         setUploadFie([]);
         handleClose();
+        router.push("/go-partners");
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went wrong!");

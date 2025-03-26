@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -15,6 +16,7 @@ const initailObject = {
 };
 
 const Login = ({ show, handleClose }) => {
+  const router = useRouter();
   const [showRegister, setShowRegister] = useState(false);
   const [formValues, setFormValues] = useState(initailObject);
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +45,8 @@ const Login = ({ show, handleClose }) => {
         toast.success(response.data.message || "Logged in Successfully!");
         setLoading(false);
         setFormValues({ ...initailObject });
+        handleClose();
+        router.push("/go-partners");
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went wrong!");
