@@ -475,7 +475,11 @@ const Register = ({ show, handleClose }) => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <button type="submit" className="theme_btn2">
+                  <button
+                    type="submit"
+                    className="theme_btn2"
+                    disabled={loadingRegister}
+                  >
                     {loadingRegister ? "Sending..." : "Next"}
                   </button>
                 </Form>
@@ -504,7 +508,11 @@ const Register = ({ show, handleClose }) => {
                     >
                       Back
                     </button>
-                    <button type="submit" className="theme_btn2">
+                    <button
+                      type="submit"
+                      className="theme_btn2"
+                      disabled={loadingVerification}
+                    >
                       {loadingVerification ? "Verifying..." : "Verify"}
                     </button>
                   </div>
@@ -534,7 +542,7 @@ const Register = ({ show, handleClose }) => {
                     >
                       Back
                     </button>
-                    <button type="submit" className="theme_btn2">
+                    <button type="submit" className="theme_btn2" disabled={loadingOtpVerification}>
                       {loadingOtpVerification ? "Verifying..." : "Verify"}
                     </button>
                   </div>
@@ -629,7 +637,11 @@ const Register = ({ show, handleClose }) => {
                     >
                       Back
                     </button>
-                    <button type="submit" className="theme_btn2">
+                    <button
+                      type="submit"
+                      className="theme_btn2"
+                      disabled={loadingUploads}
+                    >
                       {loadingUploads ? "Creating..." : "Create Account"}
                     </button>
                   </div>
