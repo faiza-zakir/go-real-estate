@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 // api
 import { postSubscribeForm } from "@/app/apis/commonApi";
+// data
+import { hiddenData } from "@/lib/hiddenData";
 // css
 import "./style.scss";
 
@@ -17,6 +19,7 @@ const initailObject = {
 };
 
 const Footer = () => {
+  const pathname = usePathname();
   const router = useRouter();
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
@@ -206,22 +209,22 @@ const Footer = () => {
       </div>
       <Container>
         {/* More Information Section using Accordion */}
-        {/* <div className="border-top border-bottom py-3 more_info">
+        <div className="border-top border-bottom py-3 more_info">
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>More Information</Accordion.Header>
               <Accordion.Body>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting
+                <div
+                  className="hidden_content_wrap"
+                  dangerouslySetInnerHTML={{
+                    __html: hiddenData?.[pathname]?.description,
+                  }}
+                />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </div> */}
-        <div className="footer-bottom py-3 border-top">
+        </div>
+        <div className="footer-bottom py-4">
           <div className="d-flex gap-3 align-items-center">
             <p>
               © 2024 Designed And Managed By{" "}

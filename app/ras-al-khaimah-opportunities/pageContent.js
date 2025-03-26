@@ -5,15 +5,14 @@ import AboutOpportunity from "@/components/opportunities/about-opportunity/About
 import WhyInvestSlider from "@/components/opportunities/why-invest-slider/WhyInvestSlider";
 import DevelopmentTrends from "@/components/opportunities/development-trends/DevelopmentTrends";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { rakOpportunitiesData } from "@/lib/rakOpportunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends, faqs, hidden_content } =
-    rakOpportunitiesData;
+  const { about, why_invest, development_trends, faqs } = rakOpportunitiesData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +60,6 @@ const PageContent = () => {
         title="Ras Al Khaimah Development Trends"
       />
       <FAQSection faqsData={faqs} />
-      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

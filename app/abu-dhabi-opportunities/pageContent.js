@@ -5,14 +5,14 @@ import AboutOpportunity from "@/components/opportunities/about-opportunity/About
 import WhyInvestSlider from "@/components/opportunities/why-invest-slider/WhyInvestSlider";
 import DevelopmentTrends from "@/components/opportunities/development-trends/DevelopmentTrends";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { abuDhabiOppotunitiesData } from "@/lib/abuDhabiOppotunitiesData";
 
 const PageContent = () => {
-  const { about, why_invest, development_trends, faqs, hidden_content } =
+  const { about, why_invest, development_trends, faqs } =
     abuDhabiOppotunitiesData;
 
   // const [pageData, setPageData] = useState({});
@@ -61,7 +61,6 @@ const PageContent = () => {
         title="Abu Dhabi Development Trends"
       />
       <FAQSection faqsData={faqs} />
-      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

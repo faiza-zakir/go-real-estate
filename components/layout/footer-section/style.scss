@@ -103,6 +103,55 @@
         }
         .accordion-body {
           padding: 1.5rem 0 0 0;
+          .hidden_content_wrap {
+            h3 {
+              color: #fff;
+              font-size: 18px;
+              line-height: 140%;
+              margin-bottom: 1rem;
+              font-weight: 600;
+              text-transform: capitalize;
+            }
+            h4 {
+              color: #fff;
+              font-size: 16px;
+              line-height: 140%;
+              margin-bottom: 1rem;
+              font-weight: 600;
+              text-transform: capitalize;
+            }
+            p {
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 140%;
+              color: #fff;
+              margin-bottom: 1rem;
+              text-align: justify;
+              a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                line-height: 140%;
+                font-weight: 500;
+                &:hover {
+                  color: #b22b39;
+                }
+              }
+            }
+            ul,
+            ol {
+              li {
+                color: #fff;
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 0.5rem;
+                font-weight: 400;
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
         }
       }
     }

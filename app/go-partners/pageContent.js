@@ -10,7 +10,7 @@ import VideosSlider from "@/components/go-partners/videos-slider/VideosSlider";
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import BlogSection from "@/components/go-partners/blog-section/BlogSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
@@ -25,7 +25,6 @@ const PageContent = () => {
     industry_reports,
     blogs,
     faqs,
-    hidden_content,
   } = goPartnersData;
 
   const [authToken, setAuthToken] = useState(null);
@@ -90,7 +89,6 @@ const PageContent = () => {
       )}
       <FAQSection faqsData={faqs} />
       {!authToken && <ContactSection />}
-      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

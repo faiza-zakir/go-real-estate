@@ -4,14 +4,14 @@ import Banner from "@/components/common/common-banner/CommonBanner";
 import AboutCommunity from "@/components/go-community/about-community/AboutCommunity";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 import ContactSection from "@/components/home/contact-section/ContactSection";
-import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { goCommunityData } from "@/lib/goCommunityData";
 
 const PageContent = () => {
-  const { about, faqs, hidden_content } = goCommunityData;
+  const { about, faqs } = goCommunityData;
 
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,6 @@ const PageContent = () => {
       <AboutCommunity aboutData={about} />
       <FAQSection faqsData={faqs} />
       <ContactSection />
-      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };

@@ -11,7 +11,7 @@ import Philosophy from "@/components/about/philosophy/Philosophy";
 import Partners from "@/components/about/partners/Partners";
 import Testimonials from "@/components/about/testimonials/Testimonials";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-import HiddenContent from "@/components/common/hidden-content/HiddenContent";
+
 // api
 // import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
@@ -29,7 +29,6 @@ const PageContent = () => {
     partners,
     testimonials,
     faqs,
-    hidden_content,
   } = aboutData;
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
@@ -95,7 +94,6 @@ const PageContent = () => {
       <Partners partnersData={partners} />
       <Testimonials testimonialsData={testimonials} />
       <FAQSection faqsData={faqs} />
-      <HiddenContent hiddenData={hidden_content} />
     </>
   );
 };
