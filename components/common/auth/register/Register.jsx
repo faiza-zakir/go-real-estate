@@ -302,7 +302,6 @@ const Register = ({ show, handleClose }) => {
         setRegisterData({ ...initialRegisterData });
         setVerificationData({ ...initialVerificationData });
         setUploadsData({ ...initialUploadsData });
-        setUploadFie([]);
         handleClose();
         router.push("/go-partners");
       }
