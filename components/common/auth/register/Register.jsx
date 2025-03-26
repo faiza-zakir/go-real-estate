@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Col, Container, Row, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -42,6 +42,7 @@ const initialUploadsData = {
 };
 
 const Register = ({ show, handleClose }) => {
+  const pathname = usePathname();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
@@ -89,13 +90,13 @@ const Register = ({ show, handleClose }) => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleOtpVerificationChange = (e) => {
-    setOtpVerificationData({
-      ...OtpVerificationData,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
+  // const handleOtpVerificationChange = (e) => {
+  //   setOtpVerificationData({
+  //     ...OtpVerificationData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  //   setErrors({ ...errors, [e.target.name]: "" });
+  // };
 
   // register form data
   const PostRegisterFormData = async (updatedRegisterData) => {
@@ -304,8 +305,10 @@ const Register = ({ show, handleClose }) => {
         setUploadsData({ ...initialUploadsData });
         handleClose();
         router.push("/go-partners");
-        if (typeof window !== "undefined") {
-          window.location.reload(); // Reload page when token is added or removed
+        if (pathname === "/go-partners") {
+          if (typeof window !== "undefined") {
+            window.location.reload(); // Reload page when token is added or removed
+          }
         }
       }
     } catch (error) {

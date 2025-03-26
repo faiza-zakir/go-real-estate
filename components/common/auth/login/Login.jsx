@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -16,6 +16,7 @@ const initailObject = {
 };
 
 const Login = ({ show, handleClose }) => {
+  const pathname = usePathname();
   const router = useRouter();
   const [showRegister, setShowRegister] = useState(false);
   const [formValues, setFormValues] = useState(initailObject);
@@ -47,8 +48,10 @@ const Login = ({ show, handleClose }) => {
         setFormValues({ ...initailObject });
         handleClose();
         router.push("/go-partners");
-        if (typeof window !== "undefined") {
-          window.location.reload(); // Reload page when token is added or removed
+        if (pathname === "/go-partners") {
+          if (typeof window !== "undefined") {
+            window.location.reload(); // Reload page when token is added or removed
+          }
         }
       }
     } catch (error) {
