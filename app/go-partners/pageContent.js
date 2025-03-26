@@ -90,7 +90,7 @@ const PageContent = () => {
       )}
 
       <FAQSection faqsData={faqs} />
-      <ContactSection />
+      {!authToken && <ContactSection />}
       <HiddenContent hiddenData={hidden_content} />
     </>
   );
