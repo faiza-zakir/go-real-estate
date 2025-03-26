@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { Container, Row, Col } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
@@ -14,6 +15,7 @@ const cardVariant = {
   }),
 };
 const InvestmentInsightsSection = ({ investmentInsightsData }) => {
+  const router = useRouter();
   return (
     <div className="investment-insights-sec mt-60">
       <Container fluid>
@@ -29,7 +31,12 @@ const InvestmentInsightsSection = ({ investmentInsightsData }) => {
                   __html: investmentInsightsData?.description,
                 }}
               />
-              <button className="theme_btn2">Learn More</button>
+              <button
+                className="theme_btn2"
+                onClick={() => router.push("/dubai-opportunities")}
+              >
+                Learn More
+              </button>
             </div>
           </Col>
           <Col lg={6}>

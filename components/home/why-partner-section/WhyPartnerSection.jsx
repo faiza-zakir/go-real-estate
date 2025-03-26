@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { Container, Row, Col } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
@@ -14,6 +15,7 @@ const cardVariant = {
   }),
 };
 const WhyPartnerSection = ({ whyPartnersData }) => {
+  const router = useRouter();
   const handleFlyerDownload = (path) => {
     const link = document.createElement("a");
     link.href = path;
@@ -30,7 +32,12 @@ const WhyPartnerSection = ({ whyPartnersData }) => {
             <div className="content_part">
               <h2 className="main_sec_heading">{whyPartnersData?.title}</h2>
               <p className="para_comm">{whyPartnersData?.description}</p>
-              <button className="theme_btn2 me-3">Learn More</button>
+              <button
+                className="theme_btn2 me-3"
+                onClick={() => router.push("/go-partners")}
+              >
+                Learn More
+              </button>
               <button
                 className="theme_btn3"
                 onClick={() =>
