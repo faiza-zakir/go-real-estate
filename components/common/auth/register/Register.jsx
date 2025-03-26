@@ -36,6 +36,7 @@ const initialOtpData = {
 };
 
 const initialUploadsData = {
+  partner_id: "",
   emirates_id: "",
   // lorem_ipsum1: "",
   // lorem_ipsum2: "",
