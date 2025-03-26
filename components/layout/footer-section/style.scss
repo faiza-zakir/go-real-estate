@@ -104,6 +104,26 @@
         .accordion-body {
           padding: 1.5rem 0 0 0;
           .hidden_content_wrap {
+            max-height: 200px;
+            overflow-y: auto;
+            /* Custom Scrollbar */
+            &::-webkit-scrollbar {
+              width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #333;
+              border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background: #eee;
+              border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+              background: #eee;
+            }
             h3 {
               color: #fff;
               font-size: 18px;
