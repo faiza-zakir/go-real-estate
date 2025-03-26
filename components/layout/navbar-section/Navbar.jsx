@@ -22,11 +22,20 @@ const MainNavbar = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [authToken, setAuthToken] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("auth_token");
+      setAuthToken(token);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
       setScrolled(offset > 50);
+      setShowDropdown(false); // Hide dropdown on scroll
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -66,15 +75,21 @@ const MainNavbar = () => {
             />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
-            {(pathname === "/go-partners" || pathname === "/") && (
-              <Nav.Link
-                as={Link}
-                href="#"
-                onClick={() => setShowLoginModal(true)}
-                className="nav-item theme_btn form_mobile_view"
-              >
-                Log In
-              </Nav.Link>
+            {authToken ? (
+              ""
+            ) : (
+              <>
+                {(pathname === "/go-partners" || pathname === "/") && (
+                  <Nav.Link
+                    as={Link}
+                    href="#"
+                    onClick={() => setShowLoginModal(true)}
+                    className="nav-item theme_btn form_mobile_view"
+                  >
+                    Log In
+                  </Nav.Link>
+                )}
+              </>
             )}
 
             <Navbar.Toggle
@@ -279,20 +294,26 @@ const MainNavbar = () => {
                 >
                   GO Partners
                 </Nav.Link>
-                {(pathname === "/go-partners" || pathname === "/") && (
+                {authToken ? (
+                  ""
+                ) : (
                   <>
-                    <Nav.Link
-                      as={Link}
-                      href="#"
-                      onClick={() => setShowLoginModal(true)}
-                      className="nav-item theme_btn form_desktop_view"
-                    >
-                      Log In
-                    </Nav.Link>
-                    <Login
-                      show={showLoginModal}
-                      handleClose={() => setShowLoginModal(false)}
-                    />
+                    {(pathname === "/go-partners" || pathname === "/") && (
+                      <>
+                        <Nav.Link
+                          as={Link}
+                          href="#"
+                          onClick={() => setShowLoginModal(true)}
+                          className="nav-item theme_btn form_desktop_view"
+                        >
+                          Log In
+                        </Nav.Link>
+                        <Login
+                          show={showLoginModal}
+                          handleClose={() => setShowLoginModal(false)}
+                        />
+                      </>
+                    )}
                   </>
                 )}
               </Nav>

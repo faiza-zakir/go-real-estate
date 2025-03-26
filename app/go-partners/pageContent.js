@@ -1,5 +1,5 @@
 "use client";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
 import BecomePartner from "@/components/go-partners/become-partner/BecomePartner";
 import Partners from "@/components/about/partners/Partners";
@@ -18,7 +18,6 @@ import { goPartnersData } from "@/lib/goPartnersData";
 
 const PageContent = () => {
   const {
-    partners,
     about,
     partners_benefits,
     case_studies,
@@ -29,6 +28,14 @@ const PageContent = () => {
     hidden_content,
   } = goPartnersData;
 
+  const [authToken, setAuthToken] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("auth_token");
+      setAuthToken(token);
+    }
+  }, []);
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -65,13 +72,22 @@ const PageContent = () => {
         // }
         bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
       />
-      <Partners partnersData={partners} />
-      <BecomePartner aboutData={about} />
-      <PartnersBenefits benefitsData={partners_benefits} />
-      <CaseStudiesSlider caseStudiesData={case_studies} />
-      <VideosSlider videoData={videos} />
-      <IndustryReportsSlider industryReportsData={industry_reports} />
-      <BlogSection blogsData={blogs} />
+
+      {authToken ? (
+        <>
+          <CaseStudiesSlider caseStudiesData={case_studies} />
+          <VideosSlider videoData={videos} />
+          <IndustryReportsSlider industryReportsData={industry_reports} />
+          <BlogSection blogsData={blogs} />
+        </>
+      ) : (
+        <>
+          <Partners />
+          <BecomePartner aboutData={about} />
+          <PartnersBenefits benefitsData={partners_benefits} />
+        </>
+      )}
+
       <FAQSection faqsData={faqs} />
       <ContactSection />
       <HiddenContent hiddenData={hidden_content} />
