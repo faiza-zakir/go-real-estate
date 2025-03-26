@@ -4,6 +4,14 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./styles.scss";
 
 const DubaiFuture = ({ dubaiFutureData }) => {
+  const handleFlyerDownload = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="dubai_future_sec mt-60">
       <Container>
@@ -29,8 +37,26 @@ const DubaiFuture = ({ dubaiFutureData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: dubaiFutureData?.description }}
             />
-            <button className="theme_btn2 me-3">Arabic Flyer</button>
-            <button className="theme_btn3">English Flyer</button>
+            <button
+              className="theme_btn2 me-3"
+              onClick={() =>
+                handleFlyerDownload(
+                  "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                )
+              }
+            >
+              Arabic Flyer
+            </button>
+            <button
+              className="theme_btn3"
+              onClick={() =>
+                handleFlyerDownload(
+                  "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                )
+              }
+            >
+              English Flyer
+            </button>
           </Col>
         </Row>
       </Container>

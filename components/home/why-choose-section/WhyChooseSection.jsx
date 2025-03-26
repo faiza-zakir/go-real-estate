@@ -8,6 +8,15 @@ const WhyChooseSection = ({ whyChooseData }) => {
   const sectionRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
+  const handleFlyerDownload = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     const sectionElement = sectionRef.current;
     if (!sectionElement) return;
@@ -66,8 +75,26 @@ const WhyChooseSection = ({ whyChooseData }) => {
                 className="general-details mb-4"
                 dangerouslySetInnerHTML={{ __html: whyChooseData?.description }}
               />
-              <button className="theme_btn2 me-3">Arabic Flyer</button>
-              <button className="theme_btn3">English Flyer</button>
+              <button
+                className="theme_btn2 me-3"
+                onClick={() =>
+                  handleFlyerDownload(
+                    "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                  )
+                }
+              >
+                Arabic Flyer
+              </button>
+              <button
+                className="theme_btn3"
+                onClick={() =>
+                  handleFlyerDownload(
+                    "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                  )
+                }
+              >
+                English Flyer
+              </button>
             </div>
             {whyChooseData?.processData?.map((item, i) => (
               <ChooseusCard item={item} i={i} key={i} />

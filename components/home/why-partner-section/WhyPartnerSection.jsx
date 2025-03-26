@@ -14,6 +14,14 @@ const cardVariant = {
   }),
 };
 const WhyPartnerSection = ({ whyPartnersData }) => {
+  const handleFlyerDownload = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="why-partner-sec mt-60">
       <Container fluid>
@@ -23,7 +31,16 @@ const WhyPartnerSection = ({ whyPartnersData }) => {
               <h2 className="main_sec_heading">{whyPartnersData?.title}</h2>
               <p className="para_comm">{whyPartnersData?.description}</p>
               <button className="theme_btn2 me-3">Learn More</button>
-              <button className="theme_btn3">English Flyer</button>
+              <button
+                className="theme_btn3"
+                onClick={() =>
+                  handleFlyerDownload(
+                    "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                  )
+                }
+              >
+                English Flyer
+              </button>
             </div>
           </Col>
           <Col lg={6}>
