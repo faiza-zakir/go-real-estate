@@ -9,7 +9,11 @@ import InvestmentInsightsSection from "@/components/real-estate-investments-in-u
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import FAQSection from "@/components/home/faq-section/FAQSection";
 // api
-import { fatchPagesContent, fatchProjects } from "@/app/apis/commonApi";
+import {
+  fatchPagesContent,
+  fatchProjects,
+  fatchPropertyType,
+} from "@/app/apis/commonApi";
 // data
 import { uaeInvestmentData } from "@/lib/uaeInvestmentData";
 
@@ -23,6 +27,8 @@ const PageContent = () => {
     faqs,
   } = uaeInvestmentData;
   const [projects, setProjects] = useState([]);
+  const [propertyTypes, setPropertyTypes] = useState([]);
+
   // const [pageData, setPageData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,6 +43,21 @@ const PageContent = () => {
   //     setIsLoading(false);
   //   }
   // };
+
+  useEffect(() => {
+    const fetchPropertyTypesListData = async () => {
+      try {
+        setIsLoading(true); // Show the loader
+        const { data } = await fatchPropertyType();
+        setPropertyTypes(data);
+      } catch (error) {
+        console.error("Error fetching Data:", error);
+      } finally {
+        setIsLoading(false); // Hide the loader
+      }
+    };
+    fetchPropertyTypesListData();
+  }, []);
 
   useEffect(() => {
     const fetchProjectListData = async () => {
@@ -72,7 +93,10 @@ const PageContent = () => {
         bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
       />
       <AboutInvestment aboutData={about} />
-      <InvestProjectsSlider projectsData={projects} />
+      <InvestProjectsSlider
+        projectsData={projects}
+        propertyTypesData={propertyTypes}
+      />
       <WhyChooseSection whyChooseData={why_choose} />
       <ServicesSlider servicesData={services} />
       <InvestmentInsightsSection investmentInsightsData={investment_insights} />

@@ -58,6 +58,12 @@ export const fatchPagesContent = (route) => {
   return API.get(`/pages/${route}`);
 };
 
+// Property Types API
+
+export const fatchPropertyType = () => {
+  return API.get("/property-types");
+};
+
 // Project API
 
 export const fatchProjects = () => {

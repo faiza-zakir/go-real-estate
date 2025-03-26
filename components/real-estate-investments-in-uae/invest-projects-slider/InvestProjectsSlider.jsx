@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
@@ -36,9 +36,33 @@ const settings = {
   ],
 };
 
-const InvestProjectsSlider = ({ projectsData, isLoading }) => {
+const InvestProjectsSlider = ({
+  propertyTypesData,
+  projectsData,
+  isLoading,
+}) => {
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeFilter, setActiveFilter] = useState(null);
+  const [filterData, setFilterData] = useState([]);
+
+  useEffect(() => {
+    if (!activeFilter) {
+      setFilterData(projectsData); // Default to all projects
+    } else {
+      setFilterData(
+        projectsData?.filter(
+          (project) => project?.property_types?.route === activeFilter
+        )
+      );
+    }
+  }, [projectsData, activeFilter]); // Depend on both to update when data changes
+
+  const handleFilter = (type) => {
+    if (activeFilter !== type) {
+      setActiveFilter(type);
+    }
+  };
 
   const handleFlyerDownload = (path) => {
     const link = document.createElement("a");
@@ -63,7 +87,7 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
     }
   };
 
-  const showArrows = projectsData?.length > settings.slidesToShow;
+  const showArrows = filterData?.length > settings.slidesToShow;
 
   const PrevArrow = () => (
     <button
@@ -79,7 +103,7 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
     <button
       className="slider_custom_arrows ms-3"
       onClick={nextSlide}
-      disabled={currentSlide >= projectsData?.length - settings.slidesToShow}
+      disabled={currentSlide >= filterData?.length - settings.slidesToShow}
     >
       <FaAngleRight fontSize={"24px"} />
     </button>
@@ -90,10 +114,17 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
       <Container>
         <div className="header_wrap">
           <div className=" d-flex flex-wrap justify-content-center gap-3">
-            <button className="theme_btn3 active">Ready To Move</button>
-            <button className="theme_btn3">Off - Plan</button>
-            <button className="theme_btn3">Residential</button>
-            <button className="theme_btn3">Commercial</button>
+            {propertyTypesData?.map((type) => (
+              <button
+                key={type?.id}
+                className={`theme_btn3 ${
+                  activeFilter === type?.route ? "active" : ""
+                }`}
+                onClick={() => handleFilter(type?.route)}
+              >
+                {type?.title}
+              </button>
+            ))}
           </div>
           {showArrows && (
             <div className="desktop_view">
@@ -104,13 +135,17 @@ const InvestProjectsSlider = ({ projectsData, isLoading }) => {
         </div>
         {isLoading ? (
           <p className="para_comm text-center">loading...</p>
+        ) : filterData?.length == 0 ? (
+          <p className="text-center para_comm my-5">
+            No projects found for the selected category.
+          </p>
         ) : (
           <Slider
             {...settings}
             ref={sliderRef}
             afterChange={(index) => setCurrentSlide(index)}
           >
-            {projectsData?.map((project) => (
+            {filterData?.map((project) => (
               <div key={project?.id}>
                 <div className="project_item">
                   <span className="status_sec">{project?.property_for}</span>
