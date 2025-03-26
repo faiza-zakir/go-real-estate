@@ -120,7 +120,6 @@ const Register = ({ show, handleClose }) => {
       setLoadingRegister(false);
     }
   };
-  console.log(partnerId);
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
@@ -212,7 +211,8 @@ const Register = ({ show, handleClose }) => {
       if (response.status === 200 || response.status === 201) {
         toast.success(response.data.message || "Verification Successful!");
         setLoadingVerification(false);
-        setStep(3); // Move to phone verification step
+        // setStep(3); // Move to phone verification step
+        setStep(4); // Move to uploads step
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went wrong!");
@@ -241,45 +241,44 @@ const Register = ({ show, handleClose }) => {
   };
 
   // Phone verification form data
-  const PostOtpVerificationFormData = async (updatedOtpVerificationData) => {
-    try {
-      const payload = {
-        partner_id: partnerId,
-        code: updatedOtpVerificationData?.code,
-      };
-      setStep(4); // Move to uploads step
+  // const PostOtpVerificationFormData = async (updatedOtpVerificationData) => {
+  //   try {
+  //     const payload = {
+  //       partner_id: partnerId,
+  //       code: updatedOtpVerificationData?.code,
+  //     };
 
-      const response = await postVerifyPhoneForm(payload);
-      if (response.status === 200 || response.status === 201) {
-        toast.success(response.data.message || "Verification Successful!");
-        setLoadingOtpVerification(false);
-        setStep(4); // Move to uploads step
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.message || "Something Went wrong!");
-      console.error("Error posting Data:", error);
-      setLoadingOtpVerification(false);
-    }
-  };
-  const handleOtpVerificationSubmit = async (e) => {
-    e.preventDefault();
-    const { code } = OtpVerificationData;
-    const errors = {};
+  //     const response = await postVerifyPhoneForm(payload);
+  //     if (response.status === 200 || response.status === 201) {
+  //       toast.success(response.data.message || "Verification Successful!");
+  //       setLoadingOtpVerification(false);
+  //       setStep(4); // Move to uploads step
+  //     }
+  //   } catch (error) {
+  //     toast.error(error?.response?.data?.message || "Something Went wrong!");
+  //     console.error("Error posting Data:", error);
+  //     setLoadingOtpVerification(false);
+  //   }
+  // };
+  // const handleOtpVerificationSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const { code } = OtpVerificationData;
+  //   const errors = {};
 
-    // Validation
-    if (!code) {
-      errors.code = "Please enter the Code.";
-    }
-    // If there are errors, stop the process
-    if (Object.keys(errors).length > 0) {
-      setErrors(errors);
-      return;
-    }
+  //   // Validation
+  //   if (!code) {
+  //     errors.code = "Please enter the Code.";
+  //   }
+  //   // If there are errors, stop the process
+  //   if (Object.keys(errors).length > 0) {
+  //     setErrors(errors);
+  //     return;
+  //   }
 
-    let updatedOtpVerificationData = { ...OtpVerificationData };
-    setLoadingOtpVerification(true);
-    PostOtpVerificationFormData(updatedOtpVerificationData);
-  };
+  //   let updatedOtpVerificationData = { ...OtpVerificationData };
+  //   setLoadingOtpVerification(true);
+  //   PostOtpVerificationFormData(updatedOtpVerificationData);
+  // };
 
   // uploads form data
 
@@ -293,6 +292,9 @@ const Register = ({ show, handleClose }) => {
 
       const response = await postUploadDocForm(imagesFormData, header);
       if (response.status === 200 || response.status === 201) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("auth_token", response.data?.token);
+        }
         toast.success(response.data.message || "Account Created Successfully!");
         setLoadingUploads(false);
         setRegisterData({ ...initialRegisterData });
@@ -324,6 +326,7 @@ const Register = ({ show, handleClose }) => {
 
     let imagesFormData = new FormData();
     imagesFormData.append("file", emirates_id);
+    imagesFormData.append("partner_id", partnerId);
     // imagesFormData.append("lorem_ipsum1", lorem_ipsum1);
     // imagesFormData.append("lorem_ipsum2", lorem_ipsum2);
 
@@ -503,7 +506,7 @@ const Register = ({ show, handleClose }) => {
                 </Form>
               )}
 
-              {step === 3 && (
+              {/* {step === 3 && (
                 <Form onSubmit={handleOtpVerificationSubmit}>
                   <Form.Group className="mb-4">
                     <Form.Label>Phone Verification</Form.Label>
@@ -531,7 +534,7 @@ const Register = ({ show, handleClose }) => {
                     </button>
                   </div>
                 </Form>
-              )}
+              )} */}
 
               {step === 4 && (
                 <Form onSubmit={handleUploadsSubmit}>

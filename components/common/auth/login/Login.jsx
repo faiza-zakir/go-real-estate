@@ -37,6 +37,9 @@ const Login = ({ show, handleClose }) => {
 
       const response = await postLoginForm(payload);
       if (response.status === 200 || response.status === 201) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("auth_token", response.data?.token);
+        }
         toast.success(response.data.message || "Logged in Successfully!");
         setLoading(false);
         setFormValues({ ...initailObject });
