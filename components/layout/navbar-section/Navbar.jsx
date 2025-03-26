@@ -84,7 +84,14 @@ const MainNavbar = () => {
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
             {authToken ? (
-              ""
+              <Nav.Link
+                as={Link}
+                href="#"
+                onClick={handleLogout}
+                className="nav-item theme_btn form_mobile_view"
+              >
+                Log Out
+              </Nav.Link>
             ) : (
               <>
                 {(pathname === "/go-partners" || pathname === "/") && (

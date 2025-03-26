@@ -88,7 +88,6 @@ const PageContent = () => {
           <PartnersBenefits benefitsData={partners_benefits} />
         </>
       )}
-
       <FAQSection faqsData={faqs} />
       {!authToken && <ContactSection />}
       <HiddenContent hiddenData={hidden_content} />
