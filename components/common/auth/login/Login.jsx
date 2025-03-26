@@ -47,6 +47,9 @@ const Login = ({ show, handleClose }) => {
         setFormValues({ ...initailObject });
         handleClose();
         router.push("/go-partners");
+        if (typeof window !== "undefined") {
+          window.location.reload(); // Reload page when token is added or removed
+        }
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went wrong!");

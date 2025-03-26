@@ -36,6 +36,7 @@ const PageContent = () => {
       setAuthToken(token);
     }
   }, []);
+
   // const [pageData, setPageData] = useState({});
   // const [isLoading, setIsLoading] = useState(true);
 

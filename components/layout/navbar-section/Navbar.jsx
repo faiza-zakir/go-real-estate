@@ -48,6 +48,14 @@ const MainNavbar = () => {
     setShowOffcanvas(false); // Use state to control the visibility of the Offcanvas
   };
 
+  const handleLogout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("auth_token");
+      setAuthToken(null);
+      window.location.reload(); // Reload page when token is added or removed
+    }
+  };
+
   return (
     <>
       <TopBar />
@@ -295,7 +303,14 @@ const MainNavbar = () => {
                   GO Partners
                 </Nav.Link>
                 {authToken ? (
-                  ""
+                  <Nav.Link
+                    as={Link}
+                    href="#"
+                    onClick={handleLogout}
+                    className="nav-item theme_btn form_desktop_view"
+                  >
+                    Log Out
+                  </Nav.Link>
                 ) : (
                   <>
                     {(pathname === "/go-partners" || pathname === "/") && (
