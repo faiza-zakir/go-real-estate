@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 // css
 import "./styles.scss";
 
-const AboutDubaiSection = ({ aboutData }) => {
+const AboutDubaiSection = ({ aboutDubaiData }) => {
   const handleFlyerDownload = (path) => {
     const link = document.createElement("a");
     link.href = path;
@@ -20,20 +20,23 @@ const AboutDubaiSection = ({ aboutData }) => {
             <div className="img_wrap">
               <figure>
                 <Image
-                  src={aboutData?.featured_img}
+                  src={
+                    process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                    aboutDubaiData?.featured_img
+                  }
                   layout="fill"
                   objectFit="cover"
-                  alt={aboutData?.img_alt}
-                  title={aboutData?.img_title}
+                  alt={aboutDubaiData?.title}
+                  title={aboutDubaiData?.title}
                 />
               </figure>
             </div>
           </Col>
           <Col sm={12} className="text-center">
-            <h2 className="main_sec_heading">{aboutData?.title}</h2>
+            <h2 className="main_sec_heading">{aboutDubaiData?.title}</h2>
             <div
               className="general-details mb-4"
-              dangerouslySetInnerHTML={{ __html: aboutData?.description }}
+              dangerouslySetInnerHTML={{ __html: aboutDubaiData?.description }}
             />
             <button
               className="theme_btn2 me-3"

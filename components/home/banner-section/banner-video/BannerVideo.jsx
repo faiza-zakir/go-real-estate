@@ -32,8 +32,7 @@ const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
     <div
       className="banner-video-area"
       style={{
-        // backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${content?.thumbnail})`,
-        backgroundImage: `url(${content?.thumbnail})`,
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${content?.thumbnail})`,
         backgroundSize: "cover",
       }}
     >
@@ -47,13 +46,11 @@ const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
           playsInline
           webkit-playsinline="true"
           fetchPriority="high"
-          poster={content?.thumbnail}
-          // poster={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.thumbnail}
+          poster={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.thumbnail}
           ref={videoRef}
         >
           <source
-            src={content?.video_url}
-            // src={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.video_url}
+            src={process.env.NEXT_PUBLIC_IMAGE_BASE_URL + content?.video_url}
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -73,7 +70,7 @@ const BannerVideo = ({ content, setShowForm, showForm, btnText }) => {
               {!btnText && (
                 <button
                   className="theme_btn"
-                  onClick={() => router.push(content?.link)}
+                  onClick={() => router.push("/real-estate-investments-in-uae")}
                 >
                   Learn More
                 </button>

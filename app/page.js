@@ -9,8 +9,7 @@ import BannerVideo from "@/components/home/banner-section/banner-video/BannerVid
 import { homeData } from "@/lib/homeData";
 // api
 import { fatchPagesContent, fatchProjects } from "@/app/apis/commonApi";
-import { toast } from "react-toastify";
-//
+
 const BannerForm = dynamic(() =>
   import("@/components/home/banner-section/banner-form/BannerForm")
 );
@@ -37,16 +36,7 @@ const AboutDubaiSection = dynamic(() =>
 );
 
 const Home = () => {
-  const {
-    bannerData,
-    about,
-    counts,
-    about_dubai,
-    why_choose,
-    appointment,
-    why_partners,
-    faqs,
-  } = homeData;
+  const { why_choose, appointment, why_partners } = homeData;
   const [featuredProjects, setFeaturedProjects] = useState([]);
   const [projects, setProjects] = useState([]);
   const [residentialProperties, setResidentialProperties] = useState([]);
@@ -60,20 +50,19 @@ const Home = () => {
     triggerOnce: true,
   });
 
-  // const [pageData, setPageData] = useState({});
+  const [pageData, setPageData] = useState({});
 
-  // const getPageData = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("home");
-  //     setPageData(resp?.data);
-  //   } catch (err) {
-  //     toast.error("Opps!, something went wrong, please try again later");
-  //     console.log("Err: ", err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const getPageData = async () => {
+    try {
+      setIsLoading(true);
+      const resp = await fatchPagesContent("home");
+      setPageData(resp?.data);
+    } catch (err) {
+      console.log("Err: ", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchProjectListData = async () => {
@@ -99,7 +88,7 @@ const Home = () => {
         setIsLoading(false); // Hide the loader
       }
     };
-    // getPageData();
+    getPageData();
     fetchProjectListData();
   }, []);
 
@@ -108,8 +97,7 @@ const Home = () => {
       <BannerVideo
         showForm={showForm}
         setShowForm={setShowForm}
-        // content={pageData?.content?.banner}
-        content={bannerData}
+        content={pageData?.content?.banner}
       />
       {showForm && (
         <section className="form_mobile_view mt-60">
@@ -122,10 +110,8 @@ const Home = () => {
       {inView ? (
         <>
           <AboutSection
-            // aboutData={pageData?.content?.intro}
-            // countsData={pageData?.content?.counts}
-            aboutData={about}
-            countsData={counts}
+            aboutData={pageData?.content?.intro}
+            countsData={pageData?.content?.counts}
           />
           <ProjectSlider
             title="Featured Real Estate Projects"
@@ -133,7 +119,7 @@ const Home = () => {
             projectsData={featuredProjects?.slice(0, 4)}
             isLoading={isLoading}
           />
-          <AboutDubaiSection aboutData={about_dubai} />
+          <AboutDubaiSection aboutDubaiData={pageData?.content?.about_dubai} />
           <ProjectSlider
             title="Residential Properties"
             link="/real-estate-investments-in-uae"
@@ -155,7 +141,7 @@ const Home = () => {
             isLoading={isLoading}
           />
           <WhyPartnerSection whyPartnersData={why_partners} />
-          <FAQSection faqsData={faqs} />
+          <FAQSection faqsData={pageData?.content?.faqs} />
           <ContactSection />
         </>
       ) : null}

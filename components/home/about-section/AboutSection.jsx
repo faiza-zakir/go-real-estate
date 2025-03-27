@@ -72,11 +72,10 @@ const AboutSection = ({ aboutData, countsData }) => {
             <div className="img_wrap">
               <figure className="about_img1">
                 <Image
-                  // src={
-                  //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                  //   aboutData?.featured_img2
-                  // }
-                  src={aboutData?.featured_img2}
+                  src={
+                    process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                    aboutData?.featured_img2
+                  }
                   layout="fill"
                   objectFit="cover"
                   alt={aboutData?.title}
@@ -85,11 +84,10 @@ const AboutSection = ({ aboutData, countsData }) => {
               </figure>
               <figure className="about_img2">
                 <Image
-                  // src={
-                  //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                  //   aboutData?.featured_img1
-                  // }
-                  src={aboutData?.featured_img1}
+                  src={
+                    process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                    aboutData?.featured_img1
+                  }
                   layout="fill"
                   objectFit="cover"
                   alt={aboutData?.title}
