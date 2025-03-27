@@ -36,7 +36,7 @@ const AboutDubaiSection = dynamic(() =>
 );
 
 const Home = () => {
-  const { why_choose, appointment, why_partners } = homeData;
+  const { bannerData, why_choose, appointment, why_partners } = homeData;
   const [featuredProjects, setFeaturedProjects] = useState([]);
   const [projects, setProjects] = useState([]);
   const [residentialProperties, setResidentialProperties] = useState([]);
@@ -98,6 +98,7 @@ const Home = () => {
         showForm={showForm}
         setShowForm={setShowForm}
         content={pageData?.content?.banner}
+        // content={bannerData}
       />
       {showForm && (
         <section className="form_mobile_view mt-60">

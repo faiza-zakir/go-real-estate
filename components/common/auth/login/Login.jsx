@@ -5,6 +5,7 @@ import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Register from "../register/Register";
+import ForgetPassword from "../forget-password/ForgetPassword";
 // api
 import { postLoginForm } from "@/app/apis/commonApi";
 // css
@@ -19,6 +20,7 @@ const Login = ({ show, handleClose }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [showRegister, setShowRegister] = useState(false);
+  const [showForgetPass, setShowForgetPass] = useState(false);
   const [formValues, setFormValues] = useState(initailObject);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -145,7 +147,14 @@ const Login = ({ show, handleClose }) => {
                   <Form.Group controlId="full_name" className="mb-4">
                     <div className="d-flex align-items-center justify-content-between">
                       <Form.Label>Password</Form.Label>
-                      <Form.Label className="forget_pass">
+                      <Form.Label
+                        className="forget_pass"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setShowForgetPass(true);
+                          handleClose();
+                        }}
+                      >
                         Forget Password?
                       </Form.Label>
                     </div>
@@ -228,6 +237,10 @@ const Login = ({ show, handleClose }) => {
       <Register
         show={showRegister}
         handleClose={() => setShowRegister(false)}
+      />
+      <ForgetPassword
+        show={showForgetPass}
+        handleClose={() => setShowForgetPass(false)}
       />
     </>
   );
