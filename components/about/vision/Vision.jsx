@@ -18,11 +18,10 @@ const Vision = ({ visionData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                // src={
-                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   visionData?.featured_img
-                // }
-                src={visionData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  visionData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management | Global Opportunities Real Estate"

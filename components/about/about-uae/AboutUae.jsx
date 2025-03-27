@@ -19,11 +19,10 @@ const AboutUae = ({ aboutUaeData }) => {
           <Col lg={6} className="order-last order-lg-first">
             <figure>
               <Image
-                // src={
-                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   aboutUaeData?.featured_img
-                // }
-                src={aboutUaeData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  aboutUaeData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management, Global Opportunities Real Estate"

@@ -46,11 +46,10 @@ const AboutDubai = ({ aboutDubaiData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                // src={
-                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   aboutDubaiData?.featured_img
-                // }
-                src={aboutDubaiData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  aboutDubaiData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt="Property Management, Global Opportunities Real Estate"
