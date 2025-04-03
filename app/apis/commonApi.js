@@ -103,7 +103,7 @@ export const postLoginForm = (formData) => {
 // Forget Password Form
 
 export const postForgetPasswordForm = (formData) => {
-  return API.post("/forgot-password", formData);
+  return API.post("/go-partners-forgot-password", formData);
 };
 
 // Register Form

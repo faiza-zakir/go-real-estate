@@ -13,8 +13,8 @@ const PageContent = () => {
   const getPageData = async () => {
     try {
       setIsLoading(true);
-      const resp = await fatchPagesContent("faqs");
-      setPageData(resp?.data);
+      const { data } = await fatchPagesContent("faqs");
+      setPageData(data?.content);
     } catch (err) {
       console.log("Err: ", err);
     } finally {
@@ -40,14 +40,14 @@ const PageContent = () => {
   return (
     <>
       <Banner
-        name={pageData?.content?.banner?.title}
+        name={pageData?.banner?.title}
         indexpage="Home"
         indexvisit="/"
         activepage="FAQ's"
         bgImg={
-          pageData?.content?.banner?.background_image
+          pageData?.banner?.background_image
             ? {
-                src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+                src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.banner?.background_image}`,
               }
             : { src: "/assets/banner/faqbanner.webp" }
         }

@@ -13,8 +13,8 @@ function PageContent() {
   const getPageData = async () => {
     try {
       setIsLoading(true);
-      const resp = await fatchPagesContent("privacy-policy");
-      setPageData(resp?.data);
+      const { data } = await fatchPagesContent("privacy-policy");
+      setPageData(data?.content);
     } catch (err) {
       console.log("Err: ", err);
     } finally {
@@ -32,19 +32,19 @@ function PageContent() {
       ) : (
         <>
           <Banner
-            name={pageData?.content?.banner?.title}
+            name={pageData?.banner?.title}
             indexpage="Home"
             indexvisit="/"
             activepage="Privacy Policy"
             bgImg={
-              pageData?.content?.banner?.background_image
+              pageData?.banner?.background_image
                 ? {
-                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.banner?.background_image}`,
                   }
                 : { src: "/assets/banner/privacybanner.webp" }
             }
           />
-          <PrivacyIntro content={pageData?.content?.intro} />
+          <PrivacyIntro content={pageData?.intro} />
         </>
       )}
     </>

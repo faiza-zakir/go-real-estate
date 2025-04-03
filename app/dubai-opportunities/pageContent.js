@@ -11,7 +11,7 @@ import { fatchPagesContent } from "@/app/apis/commonApi";
 
 const PageContent = () => {
   const [pageData, setPageData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPageData = async () => {
     try {
