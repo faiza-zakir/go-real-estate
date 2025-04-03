@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Col, Container, Modal, Row, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -13,7 +12,6 @@ const initailObject = {
 };
 
 const ForgetPassword = ({ show, handleClose }) => {
-  const router = useRouter();
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -33,11 +31,12 @@ const ForgetPassword = ({ show, handleClose }) => {
 
       const response = await postForgetPasswordForm(payload);
       if (response.status === 200 || response.status === 201) {
-        toast.success(response.data.message || "Password Reset Successfully!");
+        toast.success(
+          response.data.success || "Password reset link sent to your email!"
+        );
         setLoading(false);
         setFormValues({ ...initailObject });
         handleClose();
-        router.push("/");
       }
     } catch (error) {
       toast.error(
