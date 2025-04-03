@@ -77,8 +77,8 @@ const PageContent = () => {
         <>
           <CaseStudiesSlider caseStudiesData={case_studies} />
           <VideosSlider videoData={videos} />
-          <IndustryReportsSlider industryReportsData={industry_reports} />
-          <BlogSection blogsData={blogs} />
+          <IndustryReportsSlider />
+          <BlogSection />
         </>
       ) : (
         <>

@@ -8,6 +8,7 @@ import ServicesSlider from "@/components/real-estate-investments-in-uae/services
 import InvestmentInsightsSection from "@/components/real-estate-investments-in-uae/investment-insights-section/InvestmentInsightsSection";
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import FAQSection from "@/components/home/faq-section/FAQSection";
+import Loader from "@/components/common/loader/Loader";
 // api
 import {
   fatchPagesContent,
@@ -18,31 +19,26 @@ import {
 import { uaeInvestmentData } from "@/lib/uaeInvestmentData";
 
 const PageContent = () => {
-  const {
-    about,
-    why_choose,
-    services,
-    investment_insights,
-    industry_reports,
-    faqs,
-  } = uaeInvestmentData;
+  const { why_choose, investment_insights } = uaeInvestmentData;
   const [projects, setProjects] = useState([]);
   const [propertyTypes, setPropertyTypes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pageData, setPageData] = useState({});
+  const [isPageLoading, setIsPageLoading] = useState(false);
 
-  // const [pageData, setPageData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  // const getPageData = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("about");
-  //     setPageData(resp?.data);
-  //   } catch (err) {
-  //     console.log("Err: ", err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const getPageData = async () => {
+    try {
+      setIsPageLoading(true);
+      const { data } = await fatchPagesContent(
+        "real-estate-investments-in-uae"
+      );
+      setPageData(data?.content);
+    } catch (err) {
+      console.log("Err: ", err);
+    } finally {
+      setIsPageLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchPropertyTypesListData = async () => {
@@ -71,37 +67,45 @@ const PageContent = () => {
         setIsLoading(false); // Hide the loader
       }
     };
-    // getPageData();
+    getPageData();
     fetchProjectListData();
   }, []);
 
   return (
     <>
-      <Banner
-        // name={pageData?.content?.banner?.title}
-        name="Real Estate Investments in UAE"
-        indexpage="Home"
-        indexvisit="/"
-        activepage="Real Estate Investments in UAE"
-        // bgImg={
-        //   pageData?.content?.banner?.background_image
-        //     ? {
-        //         src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
-        //       }
-        //     : {src:"/assets/banner/aboutbanner.webp"}
-        // }
-        bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
-      />
-      <AboutInvestment aboutData={about} />
-      <InvestProjectsSlider
-        projectsData={projects}
-        propertyTypesData={propertyTypes}
-      />
-      <WhyChooseSection whyChooseData={why_choose} />
-      <ServicesSlider servicesData={services} />
-      <InvestmentInsightsSection investmentInsightsData={investment_insights} />
-      <IndustryReportsSlider industryReportsData={industry_reports} />
-      <FAQSection faqsData={faqs} />
+      {isPageLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Banner
+            name={pageData?.banner?.title}
+            indexpage="Home"
+            indexvisit="/"
+            activepage="Real Estate Investments in UAE"
+            bgImg={
+              pageData?.banner?.background_image
+                ? {
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.banner?.background_image}`,
+                  }
+                : { src: "/assets/banner/aboutbanner.webp" }
+            }
+          />
+          <AboutInvestment aboutData={pageData?.intro} />
+          <InvestProjectsSlider
+            projectsData={projects}
+            propertyTypesData={propertyTypes}
+            isLoading={isLoading}
+          />
+          <WhyChooseSection whyChooseData={why_choose} />
+          <ServicesSlider servicesData={pageData?.services} />
+          <InvestmentInsightsSection
+            investmentInsightsData={pageData?.investment_insights}
+            insightsData={investment_insights?.processData}
+          />
+          <IndustryReportsSlider />
+          <FAQSection faqsData={pageData?.faqs} />
+        </>
+      )}
     </>
   );
 };

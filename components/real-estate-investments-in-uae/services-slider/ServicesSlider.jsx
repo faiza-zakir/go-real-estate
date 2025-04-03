@@ -101,14 +101,9 @@ const ServicesSlider = ({ servicesData, isLoading }) => {
                 <div className="service_item">
                   <figure>
                     <Image
-                      // src={
-                      //   report?.icon
-                      //     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.icon}`
-                      //     : "/assets/investment/serviceIcon.png"
-                      // }
                       src={
                         report?.icon
-                          ? report?.icon
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${report?.icon}`
                           : "/assets/investment/serviceIcon.png"
                       }
                       width={60}
@@ -118,7 +113,11 @@ const ServicesSlider = ({ servicesData, isLoading }) => {
                   </figure>
                   <div className="content_sec">
                     <h3 className="sub_heading">{report?.title}</h3>
-                    <p className="para_comm">{report?.description}</p>
+                    <div
+                      className="general-details"
+                      dangerouslySetInnerHTML={{ __html: report?.description }}
+                    />
+                    {/* <p className="para_comm">{report?.description}</p> */}
                   </div>
                 </div>
               </div>

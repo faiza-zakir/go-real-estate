@@ -25,8 +25,8 @@ const PageContent = () => {
   const getPageData = async () => {
     try {
       setIsLoading(true);
-      const resp = await fatchPagesContent("about-us");
-      setPageData(resp?.data);
+      const { data } = await fatchPagesContent("about-us");
+      setPageData(data?.content);
     } catch (err) {
       console.log("Err: ", err);
     } finally {
@@ -45,28 +45,28 @@ const PageContent = () => {
       ) : (
         <>
           <Banner
-            name={pageData?.content?.banner?.title}
+            name={pageData?.banner?.title}
             indexpage="Home"
             indexvisit="/"
             activepage="About Us"
             bgImg={
-              pageData?.content?.banner?.background_image
+              pageData?.banner?.background_image
                 ? {
-                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.banner?.background_image}`,
                   }
                 : { src: "/assets/banner/aboutbanner.webp" }
             }
           />
-          <AboutUae aboutUaeData={pageData?.content?.about_uae} />
-          <AboutDubai aboutDubaiData={pageData?.content?.about_dubai} />
-          <DubaiFuture dubaiFutureData={pageData?.content?.dubai_future} />
+          <AboutUae aboutUaeData={pageData?.about_uae} />
+          <AboutDubai aboutDubaiData={pageData?.about_dubai} />
+          <DubaiFuture dubaiFutureData={pageData?.dubai_future} />
           <WhyChooseSection whyChooseData={why_choose} />
-          <Mission missionData={pageData?.content?.mission} />
-          <Vision visionData={pageData?.content?.vision} />
-          <Philosophy philosophyData={pageData?.content?.philosophy} />
+          <Mission missionData={pageData?.mission} />
+          <Vision visionData={pageData?.vision} />
+          <Philosophy philosophyData={pageData?.philosophy} />
           <Partners />
           <Testimonials />
-          <FAQSection faqsData={pageData?.content?.faqs} />
+          <FAQSection faqsData={pageData?.faqs} />
         </>
       )}
     </>

@@ -3,7 +3,7 @@ import { Row, Col, Container, Accordion } from "react-bootstrap";
 // css
 import "./styles.scss";
 
-const DevelopmentTrends = ({ title, devTrendsData }) => {
+const DevelopmentTrends = ({ title, devTrendsData, trendsImg }) => {
   return (
     <div className="development_trends_sec mt-60">
       <Container>
@@ -27,7 +27,12 @@ const DevelopmentTrends = ({ title, devTrendsData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                src="/assets/investment/opportunities/devTrends.png"
+                src={
+                  trendsImg?.featured_img
+                    ? process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                      trendsImg?.featured_img
+                    : "/assets/investment/opportunities/devTrends.png"
+                }
                 layout="fill"
                 objectFit="cover"
                 alt="Real Estate Office  India | Global Opportunities Real Estate"

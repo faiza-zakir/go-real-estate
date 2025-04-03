@@ -14,7 +14,10 @@ const cardVariant = {
     transition: { delay: i * 0.2, type: "spring", stiffness: 200 },
   }),
 };
-const InvestmentInsightsSection = ({ investmentInsightsData }) => {
+const InvestmentInsightsSection = ({
+  investmentInsightsData,
+  insightsData,
+}) => {
   const router = useRouter();
   return (
     <div className="investment-insights-sec mt-60">
@@ -42,7 +45,10 @@ const InvestmentInsightsSection = ({ investmentInsightsData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                src={investmentInsightsData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  investmentInsightsData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt={investmentInsightsData?.img_alt}
@@ -52,7 +58,7 @@ const InvestmentInsightsSection = ({ investmentInsightsData }) => {
           </Col>
         </Row>
         <Marquee speed={50} pauseOnHover={true} gradient={false}>
-          {investmentInsightsData?.processData?.map((item, i) => (
+          {insightsData?.map((item, i) => (
             <motion.div
               key={i}
               variants={cardVariant}

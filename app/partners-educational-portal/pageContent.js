@@ -65,9 +65,9 @@ const PageContent = () => {
       <AboutPortal aboutData={about} />
       <Founder founderData={founder} />
       <PortalVideos videoData={videos} />
-      <EducationalWebinar educationalWebinarData={educational_webinar} />
-      <IndustryReportsSlider industryReportsData={industry_reports} />
-      <CaseStudiesSlider caseStudiesData={case_studies} />
+      <EducationalWebinar />
+      <IndustryReportsSlider />
+      <CaseStudiesSlider />
       <WhyInvestSlider
         whyInvestData={why_invest}
         title="Why Invest In Dubai Real Estate"
