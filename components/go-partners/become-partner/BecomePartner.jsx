@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Row, Col, Container } from "react-bootstrap";
-import Register from "@/components/common/auth/register/Register";
+import Login from "@/components/common/auth/login/Login";
 // css
 import "./styles.scss";
-import Login from "@/components/common/auth/login/Login";
 
 const BecomePartner = ({ aboutData }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -16,11 +15,10 @@ const BecomePartner = ({ aboutData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                // src={
-                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   aboutData?.featured_img2
-                // }
-                src={aboutData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  aboutData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt={aboutData?.title}

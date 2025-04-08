@@ -10,22 +10,14 @@ import VideosSlider from "@/components/go-partners/videos-slider/VideosSlider";
 import IndustryReportsSlider from "@/components/real-estate-investments-in-uae/industry-reports/IndustryReportsSlider";
 import BlogSection from "@/components/go-partners/blog-section/BlogSection";
 import FAQSection from "@/components/home/faq-section/FAQSection";
-
+import Loader from "@/components/common/loader/Loader";
 // api
-// import { fatchPagesContent } from "@/app/apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { goPartnersData } from "@/lib/goPartnersData";
 
 const PageContent = () => {
-  const {
-    about,
-    partners_benefits,
-    case_studies,
-    videos,
-    industry_reports,
-    blogs,
-    faqs,
-  } = goPartnersData;
+  const { partners_benefits, videos } = goPartnersData;
 
   const [authToken, setAuthToken] = useState(null);
 
@@ -36,59 +28,63 @@ const PageContent = () => {
     }
   }, []);
 
-  // const [pageData, setPageData] = useState({});
-  // const [isLoading, setIsLoading] = useState(true);
+  const [pageData, setPageData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const getPageData = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("about");
-  //     setPageData(resp?.data);
-  //   } catch (err) {
-  //     console.log("Err: ", err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const getPageData = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await fatchPagesContent("go-partners");
+      setPageData(data?.content);
+    } catch (err) {
+      console.log("Err: ", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   getPageData();
-  // }, []);
+  useEffect(() => {
+    getPageData();
+  }, []);
 
   return (
     <>
-      <Banner
-        // name={pageData?.content?.banner?.title}
-        name="GO Partners"
-        indexpage="Home"
-        indexvisit="/"
-        activepage="GO Partners"
-        // bgImg={
-        //   pageData?.content?.banner?.background_image
-        //     ? {
-        //         src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.content?.banner?.background_image}`,
-        //       }
-        //     : {src:"/assets/banner/aboutbanner.webp"}
-        // }
-        bgImg={{ src: "/assets/banner/aboutbanner.webp" }}
-      />
-
-      {authToken ? (
-        <>
-          <CaseStudiesSlider caseStudiesData={case_studies} />
-          <VideosSlider videoData={videos} />
-          <IndustryReportsSlider />
-          <BlogSection />
-        </>
+      {isLoading ? (
+        <Loader />
       ) : (
         <>
-          <Partners />
-          <BecomePartner aboutData={about} />
-          <PartnersBenefits benefitsData={partners_benefits} />
+          <Banner
+            name={pageData?.banner?.title}
+            indexpage="Home"
+            indexvisit="/"
+            activepage="GO Partners"
+            bgImg={
+              pageData?.banner?.background_image
+                ? {
+                    src: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${pageData?.banner?.background_image}`,
+                  }
+                : { src: "/assets/banner/aboutbanner.webp" }
+            }
+          />
+
+          {authToken ? (
+            <>
+              <CaseStudiesSlider />
+              <VideosSlider videoData={videos} />
+              <IndustryReportsSlider />
+              <BlogSection />
+            </>
+          ) : (
+            <>
+              <Partners />
+              <BecomePartner aboutData={pageData?.about} />
+              <PartnersBenefits benefitsData={partners_benefits} />
+            </>
+          )}
+          <FAQSection faqsData={pageData?.faqs} />
+          {!authToken && <ContactSection />}
         </>
       )}
-      <FAQSection faqsData={faqs} />
-      {!authToken && <ContactSection />}
     </>
   );
 };
