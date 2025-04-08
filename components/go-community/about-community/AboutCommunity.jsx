@@ -11,11 +11,10 @@ const AboutCommunity = ({ aboutData }) => {
           <Col lg={6}>
             <figure>
               <Image
-                // src={
-                //   process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                //   aboutData?.featured_img2
-                // }
-                src={aboutData?.featured_img}
+                src={
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                  aboutData?.featured_img
+                }
                 layout="fill"
                 objectFit="cover"
                 alt={aboutData?.title}
