@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Banner from "@/components/common/common-banner/CommonBanner";
 import BecomePartner from "@/components/go-partners/become-partner/BecomePartner";
-import Partners from "@/components/about/partners/Partners";
 import PartnersBenefits from "@/components/go-partners/partners-benefits/PartnersBenefits";
 import ContactSection from "@/components/home/contact-section/ContactSection";
 import CaseStudiesSlider from "@/components/go-partners/case-studies/CaseStudiesSlider";
@@ -19,14 +18,14 @@ import { goPartnersData } from "@/lib/goPartnersData";
 const PageContent = () => {
   const { partners_benefits, videos } = goPartnersData;
 
-  const [authToken, setAuthToken] = useState(null);
+  // const [authToken, setAuthToken] = useState(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("auth_token");
-      setAuthToken(token);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const token = localStorage.getItem("auth_token");
+  //     setAuthToken(token);
+  //   }
+  // }, []);
 
   const [pageData, setPageData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -67,22 +66,22 @@ const PageContent = () => {
             }
           />
 
-          {authToken ? (
-            <>
-              <CaseStudiesSlider />
-              <VideosSlider videoData={videos} />
-              <IndustryReportsSlider />
-              <BlogSection />
-            </>
+          {/* {authToken ? (
+            <> */}
+
+          {/* </>
           ) : (
-            <>
-              <Partners />
-              <BecomePartner aboutData={pageData?.about} />
-              <PartnersBenefits benefitsData={partners_benefits} />
-            </>
-          )}
+            <> */}
+          <BecomePartner aboutData={pageData?.about} />
+          <PartnersBenefits benefitsData={partners_benefits} />
+          <CaseStudiesSlider />
+          <VideosSlider videoData={videos} />
+          <IndustryReportsSlider />
+          <BlogSection />
+          {/* </>
+          )} */}
           <FAQSection faqsData={pageData?.faqs} />
-          {!authToken && <ContactSection />}
+          <ContactSection />
         </>
       )}
     </>

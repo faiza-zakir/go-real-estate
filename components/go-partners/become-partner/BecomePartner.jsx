@@ -33,7 +33,13 @@ const BecomePartner = ({ aboutData }) => {
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
             />
             <button
-              className="theme_btn2 me-3"
+              className="theme_btn3 me-3"
+              onClick={() => setShowLoginModal(true)}
+            >
+              GO Partners Flyer
+            </button>
+            <button
+              className="theme_btn2"
               onClick={() => setShowLoginModal(true)}
             >
               Register Now

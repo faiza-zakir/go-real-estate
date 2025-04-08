@@ -5,7 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { Container, Row, Col, Form, Button, Accordion } from "react-bootstrap";
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
 // api
 import { postSubscribeForm } from "@/app/apis/commonApi";
 // data
@@ -257,6 +263,15 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <FaInstagram fontSize="22px" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/gogrouprealestate/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok fontSize="22px" />
               </a>
             </li>
             <li>

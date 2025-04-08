@@ -14,22 +14,22 @@ import { FaAngleRight } from "react-icons/fa";
 // css
 import "./style.scss";
 import TopBar from "./TopBar";
-import Login from "@/components/common/auth/login/Login";
+// import Login from "@/components/common/auth/login/Login";
 
 const MainNavbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [authToken, setAuthToken] = useState(null);
+  // const [showLoginModal, setShowLoginModal] = useState(false);
+  // const [authToken, setAuthToken] = useState(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("auth_token");
-      setAuthToken(token);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const token = localStorage.getItem("auth_token");
+  //     setAuthToken(token);
+  //   }
+  // }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,13 +48,13 @@ const MainNavbar = () => {
     setShowOffcanvas(false); // Use state to control the visibility of the Offcanvas
   };
 
-  const handleLogout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("auth_token");
-      setAuthToken(null);
-      window.location.reload(); // Reload page when token is added or removed
-    }
-  };
+  // const handleLogout = () => {
+  //   if (typeof window !== "undefined") {
+  //     localStorage.removeItem("auth_token");
+  //     setAuthToken(null);
+  //     window.location.reload(); // Reload page when token is added or removed
+  //   }
+  // };
 
   return (
     <>
@@ -83,7 +83,7 @@ const MainNavbar = () => {
             />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
-            {authToken ? (
+            {/* {authToken ? (
               <Nav.Link
                 as={Link}
                 href="#"
@@ -105,7 +105,7 @@ const MainNavbar = () => {
                   </Nav.Link>
                 )}
               </>
-            )}
+            )} */}
 
             <Navbar.Toggle
               aria-controls="offcanvasNavbar-expand-lg"
@@ -309,7 +309,7 @@ const MainNavbar = () => {
                 >
                   GO Partners
                 </Nav.Link>
-                {authToken ? (
+                {/* {authToken ? (
                   <Nav.Link
                     as={Link}
                     href="#"
@@ -337,7 +337,7 @@ const MainNavbar = () => {
                       </>
                     )}
                   </>
-                )}
+                )} */}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

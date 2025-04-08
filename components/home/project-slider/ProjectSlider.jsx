@@ -37,7 +37,7 @@ const settings = {
   ],
 };
 
-const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
+const ProjectSlider = ({ title, projectsData, isLoading }) => {
   const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -64,6 +64,8 @@ const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
       setCurrentSlide((prevSlide) => prevSlide - 1);
     }
   };
+
+  const showArrows = projectsData?.length > settings.slidesToShow;
 
   const PrevArrow = () => (
     <button
@@ -92,11 +94,12 @@ const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
           <div>
             <h3 className="main_sec_heading">{title}</h3>
           </div>
-          <div className="desktop_view">
-            <button className="theme_btn2" onClick={() => router.push(link)}>
-              See More
-            </button>
-          </div>
+          {showArrows && (
+            <div className="desktop_view">
+              <PrevArrow />
+              <NextArrow />
+            </div>
+          )}
         </div>
         {isLoading ? (
           <p className="para_comm text-center">loading...</p>
@@ -158,15 +161,12 @@ const ProjectSlider = ({ title, link, projectsData, isLoading }) => {
             ))}
           </Slider>
         )}
-        <div className="mobile_view">
-          <button className="theme_btn2" onClick={() => router.push(link)}>
-            See More
-          </button>
-        </div>
-        {/* <div className="arrows_wrap">
-          <PrevArrow />
-          <NextArrow />
-        </div> */}
+        {showArrows && (
+          <div className="mobile_view">
+            <PrevArrow />
+            <NextArrow />
+          </div>
+        )}
       </Container>
     </div>
   );

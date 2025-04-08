@@ -4,6 +4,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
+  FaTiktok,
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa";
@@ -29,6 +30,15 @@ const TopBar = () => {
               rel="noopener noreferrer"
             >
               <FaInstagram fontSize="18px" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.tiktok.com/gogrouprealestate/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTiktok fontSize="18px" />
             </a>
           </li>
           <li>
