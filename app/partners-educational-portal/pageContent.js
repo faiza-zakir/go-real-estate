@@ -13,7 +13,7 @@ import WhyInvestSlider from "@/components/opportunities/why-invest-slider/WhyInv
 import FAQSection from "@/components/home/faq-section/FAQSection";
 import ContactSection from "@/components/home/contact-section/ContactSection";
 // api
-// import { fatchPagesContent } from "@/app/apis/commonApi";
+import { fatchPagesContent } from "@/app/apis/commonApi";
 // data
 import { educationalPortalData } from "@/lib/educationalPortalData";
 
@@ -31,32 +31,32 @@ const PageContent = () => {
   } = educationalPortalData;
 
   const [showForm, setShowForm] = useState(false);
-  // const [pageData, setPageData] = useState({});
-  // const [isLoading, setIsLoading] = useState(true);
+  const [pageData, setPageData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const getPageData = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const resp = await fatchPagesContent("about");
-  //     setPageData(resp?.data);
-  //   } catch (err) {
-  //     console.log("Err: ", err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const getPageData = async () => {
+    try {
+      setIsLoading(true);
+      const resp = await fatchPagesContent("home");
+      setPageData(resp?.data);
+    } catch (err) {
+      console.log("Err: ", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   getPageData();
-  // }, []);
+  useEffect(() => {
+    getPageData();
+  }, []);
 
   return (
     <>
       <BannerVideo
         showForm={showForm}
         setShowForm={setShowForm}
-        // content={pageData?.content?.banner}
-        content={bannerData}
+        content={pageData?.content?.banner}
+        // content={bannerData}
         btnText="Schedule A Consultation"
       />
       <section className="form_mobile_view mt-60">
