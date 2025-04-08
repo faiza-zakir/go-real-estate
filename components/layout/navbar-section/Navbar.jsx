@@ -75,11 +75,11 @@ const MainNavbar = () => {
               alt="GO logo"
               width={60}
               height={60}
-              style={{
-                background: "#fff",
-                borderRadius: "5px",
-                padding: "0.2rem",
-              }}
+              // style={{
+              //   background: "#fff",
+              //   borderRadius: "5px",
+              //   padding: "0.2rem",
+              // }}
             />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3">
@@ -126,11 +126,11 @@ const MainNavbar = () => {
                   alt="GO logo"
                   width={60}
                   height={60}
-                  style={{
-                    background: "#fff",
-                    borderRadius: "5px",
-                    padding: "0.2rem",
-                  }}
+                  // style={{
+                  //   background: "#fff",
+                  //   borderRadius: "5px",
+                  //   padding: "0.2rem",
+                  // }}
                 />
               </Offcanvas.Title>
             </Offcanvas.Header>
