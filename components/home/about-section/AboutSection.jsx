@@ -39,8 +39,8 @@ const AboutSection = ({ aboutData, countsData }) => {
               dangerouslySetInnerHTML={{ __html: aboutData?.description }}
             />
             <Row>
-              {processedData?.map((item) => (
-                <Col xs={6} lg={4} key={item?.id}>
+              {processedData?.map((item,i) => (
+                <Col xs={6} lg={4} key={i}>
                   <div className="counts_wrap">
                     <h3 className="main_sec_heading">
                       <CountUp

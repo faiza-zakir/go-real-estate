@@ -4,13 +4,13 @@ import Image from "next/image";
 import useItemAnimation from "@/hooks/useItemAnimation";
 
 function ChooseusCard(props) {
-  const { itemVariant, i, item, key } = props;
+  const { itemVariant, i, item } = props;
   const { ref, controls } = useItemAnimation();
 
   return (
     <motion.div
       ref={ref}
-      key={key}
+      key={i}
       className="process_item_wrap"
       variants={itemVariant}
       initial="hidden"

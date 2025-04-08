@@ -20,7 +20,7 @@ const FAQSection = ({ faqsData }) => {
         </div>
         <Accordion defaultActiveKey={1} flush>
           {faqsData?.map((item, i) => (
-            <Accordion.Item eventKey={i + 1} key={item?.id}>
+            <Accordion.Item eventKey={i + 1} key={i}>
               <Accordion.Header>{item?.question}</Accordion.Header>
               <Accordion.Body>
                 <div
