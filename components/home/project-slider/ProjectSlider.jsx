@@ -132,28 +132,32 @@ const ProjectSlider = ({ title, projectsData, isLoading }) => {
                     <h3 className="sub_heading">{project?.title}</h3>
                     <p className="para_comm">{project?.locations?.title}</p>
                     <div className="btn_wrap mt-3">
-                      <button
-                        className="theme_btn3"
-                        onClick={() =>
-                          handleFlyerDownload(
-                            process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                              project?.arabic_flyer
-                          )
-                        }
-                      >
-                        Arabic Flyer
-                      </button>
-                      <button
-                        className="theme_btn3 engBtn"
-                        onClick={() =>
-                          handleFlyerDownload(
-                            process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                              project?.english_flyer
-                          )
-                        }
-                      >
-                        English Flyer
-                      </button>
+                      {project?.arabic_flyer && (
+                        <button
+                          className="theme_btn3"
+                          onClick={() =>
+                            handleFlyerDownload(
+                              process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                                project?.arabic_flyer
+                            )
+                          }
+                        >
+                          Arabic Flyer
+                        </button>
+                      )}
+                      {project?.english_flyer && (
+                        <button
+                          className="theme_btn3 engBtn"
+                          onClick={() =>
+                            handleFlyerDownload(
+                              process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                                project?.english_flyer
+                            )
+                          }
+                        >
+                          English Flyer
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

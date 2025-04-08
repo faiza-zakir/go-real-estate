@@ -266,7 +266,7 @@ const BannerForm = () => {
               <option value="residential">Residential</option>
               <option value="commercial">Commercial</option>
               <option value="pre-leased">Pre-Leased</option>
-              <option value="farmhouse">Farmhouse</option>
+              <option value="others">Others</option>
             </Form.Select>
             <p className="mt-2 form_error_msg">{errors?.purchase_objective}</p>
           </Form.Group>

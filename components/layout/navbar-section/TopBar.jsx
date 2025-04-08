@@ -79,7 +79,7 @@ const TopBar = () => {
         <ul className="d-flex gap-3 align-items-center">
           <li>
             <a href="#" target="_blank" rel="noopener noreferrer">
-              GO Business Internship Program
+              GO Business Internship
             </a>
           </li>
           <li>
@@ -88,7 +88,7 @@ const TopBar = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              GO Referral Partner Program
+              GO Referral Partner
             </a>
           </li>
           <li>
