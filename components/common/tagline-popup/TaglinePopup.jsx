@@ -1,10 +1,12 @@
+import { useRouter } from "next/navigation";
 import { Container, Modal } from "react-bootstrap";
 // css
 import "./styles.scss";
 
-const TaglinePopup = ({ show, handleClose, popUpref }) => {
+const TaglinePopup = ({ show, handleClose }) => {
+  const router = useRouter();
   return (
-    <div ref={popUpref}>
+    <div>
       <Modal
         show={show}
         onHide={handleClose}
@@ -17,12 +19,21 @@ const TaglinePopup = ({ show, handleClose, popUpref }) => {
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <Container>
-            <p className="para_comm">
-              We aim to achieve <b>2000 happy customers</b> by <b>2030</b>{" "}
-              because real estate <b>investment</b> is a critical life decision,
-              and everyone deserves to <b>secure</b> their lifelong earnings in
-              the <b>right property</b>.
-            </p>
+            <div className="d-flex flex-column justify-content-center align-items-center">
+              <h2 className="main_sec_heading">
+                GO Community – Where Visionaries Grow
+              </h2>
+              <p className="para_comm">
+                Step into a thriving network of real estate <b>professionals</b>
+                , <b>exclusive events</b>, and <b>investment opportunities</b>.
+              </p>
+              <button
+                className="theme_btn2"
+                onClick={() => router.push("/go-community")}
+              >
+                Explore the GO Community
+              </button>
+            </div>
           </Container>
         </Modal.Body>
       </Modal>
