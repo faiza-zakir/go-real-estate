@@ -37,7 +37,7 @@ const settings = {
   ],
 };
 
-const ProjectSlider = ({ title, projectsData, isLoading }) => {
+const ProjectSlider = ({ title, projectsData, isLoading, isTrue }) => {
   const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -132,31 +132,39 @@ const ProjectSlider = ({ title, projectsData, isLoading }) => {
                     <h3 className="sub_heading">{project?.title}</h3>
                     <p className="para_comm">{project?.locations?.title}</p>
                     <div className="btn_wrap mt-3">
-                      {project?.arabic_flyer && (
-                        <button
-                          className="theme_btn3"
-                          onClick={() =>
-                            handleFlyerDownload(
-                              process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                                project?.arabic_flyer
-                            )
-                          }
-                        >
-                          Arabic Flyer
+                      {isTrue ? (
+                        <button className="theme_btn3 engBtn">
+                          Learn More
                         </button>
-                      )}
-                      {project?.english_flyer && (
-                        <button
-                          className="theme_btn3 engBtn"
-                          onClick={() =>
-                            handleFlyerDownload(
-                              process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
-                                project?.english_flyer
-                            )
-                          }
-                        >
-                          English Flyer
-                        </button>
+                      ) : (
+                        <>
+                          {project?.arabic_flyer && (
+                            <button
+                              className="theme_btn3"
+                              onClick={() =>
+                                handleFlyerDownload(
+                                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                                    project?.arabic_flyer
+                                )
+                              }
+                            >
+                              Arabic Flyer
+                            </button>
+                          )}
+                          {project?.english_flyer && (
+                            <button
+                              className="theme_btn3 engBtn"
+                              onClick={() =>
+                                handleFlyerDownload(
+                                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                                    project?.english_flyer
+                                )
+                              }
+                            >
+                              English Flyer
+                            </button>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>

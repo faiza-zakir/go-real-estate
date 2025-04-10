@@ -7,6 +7,14 @@ import "./styles.scss";
 
 const BecomePartner = ({ aboutData }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const handleFlyerDownload = (path) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="become_partner_sec mt-60">
@@ -34,7 +42,11 @@ const BecomePartner = ({ aboutData }) => {
             />
             <button
               className="theme_btn3 me-3"
-              onClick={() => setShowLoginModal(true)}
+              onClick={() =>
+                handleFlyerDownload(
+                  "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                )
+              }
             >
               GO Partners Flyer
             </button>

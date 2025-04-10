@@ -124,12 +124,14 @@ const Home = () => {
             title="Residential Properties"
             projectsData={residentialProperties?.slice(0, 4)}
             isLoading={isLoading}
+            isTrue={true}
           />
           <WhyChooseSection whyChooseData={why_choose} />
           <ProjectSlider
             title="Commercial Properties"
             projectsData={commercialProperties?.slice(0, 4)}
             isLoading={isLoading}
+            isTrue={true}
           />
           <AppointmentSection appointmentData={appointment} />
           <ProjectSlider

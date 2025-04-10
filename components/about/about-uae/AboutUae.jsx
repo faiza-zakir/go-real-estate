@@ -36,7 +36,7 @@ const AboutUae = ({ aboutUaeData }) => {
               className="general-details mb-4"
               dangerouslySetInnerHTML={{ __html: aboutUaeData?.description }}
             />
-            <button
+            {/* <button
               className="theme_btn2 me-3"
               onClick={() =>
                 handleFlyerDownload(
@@ -45,16 +45,16 @@ const AboutUae = ({ aboutUaeData }) => {
               }
             >
               Arabic Flyer
-            </button>
+            </button> */}
             <button
-              className="theme_btn3"
+              className="theme_btn2"
               onClick={() =>
                 handleFlyerDownload(
                   "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
                 )
               }
             >
-              English Flyer
+              View Flyer
             </button>
           </Col>
         </Row>

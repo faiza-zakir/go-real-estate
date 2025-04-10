@@ -46,7 +46,7 @@ const WhyPartnerSection = ({ whyPartnersData }) => {
                   )
                 }
               >
-                English Flyer
+                View Flyer
               </button>
             </div>
           </Col>
