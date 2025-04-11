@@ -1,0 +1,26 @@
+.property-details-modal {
+  .modal-body {
+    background: url("/assets/home/popupbg.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px;
+    .main_sec_heading {
+      margin-bottom: 1rem;
+      font-size: 28px;
+    }
+  }
+  .modal-header {
+    border-bottom: 0;
+    padding-bottom: 0;
+    position: absolute;
+    right: -5px;
+    z-index: 1;
+    .btn-close {
+      font-size: 14px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}

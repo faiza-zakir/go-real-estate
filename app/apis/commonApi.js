@@ -12,6 +12,12 @@ export const postContactForm = (formData) => {
   return API.post("/Contact-form", formData);
 };
 
+// Project Contact Form
+
+export const postProjectContactForm = (formData) => {
+  return API.post("/project-contact-form", formData);
+};
+
 // Career Form
 
 export const postCareerForm = (formData) => {

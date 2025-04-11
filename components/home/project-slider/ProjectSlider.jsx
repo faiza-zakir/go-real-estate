@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import PropertiesDetails from "@/components/common/properties-details/PropertiesDetails";
 // css
 import "./style.scss";
 
@@ -38,9 +38,12 @@ const settings = {
 };
 
 const ProjectSlider = ({ title, projectsData, isLoading, isTrue }) => {
-  const router = useRouter();
   const sliderRef = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [projectDetails, setProjectDetails] = useState(null);
+
+  const handleModalClose = () => setShowModal(false);
 
   const handleFlyerDownload = (path) => {
     const link = document.createElement("a");
@@ -133,7 +136,13 @@ const ProjectSlider = ({ title, projectsData, isLoading, isTrue }) => {
                     <p className="para_comm">{project?.locations?.title}</p>
                     <div className="btn_wrap mt-3">
                       {isTrue ? (
-                        <button className="theme_btn3 engBtn">
+                        <button
+                          className="theme_btn3 engBtn"
+                          onClick={() => {
+                            setShowModal(true);
+                            setProjectDetails(project);
+                          }}
+                        >
                           Learn More
                         </button>
                       ) : (
@@ -178,6 +187,13 @@ const ProjectSlider = ({ title, projectsData, isLoading, isTrue }) => {
             <PrevArrow />
             <NextArrow />
           </div>
+        )}
+        {isTrue && showModal && (
+          <PropertiesDetails
+            show={showModal}
+            handleClose={handleModalClose}
+            projectDetails={projectDetails}
+          />
         )}
       </Container>
     </div>
