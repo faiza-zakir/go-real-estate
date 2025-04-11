@@ -7,11 +7,8 @@ import ContactSection from "@/components/home/contact-section/ContactSection";
 import Loader from "@/components/common/loader/Loader";
 // api
 import { fatchPagesContent } from "@/app/apis/commonApi";
-// data
-import { goCommunityData } from "@/lib/goCommunityData";
 
 const PageContent = () => {
-  const { about } = goCommunityData;
   const [pageData, setPageData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,7 +47,7 @@ const PageContent = () => {
                 : { src: "/assets/banner/aboutbanner.webp" }
             }
           />
-          <AboutCommunity aboutData={about} />
+          <AboutCommunity aboutData={pageData?.about} />
           <FAQSection faqsData={pageData?.faqs} />
           <ContactSection />
         </>
