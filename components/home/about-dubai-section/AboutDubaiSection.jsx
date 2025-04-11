@@ -52,7 +52,8 @@ const AboutDubaiSection = ({ aboutDubaiData }) => {
               className="theme_btn2"
               onClick={() =>
                 handleFlyerDownload(
-                  "https://gorealestate.b-cdn.net/Gallery/1742802626-0-file-sample150kB.pdf"
+                  process.env.NEXT_PUBLIC_IMAGE_BASE_URL +
+                    aboutDubaiData?.english_flyer
                 )
               }
             >

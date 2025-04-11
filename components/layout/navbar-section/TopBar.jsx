@@ -63,7 +63,7 @@ const TopBar = () => {
         <ul className="d-flex gap-3 align-items-center">
           <li>
             <a href="mailto:info@gogrouprealestate.com">
-              <FaEnvelope fontSize="18px" /> info@gogrouprealestate.com
+              <FaEnvelope fontSize="18px" /> info@GoGroupRealEstate.com
             </a>
           </li>
           <li>

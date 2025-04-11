@@ -176,7 +176,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a href="mailto:info@gogrouprealestate.com">
-                    info@gogrouprealestate.com
+                    info@GoGroupRealEstate.com
                   </a>
                 </li>
                 <li>Dubai, Lorem Lipsum Eslopsum</li>
