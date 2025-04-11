@@ -44,7 +44,7 @@ const PropertiesDetails = ({ show, handleClose, projectDetails }) => {
       {contactModal && (
         <ContactUsModal
           show={contactModal}
-          handleClose={() => setContactModal(false)}
+          handleModalClose={() => setContactModal(false)}
           projectId={projectId}
           projectName={projectName}
         />

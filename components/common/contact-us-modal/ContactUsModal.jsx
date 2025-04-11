@@ -17,7 +17,7 @@ const initailObject = {
   property_name: "",
 };
 
-const ContactUsModal = ({ show, handleClose, projectId, projectName }) => {
+const ContactUsModal = ({ show, handleModalClose, projectId, projectName }) => {
   const [formValues, setFormValues] = useState(initailObject);
   const [loading, setLoading] = useState(false);
   const [mobileValue, setMobileValue] = useState("");
@@ -51,7 +51,7 @@ const ContactUsModal = ({ show, handleClose, projectId, projectName }) => {
         );
         setFormValues({ ...initailObject });
         setMobileValue("");
-        handleClose();
+        handleModalClose();
       }
     } catch (error) {
       console.error("Error posting Data:", error);
@@ -95,7 +95,7 @@ const ContactUsModal = ({ show, handleClose, projectId, projectName }) => {
     <div>
       <Modal
         show={show}
-        onHide={handleClose}
+        onHide={handleModalClose}
         backdrop="static"
         keyboard={false}
         size="md"
