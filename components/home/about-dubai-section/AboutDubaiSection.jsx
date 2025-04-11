@@ -35,7 +35,7 @@ const AboutDubaiSection = ({ aboutDubaiData }) => {
           <Col sm={12} className="text-center">
             <h2 className="main_sec_heading">{aboutDubaiData?.title}</h2>
             <div
-              className="general-details mb-4"
+              className="general-details mb-2"
               dangerouslySetInnerHTML={{ __html: aboutDubaiData?.description }}
             />
             {/* <button
